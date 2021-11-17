@@ -1,7 +1,7 @@
 <div align="center">
 
 <img
-  src="documentation/static/img/discordjs-docs-parser.png"
+  src="documentation/static/img/logo.png"
   alt="DiscordJS Docs Parser Logo"
   height="200"
 />

@@ -139,7 +139,7 @@ const config = {
         title: 'DiscordJS Docs Parser',
         logo: {
           alt: 'DiscordJS Docs Parser Logo',
-          src: 'img/discordjs-docs-parser.png'
+          src: 'img/logo.png'
         },
         items: [
           {
