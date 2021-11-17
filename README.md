@@ -64,7 +64,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://favware.tech/"><img src="https://avatars.githubusercontent.com/u/4019718?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href="https://github.com/favna/discordjs-docs-parser/commits?author=favna" title="Code">💻</a></td>
+    <td align="center"><a href="https://favware.tech/"><img src="https://avatars.githubusercontent.com/u/4019718?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jeroen Claassens</b></sub></a><br /><a href="https://github.com/favna/discordjs-docs-parser/commits?author=favna" title="Code">💻</a> <a href="#ideas-favna" title="Ideas, Planning, & Feedback">🤔</a> <a href="#projectManagement-favna" title="Project Management">📆</a> <a href="#question-favna" title="Answering Questions">💬</a> <a href="https://github.com/favna/discordjs-docs-parser/pulls?q=is%3Apr+reviewed-by%3Afavna" title="Reviewed Pull Requests">👀</a> <a href="#userTesting-favna" title="User Testing">📓</a> <a href="#maintenance-favna" title="Maintenance">🚧</a> <a href="https://github.com/favna/discordjs-docs-parser/commits?author=favna" title="Documentation">📖</a></td>
   </tr>
 </table>
 

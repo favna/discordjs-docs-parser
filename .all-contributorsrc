@@ -3,9 +3,7 @@
   "projectOwner": "favna",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
+  "files": ["README.md"],
   "imageSize": 100,
   "commit": true,
   "commitConvention": "angular",
@@ -15,9 +13,7 @@
       "name": "Jeroen Claassens",
       "avatar_url": "https://avatars.githubusercontent.com/u/4019718?v=4",
       "profile": "https://favware.tech/",
-      "contributions": [
-        "code"
-      ]
+      "contributions": ["code", "ideas", "projectManagement", "question", "review", "userTesting", "maintenance", "doc"]
     }
   ],
   "contributorsPerLine": 7,
