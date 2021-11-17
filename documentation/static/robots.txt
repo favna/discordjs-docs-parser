@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
-Sitemap: https://discordjs-docs-parser-favna.vercel.app/sitemap.xml
+Sitemap: https://discordjs-docs-parser.vercel.app/sitemap.xml
 User-agent: *
 Disallow:

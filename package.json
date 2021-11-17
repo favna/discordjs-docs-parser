@@ -15,7 +15,7 @@
     "require": "./dist/index.js"
   },
   "sideEffects": false,
-  "homepage": "https://favna.github.io/discordjs-docs-parser",
+  "homepage": "https://discordjs-docs-parser.vercel.app",
   "scripts": {
     "lint": "eslint src tests documentation/src --ext mjs,js,ts,tsx --fix",
     "format": "prettier --write {src,tests}/**/*.ts",

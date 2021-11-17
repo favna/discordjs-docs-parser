@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
 const Description = 'Documentation parser for DiscordJS projects.';
 const Email = 'support@favware.tech';
 const Title = 'discordjs-docs-parser';
-const BaseUrl = 'https://discordjs-docs-parser-favna.vercel.app';
+const BaseUrl = 'https://discordjs-docs-parser.vercel.app';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {

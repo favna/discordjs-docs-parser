@@ -13,7 +13,7 @@ const HeadTags: FC = () => {
       <meta httpEquiv="Cache-Control" content="1y" />
       <meta httpEquiv="Page-Enter" content="RevealTrans(Duration=2.0,Transition=2)" />
       <meta httpEquiv="Page-Exit" content="RevealTrans(Duration=3.0,Transition=12)" />
-      <link rel="canonical" href="https://discordjs-docs-parser-favna.vercel.app" />
+      <link rel="canonical" href="https://discordjs-docs-parser.vercel.app" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&display=swap" rel="stylesheet" />
