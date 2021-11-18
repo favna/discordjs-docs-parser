@@ -1,7 +1,7 @@
 import { stripIndents } from 'common-tags';
-import type { DocParam } from '.';
-import type { DocTypes } from '..';
+import { DocTypes } from '../utils/enums';
 import { DocBase } from './Base';
+import type { DocParam } from './Param';
 
 const DESCRIPTION_LIMIT = 1500;
 
@@ -36,31 +36,9 @@ export class DocElement extends DocBase {
     this.access = data.access || 'public';
   }
 
-  public get embedPrefix() {
-    const { types } = DocElement;
-    const emoji = (char: any) => `:regional_indicator_${char}:`;
-
-    switch (this.docType) {
-      case types.CLASS:
-        return emoji('c');
-      case types.EVENT:
-        return emoji('e');
-      case types.INTERFACE:
-        return emoji('i');
-      case types.METHOD:
-        return emoji('m');
-      case types.TYPEDEF:
-        return emoji('t');
-      case types.PROP:
-        return emoji('p');
-      default:
-        return null;
-    }
-  }
-
   public get anchor() {
     if (this.static) return 's-';
-    else if (this.docType === DocElement.types.EVENT) return 'e-';
+    else if (this.docType === DocTypes.Event) return 'e-';
     return null;
   }
 
@@ -164,6 +142,9 @@ export class DocElement extends DocBase {
     this.attachExamples(embed);
   }
 
+  /**
+   * @internal
+   */
   public attachProps(embed: any, { excludePrivateElements }: any = {}) {
     if (!this.props) return;
 
@@ -177,6 +158,9 @@ export class DocElement extends DocBase {
     });
   }
 
+  /**
+   * @internal
+   */
   public attachMethods(embed: any, { excludePrivateElements }: any = {}) {
     if (!this.methods) return;
 
@@ -190,6 +174,9 @@ export class DocElement extends DocBase {
     });
   }
 
+  /**
+   * @internal
+   */
   public attachEvents(embed: any) {
     if (!this.events) return;
     embed.fields.push({
@@ -198,6 +185,9 @@ export class DocElement extends DocBase {
     });
   }
 
+  /**
+   * @internal
+   */
   public attachParams(embed: any) {
     if (!this.params) return;
     const params = this.params.map((param: DocParam) => {
@@ -216,6 +206,9 @@ export class DocElement extends DocBase {
     }
   }
 
+  /**
+   * @internal
+   */
   public attachReturn(embed: any) {
     if (!this.returns) return;
     embed.fields.push({
@@ -224,6 +217,9 @@ export class DocElement extends DocBase {
     });
   }
 
+  /**
+   * @internal
+   */
   public attachType(embed: any) {
     if (!this.type) return;
     embed.fields.push({
@@ -232,6 +228,9 @@ export class DocElement extends DocBase {
     });
   }
 
+  /**
+   * @internal
+   */
   public attachExamples(embed: any) {
     if (!this.examples) return;
     embed.fields.push({
@@ -240,6 +239,9 @@ export class DocElement extends DocBase {
     });
   }
 
+  /**
+   * @internal
+   */
   public toJSON() {
     const json: any = {
       name: this.name,
@@ -258,6 +260,9 @@ export class DocElement extends DocBase {
     return json;
   }
 
+  /**
+   * @internal
+   */
   public formatInherits(inherits: any) {
     inherits = Array.isArray(inherits[0])
       ? inherits.map((element: any) => element.flat(5)) // docgen 0.9.0 format
@@ -266,6 +271,9 @@ export class DocElement extends DocBase {
     return inherits.map((baseClass: any) => this.doc.formatType(baseClass)).join(' and ');
   }
 
+  /**
+   * @internal
+   */
   public formatText(text: any) {
     if (!text) return '';
 
@@ -283,9 +291,5 @@ export class DocElement extends DocBase {
       .replace(/<\/?p>/g, '') // remove paragraph tags
       .replace(/<\/?code>/g, '`') // format code tags
       .replace(/<a href="(.+)">(.+)<\/a>/g, '[$2]($1)'); // format anchor tags
-  }
-
-  public static get types() {
-    return DocBase.types;
   }
 }

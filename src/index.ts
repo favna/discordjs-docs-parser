@@ -1,1 +1,13 @@
-export * from './lib';
+export * from './lib/Doc';
+export * from './lib/elements/Base';
+export * from './lib/elements/Class';
+export * from './lib/elements/Element';
+export * from './lib/elements/Event';
+export * from './lib/elements/Interface';
+export * from './lib/elements/Method';
+export * from './lib/elements/Param';
+export * from './lib/elements/Prop';
+export * from './lib/elements/Typedef';
+export { Sources } from './lib/utils/enums';
+export type { FetchOptions } from './lib/utils/interfaces';
+export { sources } from './lib/utils/sources';

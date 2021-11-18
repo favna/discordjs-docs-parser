@@ -1,3 +1,4 @@
+import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 import { DocParam } from './Param';
 
@@ -5,7 +6,7 @@ export class DocMethod extends DocElement {
   public readonly scope: any;
 
   public constructor(parent: any, data: any) {
-    super(parent.doc, DocElement.types.METHOD, data, parent);
+    super(parent.doc, DocTypes.Method, data, parent);
 
     this.examples = data.examples || null;
     this.returns = data.returns;

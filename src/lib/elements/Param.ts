@@ -1,3 +1,4 @@
+import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 
 export class DocParam extends DocElement {
@@ -6,7 +7,7 @@ export class DocParam extends DocElement {
   public variable: boolean;
 
   public constructor(parent: any, data: any) {
-    super(parent.doc, DocElement.types.PARAM, data, parent);
+    super(parent.doc, DocTypes.Param, data, parent);
     this.type = data.type.flat(5);
     this.optional = data.optional;
     this.variable = data.variable;

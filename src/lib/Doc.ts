@@ -1,30 +1,23 @@
-import Fuse from 'fuse.js/dist/fuse.basic.min.js';
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
-import { sources } from './sources';
-import { DocBase, DocClass, DocInterface, DocTypedef } from './elements';
-
-const docCache = new Map();
-
-const DJS = 'discordjs';
-const AKAIRO = 'discord-akairo';
-
-function dissectURL(url: string) {
-  const parts = url.slice(34).split('/');
-  return [parts[0], parts[1], parts[3].slice(0, -5)];
-}
+import Fuse from 'fuse.js/dist/fuse.basic.min.js';
+import { DocBase } from './elements/Base';
+import { DocClass } from './elements/Class';
+import { DocInterface } from './elements/Interface';
+import { DocTypedef } from './elements/Typedef';
+import { docCache } from './utils/constants';
+import type { Sources } from './utils/enums';
+import type { FetchOptions, SearchOptions } from './utils/interfaces';
+import { sources } from './utils/sources';
+import { buildErrorMessage } from './utils/utils';
 
 export class Doc extends DocBase {
-  public readonly url: string;
-
+  /**
+   * @internal
+   */
   private fuse: Fuse<any>;
-  private project: string;
-  private repo: string;
-  private branch: string;
 
-  public constructor(url: any, docs: any) {
+  public constructor(docs: any) {
     super(docs);
-    this.url = url;
-    [this.project, this.repo, this.branch] = dissectURL(url);
 
     this.adoptAll(docs.classes, DocClass);
     this.adoptAll(docs.typedefs, DocTypedef);
@@ -35,51 +28,23 @@ export class Doc extends DocBase {
       threshold: 0.5,
       location: 0,
       distance: 80,
-      //   maxPatternLength: 32,
       minMatchCharLength: 1,
       keys: ['name', 'id']
-      //   id: 'id'
     });
   }
 
-  public get repoURL() {
-    return `https://github.com/${this.project}/${this.repo}/blob/${this.branch}`;
-  }
-
-  public get baseURL() {
-    switch (this.project) {
-      case DJS:
-        return 'https://discord.js.org';
-      case AKAIRO:
-        return 'https://discord-akairo.github.io';
-      default:
-        return null;
-    }
-  }
-
-  public get baseDocsURL() {
-    if (!this.baseURL) return null;
-    const repo = ['discord.js', AKAIRO].includes(this.repo) ? 'main' : this.repo;
-    return `${this.baseURL}/#/docs/${repo}/${this.branch}`;
-  }
-
-  public get icon() {
-    if (!this.baseURL) return null;
-    return `${this.baseURL}/favicon.ico`;
-  }
-
-  public get color() {
-    switch (this.project) {
-      case DJS:
-        return 0x2296f3;
-      case AKAIRO:
-        return 0x87202f;
-      default:
-        return null;
-    }
-  }
-
-  public get(...terms: any[]) {
+  /**
+   * Gets the documentation for one element.
+   * @param terms The terms that lead to the element to get. Use multiple terms to get a nested element.
+   * @returns Either the element or null if it doesn't exist.
+   * @example
+   * ```typescript
+   * doc.get('message');
+   * doc.get('message', 'guild');
+   * doc.get('message', 'guild', 'members');
+   * ```
+   */
+  public get(...terms: string[]): DocBase | null {
     const exclude = Array.isArray(terms[0]) ? terms.shift() : [];
     terms = terms.filter((term) => term).map((term) => term.toLowerCase());
 
@@ -92,14 +57,19 @@ export class Doc extends DocBase {
       const child = elem.findChild(term, exclude);
 
       if (!child) return null;
-      // @ts-expect-error - TODO to figure out
       elem = terms.length && child.typeElement ? child.typeElement : child;
     }
 
-    return elem;
+    return elem ?? null;
   }
 
-  public search(query: any, { excludePrivateElements }: any = {}) {
+  /**
+   * Searches the documentation for elements matching the provided search query.
+   * @param query The query to use in the fuzzy search.
+   * @param searchOptions Additional options to pass to the `search` function.
+   * @returns The top 10 hits from the search.
+   */
+  public search(query: string, searchOptions: SearchOptions = {}) {
     const result = this.fuse.search(query);
     if (!result.length) return null;
 
@@ -109,37 +79,17 @@ export class Doc extends DocBase {
       // @ts-expect-error - TODO to figure out
       const element = this.get(filtered, ...result.shift().split('#'));
       // @ts-expect-error - TODO to figure out
-      if (excludePrivateElements && element.access === 'private') continue;
+      if (searchOptions.excludePrivateElements && element.access === 'private') continue;
       filtered.push(element);
     }
 
     return filtered;
   }
 
-  public resolveEmbed(query: any, options: any = {}) {
-    const element = this.get(...query.split(/\.|#/));
-    // @ts-expect-error - TODO to figure out
-    if (element) return element.embed(options);
-
-    const searchResults = this.search(query, options);
-    if (!searchResults) return null;
-
-    const embed = this.baseEmbed();
-    // @ts-expect-error - TODO to figure out
-    embed.title = 'Search results:';
-    // @ts-expect-error - TODO to figure out
-    embed.description = searchResults
-      .map((el) => {
-        // @ts-expect-error - TODO to figure out
-        const prefix = el.embedPrefix;
-        // @ts-expect-error - TODO to figure out
-        return `${prefix ? `${prefix} ` : ''}**${el.link}**`;
-      })
-      .join('\n');
-    return embed;
-  }
-
-  public toFuseFormat() {
+  /**
+   * @internal
+   */
+  private toFuseFormat() {
     const parents = Array.from(this.children.values());
 
     const children = parents.map((parent) => Array.from(parent.children.values())).reduce((a, b) => a.concat(b));
@@ -151,84 +101,38 @@ export class Doc extends DocBase {
     return formattedParents.concat(formattedChildren);
   }
 
-  public toJSON() {
-    const json = {};
-
-    for (const key of ['classes', 'typedefs', 'interfaces']) {
-      // @ts-expect-error - TODO to figure out
-      if (!this[key]) continue;
-      // @ts-expect-error - TODO to figure out
-      json[key] = this[key].map((item) => item.toJSON());
+  /**
+   * Fetches the documentation JSON file and builds up a {@link Doc} object.
+   * @param sourceName The name of the source to fetch. Be sure to use the {@link Sources} enum.
+   * @param fetchOptions Additional options to pass to the `fetch` function.
+   * @returns An instance of {@link Doc}
+   * @example
+   * ```javascript
+   * const { Doc, Sources } = require('discordjs-docs-parser');
+   *
+   * const doc = await Doc.fetch(Sources.Main);
+   * ```
+   * @example
+   * ```typescript
+   * import { Doc, Sources } from 'discordjs-docs-parser';
+   *
+   * const doc = await Doc.fetch(Sources.Collection, { force: true });
+   * ```
+   */
+  public static async fetch(sourceName: Sources, fetchOptions: FetchOptions = {}) {
+    if (!fetchOptions.force && docCache.has(sourceName)) {
+      return docCache.get(sourceName)!;
     }
 
-    return json;
-  }
-
-  public baseEmbed() {
-    const title: any =
-      {
-        'discord.js': 'Discord.js Docs',
-        commando: 'Commando Docs',
-        rpc: 'RPC Docs',
-        'discord-akairo': 'Akairo Docs',
-        collection: 'Collection'
-      }[this.repo] || this.repo;
-
-    return {
-      color: this.color,
-      author: {
-        name: `${title} (${this.branch})`,
-        url: this.baseDocsURL,
-        icon_url: this.icon
-      }
-    };
-  }
-
-  public formatType(types: any) {
-    const typestring = types
-      .map((text: any, index: any) => {
-        if (/<|>|\*/.test(text)) {
-          return text
-            .split('')
-            .map((char: any) => `\\${char}`)
-            .join('');
-        }
-
-        const typeElem = this.findChild(text.toLowerCase());
-        const prependOr = index !== 0 && /\w|>/.test(types[index - 1]) && /\w/.test(text);
-
-        // @ts-expect-error - TODO to figure out
-        return (prependOr ? '|' : '') + (typeElem ? typeElem.link : text);
-      })
-      .join('');
-
-    return `**${typestring}**`;
-  }
-
-  public static getRepoURL(id: any) {
-    const [name, branch] = id.split('/');
-    // @ts-expect-error - TODO to figure out
-    const project: any = {
-      main: 'discord.js',
-      commando: 'Commando',
-      rpc: 'RPC'
-    }[name];
-
-    return `https://github.com/discordjs/${project}/blob/${branch}/`;
-  }
-
-  public static sources() {
-    return sources;
-  }
-
-  public static async fetch(sourceName: any, { force }: any = {}) {
-    const url = sources.get(sourceName) ?? sourceName;
-    if (!force && docCache.has(url)) return docCache.get(url);
+    const url = sources.get(sourceName);
+    if (!url) {
+      throw new Error(buildErrorMessage('An invalid source was provided. Please make sure you\'re using the "Sources" exported enum'));
+    }
 
     try {
       const data = await fetch(url, FetchResultTypes.JSON);
-      const doc = new Doc(url, data);
-      docCache.set(url, doc);
+      const doc = new Doc(data);
+      docCache.set(sourceName, doc);
       return doc;
     } catch (err) {
       throw new Error('invalid source name or URL.');

@@ -1,3 +1,4 @@
+import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 
 export class DocProp extends DocElement {
@@ -6,7 +7,7 @@ export class DocProp extends DocElement {
   public nullable: boolean;
 
   public constructor(parent: any, data: any) {
-    super(parent.doc, DocElement.types.PROP, data, parent);
+    super(parent.doc, DocTypes.Prop, data, parent);
     this.scope = data.scope;
     this.type = data.type.flat(5);
     this.nullable = data.nullable || false;

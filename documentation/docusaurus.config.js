@@ -54,6 +54,8 @@ const config = {
         out: 'Documentation',
         intentionallyNotExported: ['PriceError', 'PriceData'],
         excludeExternals: true,
+        excludeInternal: true,
+        watch: true,
         sidebar: {
           categoryLabel: 'Documentation',
           position: 1,

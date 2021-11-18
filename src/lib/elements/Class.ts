@@ -1,3 +1,4 @@
+import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 import { DocEvent } from './Event';
 import { DocMethod } from './Method';
@@ -9,7 +10,8 @@ export class DocClass extends DocElement {
   public readonly construct: any;
 
   public constructor(doc: any, data: any) {
-    super(doc, DocElement.types.CLASS, data);
+    super(doc, DocTypes.Class, data);
+    super(doc, DocTypes.Class, data);
     this.extends = data.extends || null;
     this.implements = data.implements || null;
     this.construct = data.construct;
