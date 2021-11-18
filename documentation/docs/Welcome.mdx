@@ -14,14 +14,42 @@ sidebar_position: 0
 
 ## About
 
-TODO
+discordjs-docs-parser is a parser for DiscordJS documentation. It parses the JSON and outputs all the data in a readable
+Class format for consumptions. A use case for this library is providing a doc search command in your Discord bot
+project. It is also a good way to get a quick overview of the documentation. The prime motivators for this library are
+the [Discord Utils Bot](https://github.com/discordjs/discord-utils-bot) and
+[Sapphire Application Commands](https://github.com/sapphiredev/sapphire-application-commands) projects.
 
 ## Installation
 
+Install with your package manager of choice:
+
 ```bash npm2yarn
-npm install nintendo-switch-eshop
+npm install discordjs-docs-parser
 ```
 
 ## Usage
 
-TODO
+### Fetching the documentation
+
+The first step is to fetch the documentation. This is done by calling the `fetch` method. After fetching the
+documentation it is stored in an in-memory cache (using a `Map`) for later use.
+
+Please refer to [Doc#fetch](Documentation/classes/Doc#fetch) examples and
+more information.
+
+### Getting a specific doc element by its name
+
+After fetching the documentation from GitHub and having it stored in the internal cache you can get a specific element
+by either it's exact ID or a nested property path.
+
+Please refer to [Doc#get](Documentation/classes/Doc#get) examples and more
+information.
+
+### Using a Fuzzy search to find a document element
+
+If you instead of getting the absolute path of a specific element you instead want to perform a fuzzy search for
+elements you can use `doc.search`. This will return the top 10 results for the provided query.
+
+Please refer to [Doc#search](Documentation/classes/Doc#search) examples
+and more information.
