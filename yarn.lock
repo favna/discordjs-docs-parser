@@ -3374,13 +3374,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^27.0.2":
-  version: 27.0.2
-  resolution: "@types/jest@npm:27.0.2"
+"@types/jest@npm:^27.0.3":
+  version: 27.0.3
+  resolution: "@types/jest@npm:27.0.3"
   dependencies:
     jest-diff: ^27.0.0
     pretty-format: ^27.0.0
-  checksum: 814ad5f5d2f277849f47e52906da4b745758e555630fc8cb46a071bde648eefeffb1b35710c530a8cea7fc4ea7c1d813812c120484bf7902ab6c5e473cdd49c9
+  checksum: 3683a9945821966f6dccddf337219a5d682633687c9d30df859223db553589f63e9b2c34e69f0cc845c86ffcf115742f25c12ea03c8d33d2244890fdc0af61e2
   languageName: node
   linkType: hard
 
@@ -3430,7 +3430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.11.7":
+"@types/node@npm:*":
   version: 16.11.7
   resolution: "@types/node@npm:16.11.7"
   checksum: 2706403e6efc4aa40fdce8f0b5d9884d5600c3c8610aedc7fa5e7e298d30366f7e8b7296028d52898dca3edef4c3e827b03bf20952c4780f13fa4e79864f7a86
@@ -3441,6 +3441,13 @@ __metadata:
   version: 15.14.9
   resolution: "@types/node@npm:15.14.9"
   checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.11.8":
+  version: 16.11.8
+  resolution: "@types/node@npm:16.11.8"
+  checksum: c60418498f0affd0fb69351fd04ec0d8c684d1892d6d548d95fc2288b157c4e2e3e0bd3b6da6802ba128cb34ea2144c08e8683469e08cf58c61d5fb6ab9db4b5
   languageName: node
   linkType: hard
 
@@ -5358,16 +5365,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-truncate@npm:3.1.0":
-  version: 3.1.0
-  resolution: "cli-truncate@npm:3.1.0"
-  dependencies:
-    slice-ansi: ^5.0.0
-    string-width: ^5.0.0
-  checksum: c3243e41974445691c63f8b405df1d5a24049dc33d324fe448dc572e561a7b772ae982692900b1a5960901cc4fc7def25a629b9c69a4208ee89d12ab3332617a
-  languageName: node
-  linkType: hard
-
 "cli-truncate@npm:^2.1.0":
   version: 2.1.0
   resolution: "cli-truncate@npm:2.1.0"
@@ -5375,6 +5372,16 @@ __metadata:
     slice-ansi: ^3.0.0
     string-width: ^4.2.0
   checksum: bf1e4e6195392dc718bf9cd71f317b6300dc4a9191d052f31046b8773230ece4fa09458813bf0e3455a5e68c0690d2ea2c197d14a8b85a7b5e01c97f4b5feb5d
+  languageName: node
+  linkType: hard
+
+"cli-truncate@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "cli-truncate@npm:3.1.0"
+  dependencies:
+    slice-ansi: ^5.0.0
+    string-width: ^5.0.0
+  checksum: c3243e41974445691c63f8b405df1d5a24049dc33d324fe448dc572e561a7b772ae982692900b1a5960901cc4fc7def25a629b9c69a4208ee89d12ab3332617a
   languageName: node
   linkType: hard
 
@@ -6761,8 +6768,8 @@ __metadata:
     "@sapphire/prettier-config": ^1.2.4
     "@sapphire/ts-config": ^3.1.4
     "@types/common-tags": ^1.8.1
-    "@types/jest": ^27.0.2
-    "@types/node": ^16.11.7
+    "@types/jest": ^27.0.3
+    "@types/node": ^16.11.8
     "@typescript-eslint/eslint-plugin": ^5.4.0
     "@typescript-eslint/parser": ^5.4.0
     common-tags: ^1.8.2
@@ -6777,14 +6784,14 @@ __metadata:
     husky: ^7.0.4
     jest: ^27.3.1
     jest-circus: ^27.3.1
-    lint-staged: ^12.0.2
+    lint-staged: ^12.0.3
     prettier: ^2.4.1
     pretty-quick: ^3.1.2
     standard-version: ^9.3.2
     ts-jest: ^27.0.7
     ts-node: ^10.4.0
     tslib: ^2.3.1
-    typescript: ~4.4.4
+    typescript: ^4.5.2
   languageName: unknown
   linkType: soft
 
@@ -7125,7 +7132,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enquirer@npm:^2.3.5":
+"enquirer@npm:^2.3.5, enquirer@npm:^2.3.6":
   version: 2.3.6
   resolution: "enquirer@npm:2.3.6"
   dependencies:
@@ -8930,13 +8937,6 @@ __metadata:
   version: 4.0.0
   resolution: "has-flag@npm:4.0.0"
   checksum: 261a1357037ead75e338156b1f9452c016a37dcd3283a972a30d9e4a87441ba372c8b81f818cd0fbcd9c0354b4ae7e18b9e1afa1971164aef6d18c2b6095a8ad
-  languageName: node
-  linkType: hard
-
-"has-flag@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "has-flag@npm:5.0.1"
-  checksum: e0a151db8e43b528258c4269c23224c691b42c1f5168f6d88b61c3f9398ef16d44226a78a0596642da55851cf306a8afe57d6936d4d69a24b66fd10de1373da8
   languageName: node
   linkType: hard
 
@@ -11252,25 +11252,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^12.0.2":
-  version: 12.0.2
-  resolution: "lint-staged@npm:12.0.2"
+"lint-staged@npm:^12.0.3":
+  version: 12.0.3
+  resolution: "lint-staged@npm:12.0.3"
   dependencies:
-    cli-truncate: 3.1.0
+    cli-truncate: ^3.1.0
     colorette: ^2.0.16
     commander: ^8.3.0
     cosmiconfig: ^7.0.1
     debug: ^4.3.2
+    enquirer: ^2.3.6
     execa: ^5.1.1
     listr2: ^3.13.3
     micromatch: ^4.0.4
     normalize-path: ^3.0.0
-    object-inspect: 1.11.0
-    string-argv: 0.3.1
-    supports-color: 9.0.2
+    object-inspect: ^1.11.0
+    string-argv: ^0.3.1
+    supports-color: ^9.0.2
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: dd90c182c762f4172ac470b47af4810ea1e637d82c47871e1aa4b44e79570235725bc0be166c054cf7cf9db1877f11a19e5258dee89ab00b00d336b147e803fb
+  checksum: 08a20d9c93bab3e26baf6f92a9f39d114636eba4f3cf6b6c3893cac8db612963563a9ba6cd477f4fd5af265e04976b049e70647ff8732e7469a5d989840f9148
   languageName: node
   linkType: hard
 
@@ -12485,7 +12486,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"object-inspect@npm:1.11.0, object-inspect@npm:^1.11.0, object-inspect@npm:^1.9.0":
+"object-inspect@npm:^1.11.0, object-inspect@npm:^1.9.0":
   version: 1.11.0
   resolution: "object-inspect@npm:1.11.0"
   checksum: 8c64f89ce3a7b96b6925879ad5f6af71d498abc217e136660efecd97452991216f375a7eb47cb1cb50643df939bf0c7cc391567b7abc6a924d04679705e58e27
@@ -15620,7 +15621,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string-argv@npm:0.3.1":
+"string-argv@npm:^0.3.1":
   version: 0.3.1
   resolution: "string-argv@npm:0.3.1"
   checksum: efbd0289b599bee808ce80820dfe49c9635610715429c6b7cc50750f0437e3c2f697c81e5c390208c13b5d5d12d904a1546172a88579f6ee5cbaaaa4dc9ec5cf
@@ -15890,15 +15891,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supports-color@npm:9.0.2":
-  version: 9.0.2
-  resolution: "supports-color@npm:9.0.2"
-  dependencies:
-    has-flag: ^5.0.0
-  checksum: 690c21f61945a1ebab61fbc9dc861672b1d9678359ce75312b8b7ecb873f37f2ed2df56daa4ef4265300bea2e51f8285831ffb0a190ac46aaeed1d5b44fd51fe
-  languageName: node
-  linkType: hard
-
 "supports-color@npm:^5.3.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -15923,6 +15915,13 @@ __metadata:
   dependencies:
     has-flag: ^4.0.0
   checksum: c052193a7e43c6cdc741eb7f378df605636e01ad434badf7324f17fb60c69a880d8d8fcdcb562cf94c2350e57b937d7425ab5b8326c67c2adc48f7c87c1db406
+  languageName: node
+  linkType: hard
+
+"supports-color@npm:^9.0.2":
+  version: 9.1.0
+  resolution: "supports-color@npm:9.1.0"
+  checksum: 90794e2a31c03fd84bd3eee83a1310d4d4d415624d4747d6bdc847f7ae786b0ebf7c03b9e7ba7be1cd0733d9456be998ff5fb32410d787ee4fb145f5ad104c99
   languageName: node
   linkType: hard
 
@@ -16583,7 +16582,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.4.3, typescript@npm:^4.4.4, typescript@npm:~4.4.4":
+"typescript@npm:^4.4.3, typescript@npm:^4.4.4":
   version: 4.4.4
   resolution: "typescript@npm:4.4.4"
   bin:
@@ -16593,13 +16592,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.4.4#~builtin<compat/typescript>, typescript@patch:typescript@~4.4.4#~builtin<compat/typescript>":
+"typescript@npm:^4.5.2":
+  version: 4.5.2
+  resolution: "typescript@npm:4.5.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 74f9ce65d532bdf5d0214b3f60cf37992180023388c87a11ee6f838a803067ef0b63c600fa501b0deb07f989257dce1e244c9635ed79feca40bbccf6e0aa1ebc
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.4.3#~builtin<compat/typescript>, typescript@patch:typescript@^4.4.4#~builtin<compat/typescript>":
   version: 4.4.4
   resolution: "typescript@patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=ddd1e8"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: bd629ad0da4a15d79aaad56baf3ee7d96f6a181760d430ae77f8c5325df7bffd9edee57544a3970e3651e8b796fe03a5838a7eb39c6d46cc3866c0b23d36a0dd
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>":
+  version: 4.5.2
+  resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=ddd1e8"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 24a439e062a05e3285a4f0e8a40644116ecdca89f3e908bed01e5a01b9aee747e3bcf0e85fe9e017e5ebf0c0863437c39479f2616f55a244c2d82d37022cdc4f
   languageName: node
   linkType: hard
 
