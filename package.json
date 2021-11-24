@@ -24,7 +24,7 @@
     "update": "yarn upgrade-interactive",
     "build": "tsc -b src && gen-esm-wrapper dist/index.js dist/index.mjs",
     "watch": "tsc -b src -w",
-    "clean": "tsc -b src --clean",
+    "clean": "node scripts/clean.mjs",
     "sversion": "standard-version",
     "prepublishOnly": "yarn build",
     "prepare": "husky install .github/husky"
