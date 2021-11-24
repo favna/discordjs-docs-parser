@@ -1,6 +1,6 @@
 import type { Constructor } from '@sapphire/utilities';
 import type { DocIterateeUnion } from '../types/DocgenOutput';
-import { DocTypes } from '../utils/enums';
+import { DocTypes } from '../utils/constants';
 import type { DocTypesToClassType } from '../utils/interfaces';
 import type { DocClass } from './Class';
 import type { DocElement } from './Element';

@@ -7,7 +7,7 @@ import { DocClass } from './elements/Class';
 import { DocInterface } from './elements/Interface';
 import { DocTypedef } from './elements/Typedef';
 import type { Documentation } from './types/DocgenOutput';
-import { docCache } from './utils/constants';
+import { docCache, sources } from './utils/constants';
 import type {
   DocParserGlobalOptions,
   FetchOptions,
@@ -16,8 +16,6 @@ import type {
   SearchOptions,
   SourcesStringUnion
 } from './utils/interfaces';
-import { sources } from './utils/sources';
-import { buildErrorMessage, dissectURL } from './utils/utils';
 
 export class Doc extends DocBase {
   /**
@@ -201,7 +199,7 @@ export class Doc extends DocBase {
 
     const url = sources.get(sourceName);
     if (!url) {
-      throw new Error(buildErrorMessage('An invalid source was provided. Please make sure you\'re using the "Sources" exported enum'));
+      throw new Error('[DiscordJsDocsParser] An invalid source was provided. Please make sure you\'re using the "Sources" exported enum');
     }
 
     try {
@@ -210,7 +208,13 @@ export class Doc extends DocBase {
       docCache.set(sourceName, doc);
       return doc;
     } catch (err) {
-      throw new Error('invalid source name or URL.');
+      throw err;
     }
   }
+}
+
+function dissectURL(url: string) {
+  const parts = url.slice(34).split('/');
+
+  return [parts[0], parts[1], parts[3].slice(0, -5)];
 }

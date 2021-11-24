@@ -1,5 +1,4 @@
-import { Doc } from '../src';
-import { DocTypes } from '../src/lib/utils/enums';
+import { Doc, DocTypes } from '../src';
 
 describe('Collection Docs', () => {
   let doc: Doc;

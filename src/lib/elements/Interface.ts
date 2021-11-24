@@ -1,6 +1,6 @@
 import type { Doc } from '../Doc';
 import type { DocumentationInterface } from '../types/DocgenOutput';
-import { DocTypes } from '../utils/enums';
+import { DocTypes } from '../utils/constants';
 import { DocElement } from './Element';
 import { DocMethod } from './Method';
 import { DocProp } from './Prop';

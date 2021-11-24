@@ -5,7 +5,7 @@ import type { DocMethod } from '../elements/Method';
 import type { DocParam } from '../elements/Param';
 import type { DocProp } from '../elements/Prop';
 import type { DocTypedef } from '../elements/Typedef';
-import type { DocTypes } from './enums';
+import { DocTypes } from './constants';
 
 export interface DocTypesToClassType {
   [DocTypes.Class]: DocClass;

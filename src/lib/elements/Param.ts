@@ -1,5 +1,5 @@
 import type { DocumentationParameter } from '../types/DocgenOutput';
-import { DocTypes } from '../utils/enums';
+import { DocTypes } from '../utils/constants';
 import { DocElement } from './Element';
 
 /**

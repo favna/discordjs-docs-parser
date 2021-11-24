@@ -1,7 +1,7 @@
 import { filterNullAndUndefinedAndEmpty, isNullishOrEmpty } from '@sapphire/utilities';
 import { Doc } from '../Doc';
 import type { DocIterateeUnion, DocumentationClassMeta, DocumentationReturns } from '../types/DocgenOutput';
-import { DocTypes } from '../utils/enums';
+import { DocTypes } from '../utils/constants';
 import type { ElementJSON } from '../utils/interfaces';
 import { DocBase } from './Base';
 

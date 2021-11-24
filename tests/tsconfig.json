@@ -1,11 +1,11 @@
 {
-	"extends": "../tsconfig.base.json",
-	"compilerOptions": {
-		"noEmit": true,
-		"incremental": false,
-		"baseUrl": "."
-	},
-	"include": [".", "../src/**/*"],
-	"exclude": ["../dist/**/*"],
-	"references": [{ "path": "../src" }]
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "incremental": false,
+    "baseUrl": "."
+  },
+  "include": [".", "../src/**/*"],
+  "exclude": ["../dist/**/*"],
+  "references": [{ "path": "../src" }]
 }
