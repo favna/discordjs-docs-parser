@@ -64,7 +64,7 @@ export class Doc extends DocBase {
   }
 
   public get repoURL() {
-    return `https://github.com/${this.project}/${this.repo}/blob/${this.branch}`;
+    return `https://github.com/${this.project}/${this.repo}/tree/${this.branch}`;
   }
 
   public get baseDocsURL() {
@@ -123,6 +123,9 @@ export class Doc extends DocBase {
    * @returns The top 10 hits from the search.
    */
   public search(query: string, searchOptions: SearchOptions = {}) {
+    // Replace all dots with hashes
+    query = query.replaceAll('.', '#');
+
     const results = this.findWithJaroWinkler(query);
     if (!results.length) return null;
 
@@ -180,7 +183,7 @@ export class Doc extends DocBase {
     const possibles: FuzzySearchFormatWithScore[] = [];
 
     for (const { id, name } of this.fuzzySearchFormat) {
-      if (!id) continue;
+      if (!id || !name) continue;
 
       const score = jaroWinkler(query.toLowerCase(), id.toLowerCase());
 
