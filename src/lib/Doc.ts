@@ -1,6 +1,6 @@
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import { filterNullishOrEmpty, isNullish, isNullishOrEmpty } from '@sapphire/utilities';
-import Fuse from 'fuse.js/dist/fuse.basic.min.js';
+import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { DocElement } from '../lib/elements/Element';
 import { DocBase } from './elements/Base';
 import { DocClass } from './elements/Class';
@@ -9,7 +9,7 @@ import { DocTypedef } from './elements/Typedef';
 import type { Documentation } from './types/DocgenOutput';
 import { docCache } from './utils/constants';
 import type { Sources } from './utils/enums';
-import type { DocParserGlobalOptions, FetchOptions, SearchOptions } from './utils/interfaces';
+import type { DocParserGlobalOptions, FetchOptions, FuzzySearchFormat, FuzzySearchFormatWithScore, SearchOptions } from './utils/interfaces';
 import { sources } from './utils/sources';
 import { buildErrorMessage, dissectURL } from './utils/utils';
 
@@ -38,10 +38,7 @@ export class Doc extends DocBase {
   /**
    * @internal
    */
-  private fuse: Fuse<{
-    id: string | null;
-    name: string | null;
-  }>;
+  private fuzzySearchFormat: FuzzySearchFormat[];
 
   public constructor(url: string, docs: Documentation) {
     super(docs);
@@ -53,14 +50,7 @@ export class Doc extends DocBase {
     this.adoptAll(docs.typedefs, DocTypedef);
     this.adoptAll(docs.interfaces, DocInterface);
 
-    this.fuse = new Fuse(this.toFuseFormat(), {
-      shouldSort: true,
-      threshold: 0.5,
-      location: 0,
-      distance: 80,
-      minMatchCharLength: 1,
-      keys: ['name', 'id']
-    });
+    this.fuzzySearchFormat = this.toFuzzySearchFormat();
   }
 
   public get repoURL() {
@@ -138,19 +128,19 @@ export class Doc extends DocBase {
    * @returns The top 10 hits from the search.
    */
   public search(query: string, searchOptions: SearchOptions = {}) {
-    const result = this.fuse.search(query);
-    if (!result.length) return null;
+    const results = this.findWithJaroWinkler(query);
+    if (!results.length) return null;
 
     const filtered = [];
 
-    while (result.length > 0 && filtered.length < 10) {
-      const element = this.get(filtered, ...(result.shift()?.item.id?.split('#') ?? []));
+    do {
+      const element = this.get(filtered, ...(results.shift()?.id?.split('#') ?? []));
 
       if (isNullish(element)) continue;
       if (searchOptions.excludePrivateElements && element.access === 'private') continue;
 
       filtered.push(element);
-    }
+    } while (results.length > 0);
 
     return filtered;
   }
@@ -158,7 +148,7 @@ export class Doc extends DocBase {
   /**
    * @internal
    */
-  private toFuseFormat() {
+  private toFuzzySearchFormat(): FuzzySearchFormat[] {
     const parents = Array.from(this.children.values());
 
     const children = parents.map((parent) => Array.from(parent.children.values())).reduce((a, b) => a.concat(b));
@@ -167,6 +157,22 @@ export class Doc extends DocBase {
     const formattedChildren = children.map(({ name, parent }) => ({ id: `${parent ? `${parent.name}#` : ''}${name}`, name }));
 
     return formattedParents.concat(formattedChildren);
+  }
+
+  private findWithJaroWinkler(query: string): FuzzySearchFormatWithScore[] {
+    const possibles: FuzzySearchFormatWithScore[] = [];
+
+    for (const { id, name } of this.fuzzySearchFormat) {
+      if (!id) continue;
+
+      const score = jaroWinkler(query.toLowerCase(), id.toLowerCase());
+
+      if (score > 0.8) {
+        possibles.push({ id, name, score });
+      }
+    }
+
+    return possibles.sort((a, b) => b.score - a.score).slice(0, 10);
   }
 
   /**

@@ -48,3 +48,12 @@ export interface ElementJSON {
 export interface DocParserGlobalOptions {
   escapeMarkdownLinks: boolean;
 }
+
+export interface FuzzySearchFormat {
+  id: string | null;
+  name: string | null;
+}
+
+export interface FuzzySearchFormatWithScore extends FuzzySearchFormat {
+  score: number;
+}
