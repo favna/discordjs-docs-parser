@@ -1,8 +1,8 @@
 import { filterNullAndUndefinedAndEmpty, isNullishOrEmpty } from '@sapphire/utilities';
-import type { ElementJSON } from '../..';
 import { Doc } from '../Doc';
 import type { DocIterateeUnion, DocumentationClassMeta, DocumentationReturns } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
+import type { ElementJSON } from '../utils/interfaces';
 import { DocBase } from './Base';
 
 export class DocElement extends DocBase {
@@ -105,7 +105,11 @@ export class DocElement extends DocBase {
   }
 
   public get link(): string {
-    return `[${this.formattedName}](${this.url})`;
+    if (!this.url) return '';
+
+    const escapedUrl = `${Doc.globalOptions.escapeMarkdownLinks ? '<' : ''}${this.url}${Doc.globalOptions.escapeMarkdownLinks ? '>' : ''}`;
+
+    return `[${this.formattedName}](${escapedUrl})`;
   }
 
   public get static(): boolean {

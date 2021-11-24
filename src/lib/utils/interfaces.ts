@@ -44,3 +44,7 @@ export interface ElementJSON {
   examples?: string[];
   returns?: Partial<{ type: string; description: string }>;
 }
+
+export interface DocParserGlobalOptions {
+  escapeMarkdownLinks: boolean;
+}

@@ -9,7 +9,7 @@ import { DocTypedef } from './elements/Typedef';
 import type { Documentation } from './types/DocgenOutput';
 import { docCache } from './utils/constants';
 import type { Sources } from './utils/enums';
-import type { FetchOptions, SearchOptions } from './utils/interfaces';
+import type { DocParserGlobalOptions, FetchOptions, SearchOptions } from './utils/interfaces';
 import { sources } from './utils/sources';
 import { buildErrorMessage, dissectURL } from './utils/utils';
 
@@ -174,6 +174,10 @@ export class Doc extends DocBase {
    * @default 1500
    */
   public static DescriptionLimit = 1500;
+
+  public static globalOptions: DocParserGlobalOptions = {
+    escapeMarkdownLinks: false
+  };
 
   /**
    * Fetches the documentation JSON file and builds up a {@link Doc} object.
