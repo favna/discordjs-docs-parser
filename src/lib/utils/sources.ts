@@ -1,13 +1,13 @@
-import { Sources } from './enums';
+import type { SourcesStringUnion } from './interfaces';
 
 /**
  * The sources supported by this library
  */
-export const sources = new Map<Sources, string>([
-  [Sources.Stable, 'https://raw.githubusercontent.com/discordjs/discord.js/docs/stable.json'],
-  [Sources.Main, 'https://raw.githubusercontent.com/discordjs/discord.js/docs/main.json'],
-  [Sources.Rpc, 'https://raw.githubusercontent.com/discordjs/RPC/docs/master.json'],
-  [Sources.Collection, 'https://raw.githubusercontent.com/discordjs/collection/docs/stable.json'],
-  [Sources.Builders, 'https://raw.githubusercontent.com/discordjs/builders/docs/stable.json'],
-  [Sources.Voice, 'https://raw.githubusercontent.com/discordjs/voice/docs/stable.json']
+export const sources = new Map<SourcesStringUnion, string>([
+  ['stable', 'https://raw.githubusercontent.com/discordjs/discord.js/docs/stable.json'],
+  ['main', 'https://raw.githubusercontent.com/discordjs/discord.js/docs/main.json'],
+  ['rpc', 'https://raw.githubusercontent.com/discordjs/RPC/docs/master.json'],
+  ['collection', 'https://raw.githubusercontent.com/discordjs/collection/docs/stable.json'],
+  ['builders', 'https://raw.githubusercontent.com/discordjs/builders/docs/stable.json'],
+  ['voice', 'https://raw.githubusercontent.com/discordjs/voice/docs/stable.json']
 ]);

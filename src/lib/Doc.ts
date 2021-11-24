@@ -8,8 +8,14 @@ import { DocInterface } from './elements/Interface';
 import { DocTypedef } from './elements/Typedef';
 import type { Documentation } from './types/DocgenOutput';
 import { docCache } from './utils/constants';
-import type { Sources } from './utils/enums';
-import type { DocParserGlobalOptions, FetchOptions, FuzzySearchFormat, FuzzySearchFormatWithScore, SearchOptions } from './utils/interfaces';
+import type {
+  DocParserGlobalOptions,
+  FetchOptions,
+  FuzzySearchFormat,
+  FuzzySearchFormatWithScore,
+  SearchOptions,
+  SourcesStringUnion
+} from './utils/interfaces';
 import { sources } from './utils/sources';
 import { buildErrorMessage, dissectURL } from './utils/utils';
 
@@ -214,7 +220,7 @@ export class Doc extends DocBase {
    * const doc = await Doc.fetch(Sources.Collection, { force: true });
    * ```
    */
-  public static async fetch(sourceName: Sources, fetchOptions: FetchOptions = {}) {
+  public static async fetch(sourceName: SourcesStringUnion, fetchOptions: FetchOptions = {}) {
     if (!fetchOptions.force && docCache.has(sourceName)) {
       return docCache.get(sourceName)!;
     }

@@ -1,11 +1,11 @@
 import { Doc } from '../src';
 import { DocTypes } from '../src/lib/utils/enums';
 
-describe('DiscordJS Stable Docs', () => {
+describe('DiscordJS Main Docs', () => {
   let doc: Doc;
 
   beforeAll(async () => {
-    doc = await Doc.fetch('stable');
+    doc = await Doc.fetch('main');
   });
 
   describe('Get', () => {
@@ -17,7 +17,7 @@ describe('DiscordJS Stable Docs', () => {
       expect(clientDocClass?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
 
       expect(clientDocClass?.formattedExtends).toEqual(
-        '(extends **[BaseClient](https://discord.js.org/#/docs/main/stable/general/welcome/class/BaseClient)**)'
+        '(extends **[BaseClient](https://discord.js.org/#/docs/main/main/general/welcome/class/BaseClient)**)'
       );
       expect(clientDocClass?.formattedImplements).toEqual(null);
       expect(clientDocClass?.formattedType).toEqual('');
@@ -33,7 +33,7 @@ describe('DiscordJS Stable Docs', () => {
 
       expect(clientUserProp?.formattedExtends).toEqual(null);
       expect(clientUserProp?.formattedImplements).toEqual(null);
-      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/stable/general/welcome/class/ClientUser)**');
+      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
       expect(clientUserProp?.formattedReturn).toEqual('**Void**');
     });
   });
@@ -49,7 +49,7 @@ describe('DiscordJS Stable Docs', () => {
       expect(clientDocClass?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
 
       expect(clientDocClass?.formattedExtends).toEqual(
-        '(extends **[BaseClient](https://discord.js.org/#/docs/main/stable/general/welcome/class/BaseClient)**)'
+        '(extends **[BaseClient](https://discord.js.org/#/docs/main/main/general/welcome/class/BaseClient)**)'
       );
       expect(clientDocClass?.formattedImplements).toEqual(null);
       expect(clientDocClass?.formattedType).toEqual('');
@@ -67,7 +67,7 @@ describe('DiscordJS Stable Docs', () => {
 
       expect(clientUserProp?.formattedExtends).toEqual(null);
       expect(clientUserProp?.formattedImplements).toEqual(null);
-      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/stable/general/welcome/class/ClientUser)**');
+      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
       expect(clientUserProp?.formattedReturn).toEqual('**Void**');
     });
 
@@ -83,7 +83,7 @@ describe('DiscordJS Stable Docs', () => {
       );
 
       expect(guildClass?.formattedExtends).toEqual(
-        '(extends **[AnonymousGuild](https://discord.js.org/#/docs/main/stable/general/welcome/class/AnonymousGuild)**)'
+        '(extends **[AnonymousGuild](https://discord.js.org/#/docs/main/main/general/welcome/class/AnonymousGuild)**)'
       );
       expect(guildClass?.formattedImplements).toEqual(null);
       expect(guildClass?.formattedType).toEqual('');
@@ -92,12 +92,12 @@ describe('DiscordJS Stable Docs', () => {
   });
 
   describe('Doc Properties', () => {
-    test('GIVEN repoURL THEN returns djs repo stable branch', () => {
-      expect(doc.repoURL).toEqual('https://github.com/discordjs/discord.js/blob/stable');
+    test('GIVEN repoURL THEN returns djs repo main branch', () => {
+      expect(doc.repoURL).toEqual('https://github.com/discordjs/discord.js/blob/main');
     });
 
-    test('GIVEN baseDocsURL THEN returns djs stable docs url', () => {
-      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/main/stable/general/welcome');
+    test('GIVEN baseDocsURL THEN returns djs main docs url', () => {
+      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/main/main/general/welcome');
     });
   });
 });

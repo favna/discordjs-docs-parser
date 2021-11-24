@@ -69,3 +69,5 @@ export interface FuzzySearchFormat {
 export interface FuzzySearchFormatWithScore extends FuzzySearchFormat {
   score: number;
 }
+
+export type SourcesStringUnion = 'stable' | 'main' | 'rpc' | 'collection' | 'builders' | 'voice';

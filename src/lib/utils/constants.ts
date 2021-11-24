@@ -1,4 +1,4 @@
 import type { Doc } from '../Doc';
-import type { Sources } from './enums';
+import type { SourcesStringUnion } from './interfaces';
 
-export const docCache = new Map<Sources, Doc>();
+export const docCache = new Map<SourcesStringUnion, Doc>();
