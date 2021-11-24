@@ -10,7 +10,7 @@ export class DocProp extends DocElement {
     this.nullable = data.nullable || false;
   }
 
-  public get formattedName() {
+  public override get formattedName() {
     return `${this.parent?.name ?? ''}${this.static ? '.' : '#'}${this.name}`;
   }
 }

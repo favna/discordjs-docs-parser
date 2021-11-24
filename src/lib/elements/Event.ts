@@ -9,7 +9,7 @@ export class DocEvent extends DocElement {
     this.adoptAll(data.params, DocParam);
   }
 
-  public get formattedName() {
+  public override get formattedName() {
     return `${this.parent?.name ?? ''}#${this.name}`;
   }
 }

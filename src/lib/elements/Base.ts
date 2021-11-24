@@ -24,16 +24,7 @@ export class DocBase {
     this.name = name;
   }
 
-  /**
-   * @internal
-   */
-  public addChild(child: DocClass | DocTypedef | DocInterface | DocProp | DocMethod | DocEvent | DocParam) {
-    this.children.set(`${child.name?.toLowerCase()}-${child.docType}`, child);
-  }
-
-  /**
-   * @internal
-   */
+  /** @internal */
   public adoptAll(
     iterable: DocIterateeUnion[],
     Constructor: Constructor<DocClass | DocTypedef | DocInterface | DocProp | DocMethod | DocEvent | DocParam>
@@ -44,18 +35,7 @@ export class DocBase {
     }
   }
 
-  /**
-   * @internal
-   */
-  public childrenOfType<T extends DocTypes>(type: T): DocTypesToClassType[T][] | null {
-    const filtered = Array.from(this.children.values()).filter((child) => child.docType === type);
-
-    return filtered.length ? (filtered as unknown as DocTypesToClassType[T][]) : null;
-  }
-
-  /**
-   * @internal
-   */
+  /** @internal */
   public findChild(query: string, exclude: (DocElement | null)[] = []): DocElement | undefined {
     query = query.toLowerCase();
 
@@ -71,6 +51,20 @@ export class DocBase {
     return [...this.children.values()].find(
       (child) => !exclude.includes(child) && child.name?.toLowerCase() === query && (!docType || child.docType === docType)
     );
+  }
+
+  /**
+   * @internal
+   */
+  private addChild(child: DocClass | DocTypedef | DocInterface | DocProp | DocMethod | DocEvent | DocParam) {
+    this.children.set(`${child.name?.toLowerCase()}-${child.docType}`, child);
+  }
+
+  /** @internal */
+  private childrenOfType<T extends DocTypes>(type: T): DocTypesToClassType[T][] | null {
+    const filtered = Array.from(this.children.values()).filter((child) => child.docType === type);
+
+    return filtered.length ? (filtered as unknown as DocTypesToClassType[T][]) : null;
   }
 
   /**

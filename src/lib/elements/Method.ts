@@ -16,7 +16,7 @@ export class DocMethod extends DocElement {
     }
   }
 
-  public get formattedName() {
+  public override get formattedName() {
     return `${this.parent?.name ?? ''}${this.static ? '.' : '#'}${this.name}()`;
   }
 

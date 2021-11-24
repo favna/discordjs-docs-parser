@@ -13,11 +13,11 @@ export class DocParam extends DocElement {
     this.variable = data.variable ?? false;
   }
 
-  public get formattedName() {
+  public override get formattedName() {
     return this.optional ? `\`[${this.name}]\`` : `\`${this.name}\``;
   }
 
-  public get formattedType() {
+  public override get formattedType() {
     if (!this.variable) return super.formattedType;
     return super.formattedType
       .split('|')
@@ -26,7 +26,7 @@ export class DocParam extends DocElement {
   }
 
   // eslint-disable-next-line @typescript-eslint/class-literal-property-style
-  public get url() {
+  public override get url() {
     return null;
   }
 }
