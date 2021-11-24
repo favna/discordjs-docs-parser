@@ -93,7 +93,7 @@ describe('DiscordJS Stable Docs', () => {
 
   describe('Doc Properties', () => {
     test('GIVEN repoURL THEN returns djs repo stable branch', () => {
-      expect(doc.repoURL).toEqual('https://github.com/discordjs/discord.js/blob/stable');
+      expect(doc.repoURL).toEqual('https://github.com/discordjs/discord.js/tree/stable');
     });
 
     test('GIVEN baseDocsURL THEN returns djs stable docs url', () => {

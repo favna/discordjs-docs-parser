@@ -8,96 +8,90 @@ describe('RPC Docs', () => {
     doc = await Doc.fetch('rpc');
   });
 
-  describe('Get', () => {
-    test('GIVEN getter for "client" THEN returns Client class', () => {
-      const clientDocClass = doc.get('client');
+  describe('Direct Getting', () => {
+    test('GIVEN getter for "RPCClient" THEN returns RPCClient class', () => {
+      const rpcClient = doc.get('RPCClient');
 
-      expect(clientDocClass?.name).toEqual('Client');
-      expect(clientDocClass?.docType).toEqual(DocTypes.Class);
-      expect(clientDocClass?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
+      expect(rpcClient?.name).toEqual('RPCClient');
+      expect(rpcClient?.docType).toEqual(DocTypes.Class);
+      expect(rpcClient?.description).toEqual('The main hub for interacting with Discord RPC');
 
-      expect(clientDocClass?.formattedExtends).toEqual(
-        '(extends **[BaseClient](https://discord.js.org/#/docs/main/main/general/welcome/class/BaseClient)**)'
-      );
-      expect(clientDocClass?.formattedImplements).toEqual(null);
-      expect(clientDocClass?.formattedType).toEqual('');
-      expect(clientDocClass?.formattedReturn).toEqual('**Void**');
+      expect(rpcClient?.formattedExtends).toEqual('(extends **BaseClient**)');
+      expect(rpcClient?.formattedImplements).toEqual(null);
+      expect(rpcClient?.formattedType).toEqual('');
+      expect(rpcClient?.formattedReturn).toEqual('**Void**');
     });
 
-    test('GIVEN getter for "client user" THEN returns "Client.user" prop', () => {
-      const clientUserProp = doc.get('client', 'user');
+    test('GIVEN getter for "RPCClient user" THEN returns "RPCClient.user" prop', () => {
+      const user = doc.get('RPCClient', 'user');
 
-      expect(clientUserProp?.name).toEqual('user');
-      expect(clientUserProp?.docType).toEqual(DocTypes.Prop);
-      expect(clientUserProp?.description).toEqual('User that the client is logged in as');
+      expect(user?.name).toEqual('user');
+      expect(user?.docType).toEqual(DocTypes.Prop);
+      expect(user?.description).toEqual('User used in this application');
 
-      expect(clientUserProp?.formattedExtends).toEqual(null);
-      expect(clientUserProp?.formattedImplements).toEqual(null);
-      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
-      expect(clientUserProp?.formattedReturn).toEqual('**Void**');
+      expect(user?.formattedExtends).toEqual(null);
+      expect(user?.formattedImplements).toEqual(null);
+      expect(user?.formattedType).toEqual('?**User**');
+      expect(user?.formattedReturn).toEqual('**Void**');
     });
   });
 
-  describe('Search', () => {
-    test('GIVEN search for client THEN returns Client class', () => {
-      const res = doc.search('client');
+  describe('Fuzzy Searching', () => {
+    test('GIVEN search for RPCClient THEN returns RPCClient class', () => {
+      const res = doc.search('RPCClient');
 
-      const clientDocClass = res?.at(0);
+      const rpcClient = res?.at(0);
 
-      expect(clientDocClass?.name).toEqual('Client');
-      expect(clientDocClass?.docType).toEqual(DocTypes.Class);
-      expect(clientDocClass?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
+      expect(rpcClient?.name).toEqual('RPCClient');
+      expect(rpcClient?.docType).toEqual(DocTypes.Class);
+      expect(rpcClient?.description).toEqual('The main hub for interacting with Discord RPC');
 
-      expect(clientDocClass?.formattedExtends).toEqual(
-        '(extends **[BaseClient](https://discord.js.org/#/docs/main/main/general/welcome/class/BaseClient)**)'
-      );
-      expect(clientDocClass?.formattedImplements).toEqual(null);
-      expect(clientDocClass?.formattedType).toEqual('');
-      expect(clientDocClass?.formattedReturn).toEqual('**Void**');
+      expect(rpcClient?.formattedExtends).toEqual('(extends **BaseClient**)');
+      expect(rpcClient?.formattedImplements).toEqual(null);
+      expect(rpcClient?.formattedType).toEqual('');
+      expect(rpcClient?.formattedReturn).toEqual('**Void**');
     });
 
-    test('GIVEN search for client#user THEN returns Client.user prop', () => {
-      const res = doc.search('client#user');
+    test('GIVEN search for RPCClient#user THEN returns RPCClient.user prop', () => {
+      const res = doc.search('RPCClient#user');
 
-      const clientUserProp = res?.at(0);
+      const user = res?.at(0);
 
-      expect(clientUserProp?.name).toEqual('user');
-      expect(clientUserProp?.docType).toEqual(DocTypes.Prop);
-      expect(clientUserProp?.description).toEqual('User that the client is logged in as');
+      expect(user?.name).toEqual('user');
+      expect(user?.docType).toEqual(DocTypes.Prop);
+      expect(user?.description).toEqual('User used in this application');
 
-      expect(clientUserProp?.formattedExtends).toEqual(null);
-      expect(clientUserProp?.formattedImplements).toEqual(null);
-      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
-      expect(clientUserProp?.formattedReturn).toEqual('**Void**');
+      expect(user?.formattedExtends).toEqual(null);
+      expect(user?.formattedImplements).toEqual(null);
+      expect(user?.formattedType).toEqual('?**User**');
+      expect(user?.formattedReturn).toEqual('**Void**');
     });
 
-    test('GIVEN partial search for "gui" THEN returns Guild class', () => {
-      const res = doc.search('gui');
+    test('GIVEN partial search for "RPCClient#captureSh" THEN returns captureShortcut method', () => {
+      const res = doc.search('RPCClient#captureSh');
 
-      const guildClass = res?.at(0);
+      const captureShortcut = res?.at(0);
 
-      expect(guildClass?.name).toEqual('Guild');
-      expect(guildClass?.docType).toEqual(DocTypes.Class);
-      expect(guildClass?.description).toEqual(
-        "Represents a guild (or a server) on Discord.\n<info>It's recommended to see if a guild is available before performing operations or reading data from it. You can\ncheck this with {@link Guild#available}.</info>"
+      expect(captureShortcut?.name).toEqual('captureShortcut');
+      expect(captureShortcut?.docType).toEqual(DocTypes.Method);
+      expect(captureShortcut?.description).toEqual(
+        'Capture a shortcut using the client\nThe callback takes (key, stop) where `stop` is a function that will stop capturing.\nThis `stop` function must be called before disconnecting or else the user will have\nto restart their client.'
       );
 
-      expect(guildClass?.formattedExtends).toEqual(
-        '(extends **[AnonymousGuild](https://discord.js.org/#/docs/main/main/general/welcome/class/AnonymousGuild)**)'
-      );
-      expect(guildClass?.formattedImplements).toEqual(null);
-      expect(guildClass?.formattedType).toEqual('');
-      expect(guildClass?.formattedReturn).toEqual('**Void**');
+      expect(captureShortcut?.formattedExtends).toEqual(null);
+      expect(captureShortcut?.formattedImplements).toEqual(null);
+      expect(captureShortcut?.formattedType).toEqual('');
+      expect(captureShortcut?.formattedReturn).toEqual('**Promise\\<function\\(\\)\\>**');
     });
   });
 
   describe('Doc Properties', () => {
     test('GIVEN repoURL THEN returns djs repo main branch', () => {
-      expect(doc.repoURL).toEqual('https://github.com/discordjs/discord.js/blob/main');
+      expect(doc.repoURL).toEqual('https://github.com/discordjs/rpc/tree/master');
     });
 
     test('GIVEN baseDocsURL THEN returns djs main docs url', () => {
-      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/main/main/general/welcome');
+      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/rpc/master/general/welcome');
     });
   });
 });

@@ -10,31 +10,31 @@ describe('DiscordJS Main Docs', () => {
 
   describe('Get', () => {
     test('GIVEN getter for "client" THEN returns Client class', () => {
-      const clientDocClass = doc.get('client');
+      const client = doc.get('client');
 
-      expect(clientDocClass?.name).toEqual('Client');
-      expect(clientDocClass?.docType).toEqual(DocTypes.Class);
-      expect(clientDocClass?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
+      expect(client?.name).toEqual('Client');
+      expect(client?.docType).toEqual(DocTypes.Class);
+      expect(client?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
 
-      expect(clientDocClass?.formattedExtends).toEqual(
+      expect(client?.formattedExtends).toEqual(
         '(extends **[BaseClient](https://discord.js.org/#/docs/main/main/general/welcome/class/BaseClient)**)'
       );
-      expect(clientDocClass?.formattedImplements).toEqual(null);
-      expect(clientDocClass?.formattedType).toEqual('');
-      expect(clientDocClass?.formattedReturn).toEqual('**Void**');
+      expect(client?.formattedImplements).toEqual(null);
+      expect(client?.formattedType).toEqual('');
+      expect(client?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN getter for "client user" THEN returns "Client.user" prop', () => {
-      const clientUserProp = doc.get('client', 'user');
+      const clientUser = doc.get('client', 'user');
 
-      expect(clientUserProp?.name).toEqual('user');
-      expect(clientUserProp?.docType).toEqual(DocTypes.Prop);
-      expect(clientUserProp?.description).toEqual('User that the client is logged in as');
+      expect(clientUser?.name).toEqual('user');
+      expect(clientUser?.docType).toEqual(DocTypes.Prop);
+      expect(clientUser?.description).toEqual('User that the client is logged in as');
 
-      expect(clientUserProp?.formattedExtends).toEqual(null);
-      expect(clientUserProp?.formattedImplements).toEqual(null);
-      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
-      expect(clientUserProp?.formattedReturn).toEqual('**Void**');
+      expect(clientUser?.formattedExtends).toEqual(null);
+      expect(clientUser?.formattedImplements).toEqual(null);
+      expect(clientUser?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
+      expect(clientUser?.formattedReturn).toEqual('**Void**');
     });
   });
 
@@ -42,58 +42,58 @@ describe('DiscordJS Main Docs', () => {
     test('GIVEN search for client THEN returns Client class', () => {
       const res = doc.search('client');
 
-      const clientDocClass = res?.at(0);
+      const client = res?.at(0);
 
-      expect(clientDocClass?.name).toEqual('Client');
-      expect(clientDocClass?.docType).toEqual(DocTypes.Class);
-      expect(clientDocClass?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
+      expect(client?.name).toEqual('Client');
+      expect(client?.docType).toEqual(DocTypes.Class);
+      expect(client?.description).toEqual('The main hub for interacting with the Discord API, and the starting point for any bot.');
 
-      expect(clientDocClass?.formattedExtends).toEqual(
+      expect(client?.formattedExtends).toEqual(
         '(extends **[BaseClient](https://discord.js.org/#/docs/main/main/general/welcome/class/BaseClient)**)'
       );
-      expect(clientDocClass?.formattedImplements).toEqual(null);
-      expect(clientDocClass?.formattedType).toEqual('');
-      expect(clientDocClass?.formattedReturn).toEqual('**Void**');
+      expect(client?.formattedImplements).toEqual(null);
+      expect(client?.formattedType).toEqual('');
+      expect(client?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN search for client#user THEN returns Client.user prop', () => {
       const res = doc.search('client#user');
 
-      const clientUserProp = res?.at(0);
+      const clientUser = res?.at(0);
 
-      expect(clientUserProp?.name).toEqual('user');
-      expect(clientUserProp?.docType).toEqual(DocTypes.Prop);
-      expect(clientUserProp?.description).toEqual('User that the client is logged in as');
+      expect(clientUser?.name).toEqual('user');
+      expect(clientUser?.docType).toEqual(DocTypes.Prop);
+      expect(clientUser?.description).toEqual('User that the client is logged in as');
 
-      expect(clientUserProp?.formattedExtends).toEqual(null);
-      expect(clientUserProp?.formattedImplements).toEqual(null);
-      expect(clientUserProp?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
-      expect(clientUserProp?.formattedReturn).toEqual('**Void**');
+      expect(clientUser?.formattedExtends).toEqual(null);
+      expect(clientUser?.formattedImplements).toEqual(null);
+      expect(clientUser?.formattedType).toEqual('?**[ClientUser](https://discord.js.org/#/docs/main/main/general/welcome/class/ClientUser)**');
+      expect(clientUser?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN partial search for "gui" THEN returns Guild class', () => {
       const res = doc.search('gui');
 
-      const guildClass = res?.at(0);
+      const guild = res?.at(0);
 
-      expect(guildClass?.name).toEqual('Guild');
-      expect(guildClass?.docType).toEqual(DocTypes.Class);
-      expect(guildClass?.description).toEqual(
+      expect(guild?.name).toEqual('Guild');
+      expect(guild?.docType).toEqual(DocTypes.Class);
+      expect(guild?.description).toEqual(
         "Represents a guild (or a server) on Discord.\n<info>It's recommended to see if a guild is available before performing operations or reading data from it. You can\ncheck this with {@link Guild#available}.</info>"
       );
 
-      expect(guildClass?.formattedExtends).toEqual(
+      expect(guild?.formattedExtends).toEqual(
         '(extends **[AnonymousGuild](https://discord.js.org/#/docs/main/main/general/welcome/class/AnonymousGuild)**)'
       );
-      expect(guildClass?.formattedImplements).toEqual(null);
-      expect(guildClass?.formattedType).toEqual('');
-      expect(guildClass?.formattedReturn).toEqual('**Void**');
+      expect(guild?.formattedImplements).toEqual(null);
+      expect(guild?.formattedType).toEqual('');
+      expect(guild?.formattedReturn).toEqual('**Void**');
     });
   });
 
   describe('Doc Properties', () => {
     test('GIVEN repoURL THEN returns djs repo main branch', () => {
-      expect(doc.repoURL).toEqual('https://github.com/discordjs/discord.js/blob/main');
+      expect(doc.repoURL).toEqual('https://github.com/discordjs/discord.js/tree/main');
     });
 
     test('GIVEN baseDocsURL THEN returns djs main docs url', () => {

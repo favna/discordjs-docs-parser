@@ -1,41 +1,41 @@
-import { Doc, Sources } from '../src';
+import { Doc } from '../src';
 import { docCache } from '../src/lib/utils/constants';
 
 describe('Fetching Docs', () => {
   test('GIVEN fetch request to DJS Main w/o cache THEN returns Main Docs', async () => {
-    await Doc.fetch(Sources.Main);
+    await Doc.fetch('main');
 
     expect(docCache.size).toBeGreaterThanOrEqual(1);
   });
 
   test('GIVEN fetch request to DJS Stable THEN returns Stable Docs', async () => {
-    await Doc.fetch(Sources.Stable);
+    await Doc.fetch('stable');
 
     expect(docCache.size).toBeGreaterThanOrEqual(1);
   });
 
   test('GIVEN fetch request to RPC THEN returns RPC Docs', async () => {
-    await Doc.fetch(Sources.Rpc);
+    await Doc.fetch('rpc');
 
     expect(docCache.size).toBeGreaterThanOrEqual(1);
   });
 
   test('GIVEN fetch request to Collection THEN returns Collection Docs', async () => {
-    await Doc.fetch(Sources.Collection);
+    await Doc.fetch('collection');
 
     expect(docCache.size).toBeGreaterThanOrEqual(1);
   });
 
   test('GIVEN fetch request to Builders THEN returns Builders Docs', async () => {
-    await Doc.fetch(Sources.Builders);
+    await Doc.fetch('builders');
 
     expect(docCache.size).toBeGreaterThanOrEqual(1);
   });
 
   test('GIVEN fetch request to Voice with options THEN returns Voice Docs', async () => {
-    await Doc.fetch(Sources.Voice);
-    await Doc.fetch(Sources.Voice);
-    await Doc.fetch(Sources.Voice, { force: true });
+    await Doc.fetch('voice');
+    await Doc.fetch('voice');
+    await Doc.fetch('voice', { force: true });
 
     expect(docCache.size).toBeGreaterThanOrEqual(1);
   });
