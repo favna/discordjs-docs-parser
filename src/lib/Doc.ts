@@ -1,4 +1,5 @@
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
+import { filterNullishOrEmpty, isNullish, isNullishOrEmpty } from '@sapphire/utilities';
 import Fuse from 'fuse.js/dist/fuse.basic.min.js';
 import type { DocElement } from '../lib/elements/Element';
 import { DocBase } from './elements/Base';
@@ -83,20 +84,27 @@ export class Doc extends DocBase {
    * doc.get('message', 'guild', 'members');
    * ```
    */
-  public get(...terms: string[]): DocElement | null {
-    const exclude = Array.isArray(terms[0]) ? terms.shift() : [];
-    terms = terms.filter((term) => term).map((term) => term.toLowerCase());
+  public get(...terms: (string | (DocElement | null)[])[]): DocElement | null {
+    const exclude = Array.isArray(terms[0]) ? (terms.shift() as (DocElement | null)[]) : [];
 
-    let elem = this.findChild(terms.shift());
-    if (!elem || !terms.length) return elem || null;
+    terms = terms.filter(filterNullishOrEmpty).map((term) => {
+      if (typeof term === 'string') {
+        return term.toLowerCase();
+      }
+
+      return term;
+    });
+
+    let elem = this.findChild(terms.shift() as string);
+    if (isNullishOrEmpty(elem) || !terms.length) {
+      return elem || null;
+    }
 
     while (terms.length) {
       const term = terms.shift();
-      // @ts-expect-error - TODO to figure out
-      const child = elem.findChild(term, exclude);
+      const child: DocElement | undefined = elem!.findChild(term as string, exclude);
 
       if (!child) return null;
-      // @ts-ignore todo
       elem = terms.length && child.typeElement ? child.typeElement : child;
     }
 
@@ -104,7 +112,7 @@ export class Doc extends DocBase {
   }
 
   public formatType(types: string[]) {
-    const typestring = types
+    const typeString = types
       .map((text, index) => {
         if (/<|>|\*/.test(text)) {
           return text
@@ -120,7 +128,7 @@ export class Doc extends DocBase {
       })
       .join('');
 
-    return `**${typestring}**`;
+    return `**${typeString}**`;
   }
 
   /**
@@ -136,10 +144,11 @@ export class Doc extends DocBase {
     const filtered = [];
 
     while (result.length > 0 && filtered.length < 10) {
-      // @ts-expect-error - TODO to figure out
-      const element = this.get(filtered, ...result.shift().split('#'));
-      // @ts-expect-error - TODO to figure out
+      const element = this.get(filtered, ...(result.shift()?.item.id?.split('#') ?? []));
+
+      if (isNullish(element)) continue;
       if (searchOptions.excludePrivateElements && element.access === 'private') continue;
+
       filtered.push(element);
     }
 

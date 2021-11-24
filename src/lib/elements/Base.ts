@@ -56,10 +56,10 @@ export class DocBase {
   /**
    * @internal
    */
-  public findChild(query: any, exclude: any[] = []): DocElement {
+  public findChild(query: string, exclude: (DocElement | null)[] = []): DocElement | undefined {
     query = query.toLowerCase();
 
-    let docType: any = null;
+    let docType: DocTypes | null = null;
     if (query.endsWith('()')) {
       query = query.slice(0, -2);
       docType = DocTypes.Method;
@@ -68,8 +68,7 @@ export class DocBase {
       docType = DocTypes.Event;
     }
 
-    // @ts-expect-error testing
-    return Array.from(this.children.values()).find(
+    return [...this.children.values()].find(
       (child) => !exclude.includes(child) && child.name?.toLowerCase() === query && (!docType || child.docType === docType)
     );
   }

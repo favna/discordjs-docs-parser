@@ -19,8 +19,8 @@ export class DocElement extends DocBase {
   public deprecated: boolean;
   public access: string;
   public scope: string | null;
-  public extends: string[] | string[][] | null;
-  public implements: string[] | string[][] | null;
+  public extends: string[][] | null;
+  public implements: string[][] | null;
 
   public constructor(doc: Doc, docType: DocTypes, data: DocIterateeUnion, parent?: DocElement) {
     super(data, docType, data.name);
@@ -171,14 +171,9 @@ export class DocElement extends DocBase {
   /**
    * @internal
    */
-  public formatInherits(inherits: string[] | string[][]): string {
-    inherits = Array.isArray(inherits[0])
-      ? // @ts-expect-error testing
-        inherits.map((element) => element.flat(5)) // docgen 0.9.0 format
-      : inherits.map((baseClass) => [baseClass]); // docgen 0.8.0 format
-
-    // @ts-expect-error testing
-    return inherits.map((baseClass) => this.doc.formatType(baseClass)).join(' and ');
+  public formatInherits(inherits: string[][]): string {
+    const flattenedInherits = inherits.map((element) => element.flat(5));
+    return flattenedInherits.map((baseClass) => this.doc.formatType(baseClass)).join(' and ');
   }
 
   /**
