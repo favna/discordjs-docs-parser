@@ -73,8 +73,8 @@ export class DocElement extends DocBase {
   public get formattedDescription(): string {
     let result = this.formatText(this.description);
 
-    if (result.length > Doc.DescriptionLimit) {
-      result = `${result.slice(0, Doc.DescriptionLimit)}...\nDescription truncated. View full description [here](${this.url}).`;
+    if (result.length > Doc.globalOptions.descriptionLimit) {
+      result = `${result.slice(0, Doc.globalOptions.descriptionLimit)}...\nDescription truncated. View full description [here](${this.url}).`;
     }
 
     return result;
@@ -127,9 +127,6 @@ export class DocElement extends DocBase {
     );
   }
 
-  /**
-   * @internal
-   */
   public toJSON(): ElementJSON {
     const json: ElementJSON = {
       name: this.name ?? '',
@@ -175,7 +172,7 @@ export class DocElement extends DocBase {
   /**
    * @internal
    */
-  public formatInherits(inherits: string[][]): string {
+  private formatInherits(inherits: string[][]): string {
     const flattenedInherits = inherits.map((element) => element.flat(5));
     return flattenedInherits.map((baseClass) => this.doc.formatType(baseClass)).join(' and ');
   }
@@ -183,7 +180,7 @@ export class DocElement extends DocBase {
   /**
    * @internal
    */
-  public formatText(text: string | null) {
+  private formatText(text: string | null) {
     if (isNullishOrEmpty(text)) return '';
 
     return text

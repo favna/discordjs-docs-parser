@@ -35,10 +35,14 @@ export class Doc extends DocBase {
    */
   public readonly url: string;
 
-  /**
-   * @internal
-   */
+  /** @internal */
   private fuzzySearchFormat: FuzzySearchFormat[];
+  /** @internal */
+  private readonly smallThanOrGreaterThanRegex = /<|>|\*/;
+  /** @internal */
+  private readonly wordOrGreaterThanRegex = /\w|>/;
+  /** @internal */
+  private readonly wordRegex = /\w/;
 
   public constructor(url: string, docs: Documentation) {
     super(docs);
@@ -60,7 +64,7 @@ export class Doc extends DocBase {
   public get baseDocsURL() {
     if (!this.baseURL) return null;
     const repo = this.repo === 'discord.js' ? 'main' : this.repo;
-    return `${this.baseURL}/#/docs/${repo}/${this.branch}`;
+    return `${this.baseURL}/#/docs/${repo}/${this.branch}/general/welcome`;
   }
 
   /**
@@ -101,28 +105,13 @@ export class Doc extends DocBase {
     return elem ?? null;
   }
 
-  public formatType(types: string[]) {
-    const typeString = types
-      .map((text, index) => {
-        if (/<|>|\*/.test(text)) {
-          return text
-            .split('')
-            .map((char) => `\\${char}`)
-            .join('');
-        }
-
-        const typeElem = this.findChild(text.toLowerCase());
-        const prependOr = index !== 0 && /\w|>/.test(types[index - 1]) && /\w/.test(text);
-
-        return (prependOr ? '|' : '') + (typeElem ? typeElem.link : text);
-      })
-      .join('');
-
-    return `**${typeString}**`;
-  }
-
   /**
    * Searches the documentation for elements matching the provided search query.
+   *
+   * This uses the [Jaro Winkler Distance](https://en.wikipedia.org/wiki/Jaro–Winkler_distance) algorithm
+   * to fuzzily match your query against any potential matches.
+   * The minimum threshold for a match is 80%
+   *
    * @param query The query to use in the fuzzy search.
    * @param searchOptions Additional options to pass to the `search` function.
    * @returns The top 10 hits from the search.
@@ -145,6 +134,27 @@ export class Doc extends DocBase {
     return filtered;
   }
 
+  /** @internal */
+  public formatType(types: string[]) {
+    const typeString = types
+      .map((text, index) => {
+        if (this.smallThanOrGreaterThanRegex.test(text)) {
+          return text
+            .split('')
+            .map((char) => `\\${char}`)
+            .join('');
+        }
+
+        const typeElem = this.findChild(text.toLowerCase());
+        const prependOr = index !== 0 && this.wordOrGreaterThanRegex.test(types[index - 1]) && this.wordRegex.test(text);
+
+        return (prependOr ? '|' : '') + (typeElem ? typeElem.link : text);
+      })
+      .join('');
+
+    return `**${typeString}**`;
+  }
+
   /**
    * @internal
    */
@@ -159,6 +169,7 @@ export class Doc extends DocBase {
     return formattedParents.concat(formattedChildren);
   }
 
+  /** @internal */
   private findWithJaroWinkler(query: string): FuzzySearchFormatWithScore[] {
     const possibles: FuzzySearchFormatWithScore[] = [];
 
@@ -176,13 +187,13 @@ export class Doc extends DocBase {
   }
 
   /**
-   * The limit of the {@link DocElement.formattedDescription}
-   * @default 1500
+   * Global options to configure the Doc output
+   * @property escapeMarkdownLinks Whether to escape markdown links in the output. (default: `false`)
+   * @property descriptionLimit The maximum number of characters to show in the description. (default: `1500`)
    */
-  public static DescriptionLimit = 1500;
-
   public static globalOptions: DocParserGlobalOptions = {
-    escapeMarkdownLinks: false
+    escapeMarkdownLinks: false,
+    descriptionLimit: 1500
   };
 
   /**

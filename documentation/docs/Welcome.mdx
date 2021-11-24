@@ -35,21 +35,21 @@ npm install discordjs-docs-parser
 The first step is to fetch the documentation. This is done by calling the `fetch` method. After fetching the
 documentation it is stored in an in-memory cache (using a `Map`) for later use.
 
-Please refer to [Doc#fetch](Documentation/classes/Doc#fetch) examples and
-more information.
+Please refer to [Doc#fetch](Documentation/classes/Doc#fetch) examples and more information.
 
 ### Getting a specific doc element by its name
 
 After fetching the documentation from GitHub and having it stored in the internal cache you can get a specific element
 by either it's exact ID or a nested property path.
 
-Please refer to [Doc#get](Documentation/classes/Doc#get) examples and more
-information.
+Please refer to [Doc#get](Documentation/classes/Doc#get) examples and more information.
 
 ### Using a Fuzzy search to find a document element
 
-If you instead of getting the absolute path of a specific element you instead want to perform a fuzzy search for
-elements you can use `doc.search`. This will return the top 10 results for the provided query.
+If instead of providing the absolute path of a specific element you instead want to perform a fuzzy search for elements
+you can use `doc.search`. This will return the top 10 results for the provided query using the [Jaro Winkler Distance
+algorithm][jarowinklerdistance].
 
-Please refer to [Doc#search](Documentation/classes/Doc#search) examples
-and more information.
+Please refer to [Doc#search](Documentation/classes/Doc#search) examples and more information.
+
+[jarowinklerdistance]: https://en.wikipedia.org/wiki/Jaro–Winkler_distance

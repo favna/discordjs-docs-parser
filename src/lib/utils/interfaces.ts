@@ -45,8 +45,20 @@ export interface ElementJSON {
   returns?: Partial<{ type: string; description: string }>;
 }
 
+/**
+ * Global options to configure the Doc output
+ */
 export interface DocParserGlobalOptions {
+  /**
+   * Whether to escape markdown links in the output.
+   * @default false
+   */
   escapeMarkdownLinks: boolean;
+  /**
+   * The maximum number of characters to show in the description.
+   * @default 1500
+   */
+  descriptionLimit: number;
 }
 
 export interface FuzzySearchFormat {
