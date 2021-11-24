@@ -144,10 +144,12 @@ export class Doc extends DocBase {
   }
 
   /** @internal */
-  public formatType(types: string[]) {
+  public formatType(types: string | string[]) {
+    if (typeof types === 'string') types = [types];
+
     const typeString = types
       .map((text, index) => {
-        if (this.smallThanOrGreaterThanRegex.test(text)) {
+        if (this.smallThanOrGreaterThanRegex.test(text) && text !== 'Map<K, V>') {
           return text
             .split('')
             .map((char) => `\\${char}`)
@@ -164,9 +166,7 @@ export class Doc extends DocBase {
     return `**${typeString}**`;
   }
 
-  /**
-   * @internal
-   */
+  /** @internal */
   private toFuzzySearchFormat(): FuzzySearchFormat[] {
     const parents = Array.from(this.children.values());
 

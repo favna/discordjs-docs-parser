@@ -12,7 +12,7 @@ export class DocElement extends DocBase {
   public description: string | null;
   public meta: DocumentationClassMeta | null;
 
-  public returns: DocumentationReturns | null;
+  public returns: DocumentationReturns | string[][][] | null;
   public examples: string[] | null;
   public type: string[] | null;
   public nullable: boolean;
@@ -83,9 +83,9 @@ export class DocElement extends DocBase {
   public get formattedReturn() {
     if (isNullishOrEmpty(this.returns)) return '**Void**';
 
-    const returnTypes = (this.returns.types || this.returns).map((type) => this.doc.formatType(type.flat(5))).join(' or ');
+    const returnTypes = ((this.returns as DocumentationReturns).types || this.returns).map((type) => this.doc.formatType(type.flat(5))).join(' or ');
 
-    return [returnTypes, this.formatText(this.returns.description)].filter((text) => text).join('\n');
+    return [returnTypes, this.formatText((this.returns as DocumentationReturns).description)].filter((text) => text).join('\n');
   }
 
   public get formattedType() {
@@ -173,7 +173,11 @@ export class DocElement extends DocBase {
    * @internal
    */
   private formatInherits(inherits: string[][]): string {
-    const flattenedInherits = inherits.map((element) => element.flat(5));
+    const flattenedInherits = inherits.map((element) => {
+      if (Array.isArray(element)) return element.flat(5);
+      return element;
+    });
+
     return flattenedInherits.map((baseClass) => this.doc.formatType(baseClass)).join(' and ');
   }
 

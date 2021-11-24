@@ -8,7 +8,7 @@ describe('DiscordJS Main Docs', () => {
     doc = await Doc.fetch('main');
   });
 
-  describe('Get', () => {
+  describe('Direct Getting', () => {
     test('GIVEN getter for "client" THEN returns Client class', () => {
       const client = doc.get('client');
 
@@ -38,7 +38,7 @@ describe('DiscordJS Main Docs', () => {
     });
   });
 
-  describe('Search', () => {
+  describe('Fuzzy Searching', () => {
     test('GIVEN search for client THEN returns Client class', () => {
       const res = doc.search('client');
 

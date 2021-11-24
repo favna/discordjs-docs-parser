@@ -1,4 +1,4 @@
-import type { DocumentationClassMethod } from '../types/DocgenOutput';
+import type { DocumentationClassMethod, DocumentationReturns } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 import { DocParam } from './Param';
@@ -22,12 +22,12 @@ export class DocMethod extends DocElement {
 
   public override toJSON() {
     const json = super.toJSON();
-    const returnType = this.returns ? (this.returns.types || this.returns).flat(5).join('') : 'void';
+    const returnType = this.returns ? ((this.returns as DocumentationReturns).types || this.returns).flat(5).join('') : 'void';
 
     json.returns = { type: returnType };
 
-    if (this.returns && this.returns.description) {
-      json.returns.description = this.returns.description;
+    if (this.returns && (this.returns as DocumentationReturns).description) {
+      json.returns.description = (this.returns as DocumentationReturns).description;
     }
 
     return json;
