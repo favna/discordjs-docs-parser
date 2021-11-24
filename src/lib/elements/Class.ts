@@ -1,3 +1,5 @@
+import type { Doc } from '../Doc';
+import type { DocumentationClass, DocumentationClassConstructor } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 import { DocEvent } from './Event';
@@ -5,15 +7,11 @@ import { DocMethod } from './Method';
 import { DocProp } from './Prop';
 
 export class DocClass extends DocElement {
-  public readonly extends: any;
-  public readonly implements: any;
-  public readonly construct: any;
+  public readonly construct: DocumentationClassConstructor;
 
-  public constructor(doc: any, data: any) {
+  public constructor(doc: Doc, data: DocumentationClass) {
     super(doc, DocTypes.Class, data);
-    super(doc, DocTypes.Class, data);
-    this.extends = data.extends || null;
-    this.implements = data.implements || null;
+
     this.construct = data.construct;
 
     this.adoptAll(data.props, DocProp);

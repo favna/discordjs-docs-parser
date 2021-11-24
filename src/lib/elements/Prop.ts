@@ -1,19 +1,16 @@
+import type { DocumentationClassProperty } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 
 export class DocProp extends DocElement {
-  public scope: string;
-  public type: string;
-  public nullable: boolean;
-
-  public constructor(parent: any, data: any) {
+  public constructor(parent: DocElement, data: DocumentationClassProperty) {
     super(parent.doc, DocTypes.Prop, data, parent);
-    this.scope = data.scope;
+    this.scope = data.scope ?? null;
     this.type = data.type.flat(5);
     this.nullable = data.nullable || false;
   }
 
   public get formattedName() {
-    return [this.parent.name, this.static ? '.' : '#', this.name].join('');
+    return `${this.parent?.name ?? ''}${this.static ? '.' : '#'}${this.name}`;
   }
 }

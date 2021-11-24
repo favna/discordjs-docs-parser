@@ -1,39 +1,46 @@
-import { stripIndents } from 'common-tags';
+import { filterNullAndUndefinedAndEmpty, isNullishOrEmpty } from '@sapphire/utilities';
+import type { ElementJSON } from '../..';
+import { Doc } from '../Doc';
+import type { DocIterateeUnion, DocumentationClassMeta, DocumentationReturns } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import { DocBase } from './Base';
-import type { DocParam } from './Param';
-
-const DESCRIPTION_LIMIT = 1500;
 
 export class DocElement extends DocBase {
-  public doc: any;
-  public parent: any;
+  public doc: Doc;
+  public parent: DocElement | null;
 
-  public description: string;
-  public meta: any;
+  public description: string | null;
+  public meta: DocumentationClassMeta | null;
 
-  public returns: any;
-  public examples: any;
-  public type: any;
-  public nullable: any;
+  public returns: DocumentationReturns | null;
+  public examples: string[] | null;
+  public type: string[] | null;
+  public nullable: boolean;
   public deprecated: boolean;
   public access: string;
+  public scope: string | null;
+  public extends: string[] | string[][] | null;
+  public implements: string[] | string[][] | null;
 
-  public constructor(doc: any, docType: DocTypes, data: any, parent?: DocElement) {
+  public constructor(doc: Doc, docType: DocTypes, data: DocIterateeUnion, parent?: DocElement) {
     super(data, docType, data.name);
     this.doc = doc;
     this.parent = parent ?? null;
 
-    this.description = data.description;
-    this.meta = data.meta;
+    this.meta = Reflect.get(data, 'meta') ?? null;
+
+    this.description = Reflect.get(data, 'description') ?? null;
+    this.scope = Reflect.get(data, 'scope') ?? null;
+    this.extends = Reflect.get(data, 'extends') ?? null;
+    this.implements = Reflect.get(data, 'implements') ?? null;
 
     this.returns = null;
     this.examples = null;
     this.type = null;
-    this.nullable = null;
+    this.nullable = false;
 
-    this.deprecated = data.deprecated || false;
-    this.access = data.access || 'public';
+    this.deprecated = Reflect.get(data, 'deprecated') ?? false;
+    this.access = Reflect.get(data, 'access') ?? 'public';
   }
 
   public get anchor() {
@@ -53,7 +60,7 @@ export class DocElement extends DocBase {
   }
 
   public get sourceURL() {
-    if (!this.doc.repoURL) return null;
+    if (isNullishOrEmpty(this.doc.repoURL) || isNullishOrEmpty(this.meta)) return null;
 
     const { path, file, line } = this.meta;
     return `${this.doc.repoURL}/${path}/${file}#L${line}`;
@@ -66,28 +73,34 @@ export class DocElement extends DocBase {
   public get formattedDescription(): string {
     let result = this.formatText(this.description);
 
-    if (result.length > DESCRIPTION_LIMIT) {
-      result = `${result.slice(0, DESCRIPTION_LIMIT)}...\nDescription truncated. View full description [here](${this.url}).`;
+    if (result.length > Doc.DescriptionLimit) {
+      result = `${result.slice(0, Doc.DescriptionLimit)}...\nDescription truncated. View full description [here](${this.url}).`;
     }
 
     return result;
   }
 
   public get formattedReturn() {
-    return this.formatText(this.returns);
+    if (isNullishOrEmpty(this.returns)) return '**Void**';
+
+    const returnTypes = (this.returns.types || this.returns).map((type) => this.doc.formatType(type.flat(5))).join(' or ');
+
+    return [returnTypes, this.formatText(this.returns.description)].filter((text) => text).join('\n');
   }
 
   public get formattedType() {
-    return `${this.nullable ? '?' : ''}${this.doc.formatType(this.type)}`;
+    return `${this.nullable ? '?' : ''}${isNullishOrEmpty(this.type) ? '' : this.doc.formatType(this.type)}`;
   }
 
   public get formattedExtends() {
-    // @ts-expect-error - TODO to figure out
+    if (!this.extends) return null;
+
     return `(extends ${this.formatInherits(this.extends)})`;
   }
 
   public get formattedImplements() {
-    // @ts-expect-error - TODO to figure out
+    if (!this.implements) return null;
+
     return `(implements ${this.formatInherits(this.implements)})`;
   }
 
@@ -96,166 +109,61 @@ export class DocElement extends DocBase {
   }
 
   public get static(): boolean {
-    // @ts-expect-error - TODO to figure out
     return this.scope === 'static';
   }
 
-  public get typeElement() {
-    if (!this.type) return null;
+  public get typeElement(): DocElement | null {
+    if (isNullishOrEmpty(this.type)) return null;
 
-    return this.type
-      .filter((text: any) => /^\w+$/.test(text))
-      .map((text: any) => this.doc.findChild(text.toLowerCase()))
-      .find((elem: any) => elem);
-  }
-
-  public embed(options = {}) {
-    const embed = this.doc.baseEmbed();
-    let name = `__**${this.link}**__`;
-
-    // @ts-expect-error - TODO to figure out
-    if (this.extends) name += ` ${this.formattedExtends}`;
-    // @ts-expect-error - TODO to figure out
-    if (this.implements) name += ` ${this.formattedImplements}`;
-    if (this.access === 'private') name += ' **PRIVATE**';
-    if (this.deprecated) name += ' **DEPRECATED**';
-
-    embed.description = `${name}\n${this.formattedDescription}`;
-    embed.url = this.url;
-    embed.fields = [];
-    this.formatEmbed(embed, options);
-    embed.fields.push({
-      name: '\u200b',
-      value: `[View source](${this.sourceURL})`
-    });
-
-    return embed;
-  }
-
-  public formatEmbed(embed: any, options: any = {}) {
-    this.attachProps(embed, options);
-    this.attachMethods(embed, options);
-    this.attachEvents(embed);
-    this.attachParams(embed);
-    this.attachType(embed);
-    this.attachReturn(embed);
-    this.attachExamples(embed);
+    return (
+      this.type
+        .filter((text) => /^\w+$/.test(text))
+        .map((text) => this.doc.findChild(text.toLowerCase()))
+        .find((elem) => elem) ?? null
+    );
   }
 
   /**
    * @internal
    */
-  public attachProps(embed: any, { excludePrivateElements }: any = {}) {
-    if (!this.props) return;
-
-    let { props } = this;
-    if (excludePrivateElements) props = props.filter((prop: any) => prop.access !== 'private');
-    if (props.length === 0) return;
-
-    embed.fields.push({
-      name: 'Properties',
-      value: props.map((prop) => `\`${prop.name}\``).join(' ')
-    });
-  }
-
-  /**
-   * @internal
-   */
-  public attachMethods(embed: any, { excludePrivateElements }: any = {}) {
-    if (!this.methods) return;
-
-    let { methods } = this;
-    if (excludePrivateElements) methods = methods.filter((prop) => prop.access !== 'private');
-    if (methods.length === 0) return;
-
-    embed.fields.push({
-      name: 'Methods',
-      value: methods.map((method) => `\`${method.name}\``).join(' ')
-    });
-  }
-
-  /**
-   * @internal
-   */
-  public attachEvents(embed: any) {
-    if (!this.events) return;
-    embed.fields.push({
-      name: 'Events',
-      value: this.events.map((event) => `\`${event.name}\``).join(' ')
-    });
-  }
-
-  /**
-   * @internal
-   */
-  public attachParams(embed: any) {
-    if (!this.params) return;
-    const params = this.params.map((param: DocParam) => {
-      return stripIndents`
-        ${param.formattedName} ${param.formattedType}
-        ${param.formattedDescription}
-      `;
-    });
-
-    const slice = params.splice(0, 5);
-    embed.fields.push({ name: 'Params', value: slice.join('\n\n') });
-
-    while (params.length > 0) {
-      const slice = params.splice(0, 5);
-      embed.fields.push({ name: '\u200b', value: slice.join('\n\n') });
-    }
-  }
-
-  /**
-   * @internal
-   */
-  public attachReturn(embed: any) {
-    if (!this.returns) return;
-    embed.fields.push({
-      name: 'Returns',
-      value: this.formattedReturn
-    });
-  }
-
-  /**
-   * @internal
-   */
-  public attachType(embed: any) {
-    if (!this.type) return;
-    embed.fields.push({
-      name: 'Type',
-      value: this.formattedType
-    });
-  }
-
-  /**
-   * @internal
-   */
-  public attachExamples(embed: any) {
-    if (!this.examples) return;
-    embed.fields.push({
-      name: 'Examples',
-      value: this.examples.map((ex: any) => `\`\`\`js\n${ex}\n\`\`\``).join('\n')
-    });
-  }
-
-  /**
-   * @internal
-   */
-  public toJSON() {
-    const json: any = {
-      name: this.name,
-      description: this.description,
+  public toJSON(): ElementJSON {
+    const json: ElementJSON = {
+      name: this.name ?? '',
+      description: this.description ?? '',
       internal_type: this.docType
     };
 
-    if (this.props) json.props = this.props.map((prop) => prop.name);
-    if (this.parent) json.parent = this.parent.name;
-    if (this.methods) json.methods = this.methods.map((method) => method.name);
-    if (this.events) json.events = this.events.map((event) => event.name);
-    if (this.params) json.params = this.params.map((param) => JSON.stringify(param));
-    if (this.type) json.type = this.type.join('');
-    if (this.examples) json.examples = this.examples;
+    if (this.props) {
+      Reflect.set(json, 'props', this.props.map((prop) => prop.name).filter(filterNullAndUndefinedAndEmpty));
+    }
+
+    if (this.parent) {
+      Reflect.set(json, 'parent', this.parent.name ?? undefined);
+    }
+
+    if (this.methods) {
+      Reflect.set(json, 'methods', this.methods.map((method) => method.name).filter(filterNullAndUndefinedAndEmpty));
+    }
+
+    if (this.events) {
+      Reflect.set(json, 'events', this.events.map((event) => event.name).filter(filterNullAndUndefinedAndEmpty));
+    }
+
+    if (this.params) {
+      Reflect.set(
+        json,
+        'params',
+        this.params.map((param) => JSON.stringify(param))
+      );
+    }
+
+    if (this.type) {
+      Reflect.set(json, 'type', this.type.join(''));
+    }
+
+    if (this.examples) {
+      Reflect.set(json, 'examples', this.examples);
+    }
 
     return json;
   }
@@ -263,26 +171,28 @@ export class DocElement extends DocBase {
   /**
    * @internal
    */
-  public formatInherits(inherits: any) {
+  public formatInherits(inherits: string[] | string[][]): string {
     inherits = Array.isArray(inherits[0])
-      ? inherits.map((element: any) => element.flat(5)) // docgen 0.9.0 format
-      : inherits.map((baseClass: any) => [baseClass]); // docgen 0.8.0 format
+      ? // @ts-expect-error testing
+        inherits.map((element) => element.flat(5)) // docgen 0.9.0 format
+      : inherits.map((baseClass) => [baseClass]); // docgen 0.8.0 format
 
-    return inherits.map((baseClass: any) => this.doc.formatType(baseClass)).join(' and ');
+    // @ts-expect-error testing
+    return inherits.map((baseClass) => this.doc.formatType(baseClass)).join(' and ');
   }
 
   /**
    * @internal
    */
-  public formatText(text: any) {
-    if (!text) return '';
+  public formatText(text: string | null) {
+    if (isNullishOrEmpty(text)) return '';
 
     return text
-      .replace(/\{@link (.+?)\}/g, (_match: any, name: any) => {
+      .replace(/\{@link (.+?)\}/g, (_match, name) => {
         const element = this.doc.get(...name.split(/\.|#/));
         return element ? element.link : name;
       })
-      .replace(/(```[^]+?```)|(^[*-].+$)?\n(?![*-])/gm, (match: any, codeblock: any, hasListBefore: any) => {
+      .replace(/(```[^]+?```)|(^[*-].+$)?\n(?![*-])/gm, (match, codeblock, hasListBefore) => {
         if (codeblock) return codeblock;
         if (hasListBefore) return match;
         return ' ';

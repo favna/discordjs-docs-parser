@@ -30,3 +30,17 @@ export interface FetchOptions {
 export interface SearchOptions {
   excludePrivateElements?: boolean;
 }
+
+export interface ElementJSON {
+  name: string;
+  description: string;
+  internal_type: DocTypes | null;
+  parent?: string;
+  props?: string[];
+  methods?: string[];
+  events?: string[];
+  params?: string[];
+  type?: string;
+  examples?: string[];
+  returns?: Partial<{ type: string; description: string }>;
+}

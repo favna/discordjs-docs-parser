@@ -1,23 +1,52 @@
 import { fetch, FetchResultTypes } from '@sapphire/fetch';
 import Fuse from 'fuse.js/dist/fuse.basic.min.js';
+import type { DocElement } from '../lib/elements/Element';
 import { DocBase } from './elements/Base';
 import { DocClass } from './elements/Class';
 import { DocInterface } from './elements/Interface';
 import { DocTypedef } from './elements/Typedef';
+import type { Documentation } from './types/DocgenOutput';
 import { docCache } from './utils/constants';
 import type { Sources } from './utils/enums';
 import type { FetchOptions, SearchOptions } from './utils/interfaces';
 import { sources } from './utils/sources';
-import { buildErrorMessage } from './utils/utils';
+import { buildErrorMessage, dissectURL } from './utils/utils';
 
 export class Doc extends DocBase {
   /**
+   * The documentation base URL.
+   */
+  public readonly baseURL: string = 'https://discord.js.org';
+  /**
+   * The project dissected from the {@link url}.
+   */
+  public readonly project: string;
+  /**
+   * The repository dissected from the {@link url}.
+   */
+  public readonly repo: string;
+  /**
+   * The branch dissected from the {@link url}.
+   */
+  public readonly branch: string;
+  /**
+   * The raw URL of the JSON that was fetched
+   */
+  public readonly url: string;
+
+  /**
    * @internal
    */
-  private fuse: Fuse<any>;
+  private fuse: Fuse<{
+    id: string | null;
+    name: string | null;
+  }>;
 
-  public constructor(docs: any) {
+  public constructor(url: string, docs: Documentation) {
     super(docs);
+
+    this.url = url;
+    [this.project, this.repo, this.branch] = dissectURL(url);
 
     this.adoptAll(docs.classes, DocClass);
     this.adoptAll(docs.typedefs, DocTypedef);
@@ -33,6 +62,16 @@ export class Doc extends DocBase {
     });
   }
 
+  public get repoURL() {
+    return `https://github.com/${this.project}/${this.repo}/blob/${this.branch}`;
+  }
+
+  public get baseDocsURL() {
+    if (!this.baseURL) return null;
+    const repo = this.repo === 'discord.js' ? 'main' : this.repo;
+    return `${this.baseURL}/#/docs/${repo}/${this.branch}`;
+  }
+
   /**
    * Gets the documentation for one element.
    * @param terms The terms that lead to the element to get. Use multiple terms to get a nested element.
@@ -44,7 +83,7 @@ export class Doc extends DocBase {
    * doc.get('message', 'guild', 'members');
    * ```
    */
-  public get(...terms: string[]): DocBase | null {
+  public get(...terms: string[]): DocElement | null {
     const exclude = Array.isArray(terms[0]) ? terms.shift() : [];
     terms = terms.filter((term) => term).map((term) => term.toLowerCase());
 
@@ -57,10 +96,31 @@ export class Doc extends DocBase {
       const child = elem.findChild(term, exclude);
 
       if (!child) return null;
+      // @ts-ignore todo
       elem = terms.length && child.typeElement ? child.typeElement : child;
     }
 
     return elem ?? null;
+  }
+
+  public formatType(types: string[]) {
+    const typestring = types
+      .map((text, index) => {
+        if (/<|>|\*/.test(text)) {
+          return text
+            .split('')
+            .map((char) => `\\${char}`)
+            .join('');
+        }
+
+        const typeElem = this.findChild(text.toLowerCase());
+        const prependOr = index !== 0 && /\w|>/.test(types[index - 1]) && /\w/.test(text);
+
+        return (prependOr ? '|' : '') + (typeElem ? typeElem.link : text);
+      })
+      .join('');
+
+    return `**${typestring}**`;
   }
 
   /**
@@ -95,11 +155,16 @@ export class Doc extends DocBase {
     const children = parents.map((parent) => Array.from(parent.children.values())).reduce((a, b) => a.concat(b));
 
     const formattedParents = parents.map(({ name }) => ({ id: name, name }));
-    // @ts-expect-error - TODO to figure out
-    const formattedChildren = children.map(({ name, parent }) => ({ id: `${parent.name}#${name}`, name }));
+    const formattedChildren = children.map(({ name, parent }) => ({ id: `${parent ? `${parent.name}#` : ''}${name}`, name }));
 
     return formattedParents.concat(formattedChildren);
   }
+
+  /**
+   * The limit of the {@link DocElement.formattedDescription}
+   * @default 1500
+   */
+  public static DescriptionLimit = 1500;
 
   /**
    * Fetches the documentation JSON file and builds up a {@link Doc} object.
@@ -130,8 +195,8 @@ export class Doc extends DocBase {
     }
 
     try {
-      const data = await fetch(url, FetchResultTypes.JSON);
-      const doc = new Doc(data);
+      const data = await fetch<Documentation>(url, FetchResultTypes.JSON);
+      const doc = new Doc(url, data);
       docCache.set(sourceName, doc);
       return doc;
     } catch (err) {

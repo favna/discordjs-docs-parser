@@ -1,13 +1,23 @@
+import type { Constructor } from '@sapphire/utilities';
+import type { DocIterateeUnion, Documentation } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import type { DocTypesToClassType } from '../utils/interfaces';
+import type { DocClass } from './Class';
+import type { DocElement } from './Element';
+import type { DocEvent } from './Event';
+import type { DocInterface } from './Interface';
+import type { DocMethod } from './Method';
+import type { DocParam } from './Param';
+import type { DocProp } from './Prop';
+import type { DocTypedef } from './Typedef';
 
 export class DocBase {
-  public originalJSON: any;
-  public children: Map<string, DocBase>;
+  public originalJSON: DocIterateeUnion | Documentation;
+  public children: Map<string, DocEvent | DocMethod | DocParam | DocProp>;
   public docType: DocTypes | null;
   public name: string | null;
 
-  public constructor(json: any, docType: DocTypes | null = null, name: string | null = null) {
+  public constructor(json: DocIterateeUnion | Documentation, docType: DocTypes | null = null, name: string | null = null) {
     this.originalJSON = json;
     this.children = new Map();
     this.docType = docType;
@@ -17,17 +27,20 @@ export class DocBase {
   /**
    * @internal
    */
-  public addChild(child: any) {
-    this.children.set(`${child.name.toLowerCase()}-${child.docType}`, child);
+  public addChild(child: DocClass | DocTypedef | DocInterface | DocProp | DocMethod | DocEvent | DocParam) {
+    this.children.set(`${child.name?.toLowerCase()}-${child.docType}`, child);
   }
 
   /**
    * @internal
    */
-  public adoptAll(enumerable: any, Constructor: any) {
-    if (!enumerable) return;
-    for (const elem of enumerable) {
-      this.addChild(new Constructor(this, elem));
+  public adoptAll(
+    iterable: DocIterateeUnion[],
+    Constructor: Constructor<DocClass | DocTypedef | DocInterface | DocProp | DocMethod | DocEvent | DocParam>
+  ) {
+    if (!iterable) return;
+    for (const iteratee of iterable) {
+      this.addChild(new Constructor(this, iteratee));
     }
   }
 
@@ -43,7 +56,7 @@ export class DocBase {
   /**
    * @internal
    */
-  public findChild(query: any, exclude: any[] = []) {
+  public findChild(query: any, exclude: any[] = []): DocElement {
     query = query.toLowerCase();
 
     let docType: any = null;
@@ -55,6 +68,7 @@ export class DocBase {
       docType = DocTypes.Event;
     }
 
+    // @ts-expect-error testing
     return Array.from(this.children.values()).find(
       (child) => !exclude.includes(child) && child.name?.toLowerCase() === query && (!docType || child.docType === docType)
     );

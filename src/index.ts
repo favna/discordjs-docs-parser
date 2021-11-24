@@ -8,6 +8,7 @@ export * from './lib/elements/Method';
 export * from './lib/elements/Param';
 export * from './lib/elements/Prop';
 export * from './lib/elements/Typedef';
+export * as DocgenTypes from './lib/types/DocgenOutput';
 export { Sources } from './lib/utils/enums';
-export type { FetchOptions } from './lib/utils/interfaces';
+export type { FetchOptions, SearchOptions, ElementJSON } from './lib/utils/interfaces';
 export { sources } from './lib/utils/sources';

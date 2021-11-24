@@ -1,16 +1,16 @@
+import type { DocumentationParameter } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 
 export class DocParam extends DocElement {
-  public type: any;
   public optional: boolean;
   public variable: boolean;
 
-  public constructor(parent: any, data: any) {
+  public constructor(parent: DocElement, data: DocumentationParameter) {
     super(parent.doc, DocTypes.Param, data, parent);
     this.type = data.type.flat(5);
-    this.optional = data.optional;
-    this.variable = data.variable;
+    this.optional = data.optional ?? false;
+    this.variable = data.variable ?? false;
   }
 
   public get formattedName() {
