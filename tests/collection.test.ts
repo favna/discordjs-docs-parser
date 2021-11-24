@@ -17,11 +17,6 @@ describe('Collection Docs', () => {
       expect(collection?.description).toEqual(
         'A Map with additional utility methods. This is used throughout discord.js rather than Arrays for anything that has\nan ID, for significantly improved performance and ease-of-use.'
       );
-
-      expect(collection?.formattedExtends).toEqual('(extends **Map<K, V>**)');
-      expect(collection?.formattedImplements).toEqual(null);
-      expect(collection?.formattedType).toEqual('');
-      expect(collection?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN getter for "Collection difference" THEN returns "Collection.difference" prop', () => {
@@ -32,13 +27,6 @@ describe('Collection Docs', () => {
       expect(difference?.description).toEqual(
         'The difference method returns a new structure containing items where the key is present in one of the original structures but not the other.'
       );
-
-      expect(difference?.formattedReturn).toEqual(
-        '**[Collection](https://discord.js.org/#/docs/collection/main/general/welcome/class/Collection)\\<K, V\\>**'
-      );
-      expect(difference?.formattedExtends).toEqual(null);
-      expect(difference?.formattedImplements).toEqual(null);
-      expect(difference?.formattedType).toEqual('');
     });
   });
 
@@ -55,11 +43,6 @@ describe('Collection Docs', () => {
         'A Map with additional utility methods. This is used throughout discord.js rather than Arrays for anything that has\n' +
           'an ID, for significantly improved performance and ease-of-use.'
       );
-
-      expect(collection?.formattedExtends).toEqual('(extends **Map<K, V>**)');
-      expect(collection?.formattedImplements).toEqual(null);
-      expect(collection?.formattedType).toEqual('');
-      expect(collection?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN search for Collection#difference THEN returns Collection.difference prop', () => {
@@ -72,13 +55,6 @@ describe('Collection Docs', () => {
       expect(difference?.description).toEqual(
         'The difference method returns a new structure containing items where the key is present in one of the original structures but not the other.'
       );
-
-      expect(difference?.formattedReturn).toEqual(
-        '**[Collection](https://discord.js.org/#/docs/collection/main/general/welcome/class/Collection)\\<K, V\\>**'
-      );
-      expect(difference?.formattedExtends).toEqual(null);
-      expect(difference?.formattedImplements).toEqual(null);
-      expect(difference?.formattedType).toEqual('');
     });
 
     test('GIVEN partial search for "Collection#findKe" THEN returns findKey method', () => {
@@ -91,11 +67,6 @@ describe('Collection Docs', () => {
       expect(findKey?.description).toEqual(
         'Searches for the key of a single item where the given function returns a truthy value. This behaves like\n[Array.findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex),\nbut returns the key rather than the positional index.'
       );
-
-      expect(findKey?.formattedExtends).toEqual(null);
-      expect(findKey?.formattedImplements).toEqual(null);
-      expect(findKey?.formattedType).toEqual('');
-      expect(findKey?.formattedReturn).toEqual('**undefined | K2**');
     });
   });
 

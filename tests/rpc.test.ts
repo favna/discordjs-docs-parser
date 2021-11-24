@@ -15,11 +15,6 @@ describe('RPC Docs', () => {
       expect(rpcClient?.name).toEqual('RPCClient');
       expect(rpcClient?.docType).toEqual(DocTypes.Class);
       expect(rpcClient?.description).toEqual('The main hub for interacting with Discord RPC');
-
-      expect(rpcClient?.formattedExtends).toEqual('(extends **BaseClient**)');
-      expect(rpcClient?.formattedImplements).toEqual(null);
-      expect(rpcClient?.formattedType).toEqual('');
-      expect(rpcClient?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN getter for "RPCClient user" THEN returns "RPCClient.user" prop', () => {
@@ -28,11 +23,6 @@ describe('RPC Docs', () => {
       expect(user?.name).toEqual('user');
       expect(user?.docType).toEqual(DocTypes.Prop);
       expect(user?.description).toEqual('User used in this application');
-
-      expect(user?.formattedExtends).toEqual(null);
-      expect(user?.formattedImplements).toEqual(null);
-      expect(user?.formattedType).toEqual('?**User**');
-      expect(user?.formattedReturn).toEqual('**Void**');
     });
   });
 
@@ -45,11 +35,6 @@ describe('RPC Docs', () => {
       expect(rpcClient?.name).toEqual('RPCClient');
       expect(rpcClient?.docType).toEqual(DocTypes.Class);
       expect(rpcClient?.description).toEqual('The main hub for interacting with Discord RPC');
-
-      expect(rpcClient?.formattedExtends).toEqual('(extends **BaseClient**)');
-      expect(rpcClient?.formattedImplements).toEqual(null);
-      expect(rpcClient?.formattedType).toEqual('');
-      expect(rpcClient?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN search for RPCClient#user THEN returns RPCClient.user prop', () => {
@@ -60,11 +45,6 @@ describe('RPC Docs', () => {
       expect(user?.name).toEqual('user');
       expect(user?.docType).toEqual(DocTypes.Prop);
       expect(user?.description).toEqual('User used in this application');
-
-      expect(user?.formattedExtends).toEqual(null);
-      expect(user?.formattedImplements).toEqual(null);
-      expect(user?.formattedType).toEqual('?**User**');
-      expect(user?.formattedReturn).toEqual('**Void**');
     });
 
     test('GIVEN partial search for "RPCClient#captureSh" THEN returns captureShortcut method', () => {
@@ -77,11 +57,6 @@ describe('RPC Docs', () => {
       expect(captureShortcut?.description).toEqual(
         'Capture a shortcut using the client\nThe callback takes (key, stop) where `stop` is a function that will stop capturing.\nThis `stop` function must be called before disconnecting or else the user will have\nto restart their client.'
       );
-
-      expect(captureShortcut?.formattedExtends).toEqual(null);
-      expect(captureShortcut?.formattedImplements).toEqual(null);
-      expect(captureShortcut?.formattedType).toEqual('');
-      expect(captureShortcut?.formattedReturn).toEqual('**Promise\\<function\\(\\)\\>**');
     });
   });
 

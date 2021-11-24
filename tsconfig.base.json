@@ -1,6 +1,3 @@
 {
-  "extends": "@sapphire/ts-config",
-  "compilerOptions": {
-    "noImplicitOverride": true
-  }
+  "extends": "@sapphire/ts-config"
 }

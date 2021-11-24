@@ -5,6 +5,9 @@ import { DocTypes } from '../utils/enums';
 import type { ElementJSON } from '../utils/interfaces';
 import { DocBase } from './Base';
 
+/**
+ * Represents any type of element in the DiscordJS documentation
+ */
 export class DocElement extends DocBase {
   public doc: Doc;
   public parent: DocElement | null;
@@ -23,7 +26,7 @@ export class DocElement extends DocBase {
   public implements: string[][] | null;
 
   public constructor(doc: Doc, docType: DocTypes, data: DocIterateeUnion, parent?: DocElement) {
-    super(data, docType, data.name);
+    super(docType, data.name);
     this.doc = doc;
     this.parent = parent ?? null;
 
@@ -43,12 +46,9 @@ export class DocElement extends DocBase {
     this.access = Reflect.get(data, 'access') ?? 'public';
   }
 
-  public get anchor() {
-    if (this.static) return 's-';
-    else if (this.docType === DocTypes.Event) return 'e-';
-    return null;
-  }
-
+  /**
+   * Returns the URL to this element on the [discord.js documentation](https://discord.js.org/).
+   */
   public get url() {
     if (!this.doc.baseDocsURL) return null;
 
@@ -59,6 +59,9 @@ export class DocElement extends DocBase {
     return `${this.doc.baseDocsURL}/${path}`;
   }
 
+  /**
+   * Returns the url to the source code for this element.
+   */
   public get sourceURL() {
     if (isNullishOrEmpty(this.doc.repoURL) || isNullishOrEmpty(this.meta)) return null;
 
@@ -66,10 +69,17 @@ export class DocElement extends DocBase {
     return `${this.doc.repoURL}/${path}/${file}#L${line}`;
   }
 
+  /**
+   * Returns the pre-formatted name for this element.
+   * This is either the name, or if it is nullish then an empty string.
+   */
   public get formattedName(): string {
     return this.name ?? '';
   }
 
+  /**
+   * Returns the pre-formatted description of this element.
+   */
   public get formattedDescription(): string {
     let result = this.formatText(this.description);
 
@@ -80,30 +90,13 @@ export class DocElement extends DocBase {
     return result;
   }
 
-  public get formattedReturn() {
-    if (isNullishOrEmpty(this.returns)) return '**Void**';
-
-    const returnTypes = ((this.returns as DocumentationReturns).types || this.returns).map((type) => this.doc.formatType(type.flat(5))).join(' or ');
-
-    return [returnTypes, this.formatText((this.returns as DocumentationReturns).description)].filter((text) => text).join('\n');
-  }
-
-  public get formattedType() {
-    return `${this.nullable ? '?' : ''}${isNullishOrEmpty(this.type) ? '' : this.doc.formatType(this.type)}`;
-  }
-
-  public get formattedExtends() {
-    if (!this.extends) return null;
-
-    return `(extends ${this.formatInherits(this.extends)})`;
-  }
-
-  public get formattedImplements() {
-    if (!this.implements) return null;
-
-    return `(implements ${this.formatInherits(this.implements)})`;
-  }
-
+  /**
+   * Returns the pre-formatted link of this element.
+   * By default this will be returned as a regular markdown masked link.
+   * You can further customize this by setting {@link Doc.globalOptions.escapeMarkdownLinks}
+   * which will wrap the links with `<...>` so sending the link through a Webhook or Interaction reply
+   * will not embed that link in the chat.
+   */
   public get link(): string {
     if (!this.url) return '';
 
@@ -112,10 +105,14 @@ export class DocElement extends DocBase {
     return `[${this.formattedName}](${escapedUrl})`;
   }
 
+  /**
+   * Returns whether this element is static or not.
+   */
   public get static(): boolean {
     return this.scope === 'static';
   }
 
+  /** @internal */
   public get typeElement(): DocElement | null {
     if (isNullishOrEmpty(this.type)) return null;
 
@@ -127,6 +124,16 @@ export class DocElement extends DocBase {
     );
   }
 
+  /** @internal */
+  private get anchor() {
+    if (this.static) return 's-';
+    else if (this.docType === DocTypes.Event) return 'e-';
+    return null;
+  }
+
+  /**
+   * Overrides what should be returned when calling `JSON.stringify` on this class
+   */
   public toJSON(): ElementJSON {
     const json: ElementJSON = {
       name: this.name ?? '',
@@ -167,18 +174,6 @@ export class DocElement extends DocBase {
     }
 
     return json;
-  }
-
-  /**
-   * @internal
-   */
-  private formatInherits(inherits: string[][]): string {
-    const flattenedInherits = inherits.map((element) => {
-      if (Array.isArray(element)) return element.flat(5);
-      return element;
-    });
-
-    return flattenedInherits.map((baseClass) => this.doc.formatType(baseClass)).join(' and ');
   }
 
   /**

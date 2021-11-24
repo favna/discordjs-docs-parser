@@ -2,6 +2,9 @@ import type { DocumentationParameter } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import { DocElement } from './Element';
 
+/**
+ * Represents a parameter of a {@link DocElement}.
+ */
 export class DocParam extends DocElement {
   public optional: boolean;
   public variable: boolean;
@@ -13,18 +16,20 @@ export class DocParam extends DocElement {
     this.variable = data.variable ?? false;
   }
 
+  /**
+   * Returns the formatted name of the parameter.
+   *
+   * If this parameter is optional it will be wrapped in square brackets.
+   * Otherwise just the name will be returned.
+   * Furthermore, in both cases, inline code backticks will be wrapped around the parameter.
+   */
   public override get formattedName() {
     return this.optional ? `\`[${this.name}]\`` : `\`${this.name}\``;
   }
 
-  public override get formattedType() {
-    if (!this.variable) return super.formattedType;
-    return super.formattedType
-      .split('|')
-      .map((param) => `...${param}`)
-      .join('|');
-  }
-
+  /**
+   * Method Parameters cannot be navigated to on the [discord.js docs](https://discord.js.org/) so this always returns `null`.
+   */
   // eslint-disable-next-line @typescript-eslint/class-literal-property-style
   public override get url() {
     return null;

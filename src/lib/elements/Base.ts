@@ -1,5 +1,5 @@
 import type { Constructor } from '@sapphire/utilities';
-import type { DocIterateeUnion, Documentation } from '../types/DocgenOutput';
+import type { DocIterateeUnion } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/enums';
 import type { DocTypesToClassType } from '../utils/interfaces';
 import type { DocClass } from './Class';
@@ -12,13 +12,16 @@ import type { DocProp } from './Prop';
 import type { DocTypedef } from './Typedef';
 
 export class DocBase {
-  public originalJSON: DocIterateeUnion | Documentation;
+  /** The children that belong to this element */
   public children: Map<string, DocEvent | DocMethod | DocParam | DocProp>;
+
+  /** The type of this element */
   public docType: DocTypes | null;
+
+  /** The name of this element */
   public name: string | null;
 
-  public constructor(json: DocIterateeUnion | Documentation, docType: DocTypes | null = null, name: string | null = null) {
-    this.originalJSON = json;
+  public constructor(docType: DocTypes | null = null, name: string | null = null) {
     this.children = new Map();
     this.docType = docType;
     this.name = name;

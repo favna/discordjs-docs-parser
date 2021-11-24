@@ -43,15 +43,9 @@ export class Doc extends DocBase {
 
   /** @internal */
   private fuzzySearchFormat: FuzzySearchFormat[];
-  /** @internal */
-  private readonly smallThanOrGreaterThanRegex = /<|>|\*/;
-  /** @internal */
-  private readonly wordOrGreaterThanRegex = /\w|>/;
-  /** @internal */
-  private readonly wordRegex = /\w/;
 
   public constructor(url: string, docs: Documentation) {
-    super(docs);
+    super();
 
     this.url = url;
     [this.project, this.repo, this.branch] = dissectURL(url);
@@ -141,29 +135,6 @@ export class Doc extends DocBase {
     } while (results.length > 0);
 
     return filtered;
-  }
-
-  /** @internal */
-  public formatType(types: string | string[]) {
-    if (typeof types === 'string') types = [types];
-
-    const typeString = types
-      .map((text, index) => {
-        if (this.smallThanOrGreaterThanRegex.test(text) && text !== 'Map<K, V>') {
-          return text
-            .split('')
-            .map((char) => `\\${char}`)
-            .join('');
-        }
-
-        const typeElem = this.findChild(text.toLowerCase());
-        const prependOr = index !== 0 && this.wordOrGreaterThanRegex.test(types[index - 1]) && this.wordRegex.test(text);
-
-        return (prependOr ? '|' : '') + (typeElem ? typeElem.link : text);
-      })
-      .join('');
-
-    return `**${typeString}**`;
   }
 
   /** @internal */
