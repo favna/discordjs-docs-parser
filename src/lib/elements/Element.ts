@@ -1,4 +1,4 @@
-import { filterNullAndUndefinedAndEmpty, isNullishOrEmpty } from '@sapphire/utilities';
+import { cutText, filterNullAndUndefinedAndEmpty, isNullishOrEmpty } from '@sapphire/utilities';
 import { Doc } from '../Doc';
 import type { DocIterateeUnion, DocumentationClassMeta, DocumentationReturns } from '../types/DocgenOutput';
 import { DocTypes } from '../utils/constants';
@@ -49,9 +49,7 @@ export class DocElement extends DocBase {
   /**
    * Returns the URL to this element on the [discord.js documentation](https://discord.js.org/).
    */
-  public get url() {
-    if (!this.doc.baseDocsURL) return null;
-
+  public get url(): string | null {
     const path = this.parent
       ? `${this.parent.docType}/${this.parent.name}?scrollTo=${this.anchor || ''}${this.name}`
       : `${this.docType}/${this.name}`;
@@ -84,7 +82,7 @@ export class DocElement extends DocBase {
     let result = this.formatText(this.description);
 
     if (result.length > Doc.globalOptions.descriptionLimit) {
-      result = `${result.slice(0, Doc.globalOptions.descriptionLimit)}...\nDescription truncated. View full description [here](${this.url}).`;
+      result = `${cutText(result, Doc.globalOptions.descriptionLimit)}\nDescription truncated. View full description [here](${this.url}).`;
     }
 
     return result;
