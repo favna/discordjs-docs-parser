@@ -12,8 +12,13 @@ export default async (): Promise<Config.InitialOptions> => ({
     'ts-jest': {
       tsconfig: '<rootDir>/tests/tsconfig.json'
     }
+  },
+  coverageThreshold: {
+    global: {
+      branches: 85,
+      functions: 95,
+      lines: 95,
+      statements: 95
+    }
   }
-  // transform: {
-  //   '^.+\\.tsx?$': 'esbuild-jest'
-  // }
 });
