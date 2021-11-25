@@ -49,6 +49,8 @@ export class DocBase {
     } else if (query.startsWith('e-')) {
       query = query.slice(2);
       docType = DocTypes.Event;
+    } else if (query.startsWith('s-')) {
+      query = query.slice(2);
     }
 
     return [...this.children.values()].find(
