@@ -30,23 +30,37 @@ npm install discordjs-docs-parser
 
 ## Usage
 
+### Migrating from [TeeSeal's library][teeseals-library]
+
+**discordjs-docs-parser is written to be a drop-in replacement for TeeSeal's library**. This means that you can simply
+replace the `require`/`import` and most of your code should continue to work exactly as it is written right now. That
+said, there are a few things that should be noted that are gone:
+
+1. The `doc.resolveEmbed(query)` method is gone. This is a design choice because I am of the opinion that this library
+   should not be doing any opinionated markdown formatting or embed structuring. Instead, it should be left up to the
+   consumer to do this.
+
+1. All the `formatted*` methods are gone, _except_ for `formattedName` and `formattedDescription`. Similar to the point
+   above, this is because this library should not make any assumptions about how the documentation should be formatted.
+   Instead, the consumer should be responsible for formatting the documentation.
+
 ### Fetching the documentation
 
 The first step is to fetch the documentation. This is done by calling the `fetch` method. After fetching the
-documentation it is stored in an in-memory cache (using a `Map`) for later use.
+documentation, this library stores the result in an in-memory cache (using a `Map`) for later use.
 
 Please refer to [Doc#fetch](Documentation/classes/Doc#fetch) examples and more information.
 
 ### Getting a specific doc element by its name
 
-After fetching the documentation from GitHub and having it stored in the internal cache you can get a specific element
-by either it's exact ID or a nested property path.
+After fetching the documentation from GitHub, and having it stored in the internal cache, you can get a specific element
+either by its exact ID or a nested property path.
 
 Please refer to [Doc#get](Documentation/classes/Doc#get) examples and more information.
 
 ### Using a Fuzzy search to find a document element
 
-If instead of providing the absolute path of a specific element you instead want to perform a fuzzy search for elements
+If instead of getting the absolute path of a specific element you instead want to perform a fuzzy search for elements
 you can use `doc.search`. This will return the top 10 results for the provided query using the [Jaro Winkler Distance
 algorithm][jarowinklerdistance].
 

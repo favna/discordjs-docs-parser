@@ -175,20 +175,20 @@ export class Doc extends DocBase {
 
   /**
    * Fetches the documentation JSON file and builds up a {@link Doc} object.
-   * @param sourceName The name of the source to fetch. Be sure to use the {@link Sources} enum.
+   * @param sourceName The name of the source to fetch.
    * @param fetchOptions Additional options to pass to the `fetch` function.
    * @returns An instance of {@link Doc}
    * @example
    * ```javascript
-   * const { Doc, Sources } = require('discordjs-docs-parser');
+   * const { Doc } = require('discordjs-docs-parser');
    *
-   * const doc = await Doc.fetch(Sources.Main);
+   * const doc = await Doc.fetch('stable');
    * ```
    * @example
    * ```typescript
-   * import { Doc, Sources } from 'discordjs-docs-parser';
+   * import { Doc } from 'discordjs-docs-parser';
    *
-   * const doc = await Doc.fetch(Sources.Collection, { force: true });
+   * const doc = await Doc.fetch('collection', { force: true });
    * ```
    */
   public static async fetch(sourceName: SourcesStringUnion, fetchOptions: FetchOptions = {}) {
@@ -198,7 +198,9 @@ export class Doc extends DocBase {
 
     const url = sources.get(sourceName);
     if (!url) {
-      throw new Error('[DiscordJsDocsParser] An invalid source was provided. Please make sure you\'re using the "Sources" exported enum');
+      throw new Error(
+        '[DiscordJsDocsParser] An invalid source was provided. The valid sources are "stable", "main", "rpc", "collection", "builders", and "voice" '
+      );
     }
 
     try {

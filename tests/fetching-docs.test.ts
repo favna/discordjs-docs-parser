@@ -43,7 +43,7 @@ describe('Fetching Docs', () => {
   test('GIVEN invalid source THEN rejects', async () => {
     // @ts-expect-error error case
     await expect(() => Doc.fetch('invalid')).rejects.toThrowError(
-      '[DiscordJsDocsParser] An invalid source was provided. Please make sure you\'re using the "Sources" exported enum'
+      '[DiscordJsDocsParser] An invalid source was provided. The valid sources are "stable", "main", "rpc", "collection", "builders", and "voice" '
     );
   });
 });
