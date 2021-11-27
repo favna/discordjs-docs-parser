@@ -217,6 +217,17 @@ export class Doc extends DocBase {
   };
 
   /**
+   * Sets the {@link Doc.globalOptions}. You can provide a partial of the options to update.
+   * @param options The {@link DocParserGlobalOptions} to set
+   */
+  public static setGlobalOptions(options: Partial<DocParserGlobalOptions>) {
+    Doc.globalOptions = {
+      ...Doc.globalOptions,
+      ...options
+    };
+  }
+
+  /**
    * Fetches the documentation JSON file and builds up a {@link Doc} object.
    * @param sourceName The name of the source to fetch.
    * @param fetchOptions Additional options to pass to the `fetch` function.
