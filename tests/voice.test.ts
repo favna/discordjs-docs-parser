@@ -63,7 +63,7 @@ describe('Voice Docs', () => {
     });
 
     test('GIVEN baseDocsURL THEN returns djs main docs url', () => {
-      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/voice/main/general/welcome');
+      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/voice/main');
     });
   });
 });

@@ -65,7 +65,7 @@ describe('RPC Docs', () => {
     });
 
     test('GIVEN baseDocsURL THEN returns djs main docs url', () => {
-      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/rpc/master/general/welcome');
+      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/rpc/master');
     });
   });
 });

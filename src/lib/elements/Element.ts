@@ -54,7 +54,7 @@ export class DocElement extends DocBase {
       ? `${this.parent.docType}/${this.parent.name}?scrollTo=${this.anchor || ''}${this.name}`
       : `${this.docType}/${this.name}`;
 
-    return `${this.doc.baseDocsURL}/${path}`;
+    return `${this.doc.baseDocsURL}/${path || 'general/welcome'}`;
   }
 
   /**

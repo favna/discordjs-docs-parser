@@ -67,7 +67,7 @@ export class Doc extends DocBase {
 
   public get baseDocsURL() {
     const repo = this.repo === 'discord.js' ? 'main' : this.repo;
-    return `${this.baseURL}/#/docs/${repo}/${this.branch}/general/welcome`;
+    return `${this.baseURL}/#/docs/${repo}/${this.branch}`;
   }
 
   /**
