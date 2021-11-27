@@ -1,6 +1,6 @@
 {
   "name": "discordjs-docs-parser",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "workspaces": [
     "documentation/"
   ],
