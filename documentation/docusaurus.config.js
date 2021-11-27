@@ -1,5 +1,6 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/vsDark');
+const { npm2yarn2pnpm } = require('@sapphire/docusaurus-plugin-npm2yarn2pnpm');
 
 const Description = 'Documentation parser for DiscordJS projects.';
 const Email = 'support@favware.tech';
@@ -71,7 +72,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/favna/discordjs-docs-parser/edit/main/',
-          remarkPlugins: [[require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }]],
+          remarkPlugins: [npm2yarn2pnpm],
           showLastUpdateAuthor: true,
           showLastUpdateTime: true
         },

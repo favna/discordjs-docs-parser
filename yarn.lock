@@ -2181,18 +2181,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@docusaurus/remark-plugin-npm2yarn@npm:2.0.0-beta.9":
-  version: 2.0.0-beta.9
-  resolution: "@docusaurus/remark-plugin-npm2yarn@npm:2.0.0-beta.9"
-  dependencies:
-    npm-to-yarn: ^1.0.1
-  peerDependencies:
-    react: ^16.8.4 || ^17.0.0
-    react-dom: ^16.8.4 || ^17.0.0
-  checksum: b645256fea27dfa2ac9573a5b75f32863ad513730254db2eabee5bb7df19c8b4936b04f57dc5087b4b861ecf0b634f3d8ea5e8a8e0a38ee43de4751761501221
-  languageName: node
-  linkType: hard
-
 "@docusaurus/theme-classic@npm:2.0.0-beta.9":
   version: 2.0.0-beta.9
   resolution: "@docusaurus/theme-classic@npm:2.0.0-beta.9"
@@ -2813,6 +2801,20 @@ __metadata:
   peerDependencies:
     rollup: ^1.20.0||^2.0.0
   checksum: 8be16e27863c219edbb25a4e6ec2fe0e1e451d9e917b6a43cf2ae5bc025a6b8faaa40f82a6e53b66d0de37b58ff472c6c3d57a83037ae635041f8df959d6d9aa
+  languageName: node
+  linkType: hard
+
+"@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:1.0.0"
+  dependencies:
+    "@sapphire/prettier-config": ^1.2.4
+    esm-to-cjs: ^1.2.0
+    npm-to-yarn: ^1.0.1
+    prettier: ^2.5.0
+    tslib: ^2.3.1
+    typescript: ^4.5.2
+  checksum: 0624cdee018434754a765827825edc81808f16f9a98c053257cc57c3660e7e224b01e9d3fa74ffba49583d552e57ef08607b3379a5a65886ef78e31622d56113
   languageName: node
   linkType: hard
 
@@ -6445,6 +6447,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^15.0.0
     "@commitlint/config-conventional": ^15.0.0
+    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": ^1.0.0
     "@sapphire/eslint-config": ^4.0.5
     "@sapphire/fetch": ^2.0.3
     "@sapphire/prettier-config": ^1.2.4
@@ -6526,7 +6529,6 @@ __metadata:
     "@docusaurus/module-type-aliases": 2.0.0-beta.9
     "@docusaurus/plugin-pwa": 2.0.0-beta.9
     "@docusaurus/preset-classic": 2.0.0-beta.9
-    "@docusaurus/remark-plugin-npm2yarn": 2.0.0-beta.9
     "@heroicons/react": ^1.0.5
     "@mdx-js/react": ^1.6.22
     "@svgr/webpack": ^5.5.0
@@ -6541,7 +6543,6 @@ __metadata:
     eslint-plugin-react: ^7.27.1
     eslint-plugin-react-hooks: ^4.3.0
     file-loader: ^6.2.0
-    npm-to-yarn: ^1.0.1
     prism-react-renderer: ^1.2.1
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -7179,6 +7180,13 @@ __metadata:
   bin:
     eslint: bin/eslint.js
   checksum: c0338471fc787384077b132fb1496f264a4d7ed032b9072b2f6b8b1c833edc89b0a4890080576781ce6101a2700341af413ecbf1b66f0780aa02601c40fb2008
+  languageName: node
+  linkType: hard
+
+"esm-to-cjs@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "esm-to-cjs@npm:1.2.0"
+  checksum: 694b1df7a81952554817d9b6b20858bf47f29651f5cfe2a57dfa3e35e1d1ea9e11375bd5b2061f04eca8211ac69e05c96c262fd634f1c07e95bf548667ccf8fd
   languageName: node
   linkType: hard
 
@@ -12656,6 +12664,15 @@ __metadata:
   bin:
     prettier: bin-prettier.js
   checksum: cc6830588b401b0d742862fe9c46bc9118204fb307c3abe0e49e95b35ed23629573807ffdf9cdd65289c252a0bb51fc0171437f6626ee36378dea80f0ee80b91
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "prettier@npm:2.5.0"
+  bin:
+    prettier: bin-prettier.js
+  checksum: aad1b35b73e7c14596d389d90977a83dad0db689ba5802a0ef319c357b7867f55b885db197972aa6a56c30f53088c9f8e0d7f7930ae074c275a4e9cbe091d21d
   languageName: node
   linkType: hard
 

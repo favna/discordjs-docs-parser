@@ -118,6 +118,12 @@ export class Doc extends DocBase {
    * @param query The query to use in the fuzzy search.
    * @param searchOptions Additional options to pass to the `search` function.
    * @returns The top 10 hits from the search.
+   * @example
+   * ```typescript
+   * doc.search('message.guild');
+   * doc.search('message.client');
+   * doc.search('message.guild.members');
+   * ```
    */
   public search(query: string, searchOptions: SearchOptions = {}) {
     // Replace all dots with hashes
