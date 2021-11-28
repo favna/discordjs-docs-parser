@@ -55,7 +55,7 @@
     "jest": "^27.3.1",
     "jest-circus": "^27.3.1",
     "lint-staged": "^12.1.2",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.0",
     "pretty-quick": "^3.1.2",
     "standard-version": "^9.3.2",
     "ts-jest": "^27.0.7",
@@ -104,5 +104,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "yarn@3.1.0"
+  "packageManager": "yarn@3.1.1"
 }
