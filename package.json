@@ -30,7 +30,7 @@
     "prepare": "husky install .github/husky"
   },
   "dependencies": {
-    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": "^1.0.0",
+    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": "^1.0.1",
     "@sapphire/fetch": "^2.0.3",
     "@sapphire/utilities": "^3.1.0",
     "@skyra/jaro-winkler": "^1.0.0",

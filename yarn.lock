@@ -2845,17 +2845,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:1.0.0"
+"@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:1.0.1"
   dependencies:
-    "@sapphire/prettier-config": ^1.2.4
+    "@sapphire/prettier-config": ^1.2.6
     esm-to-cjs: ^1.2.0
     npm-to-yarn: ^1.0.1
     prettier: ^2.5.0
     tslib: ^2.3.1
     typescript: ^4.5.2
-  checksum: 0624cdee018434754a765827825edc81808f16f9a98c053257cc57c3660e7e224b01e9d3fa74ffba49583d552e57ef08607b3379a5a65886ef78e31622d56113
+  checksum: c562437c4bbc5aa03aa260cdb7e5c1580fe65ee8937c3fecb7046a65e052347ea4236e42999a254d74b26cab9c429bbc88ac09bdc7bc5ba3dddd27ee4c00a179
   languageName: node
   linkType: hard
 
@@ -2880,15 +2880,6 @@ __metadata:
   dependencies:
     cross-fetch: ^3.1.4
   checksum: 7e0ddbd79c0d84f322c5ba3c50a9d353a599ff39279f698f21433cf6e3cf8eaf6e9a87d805b68b6c1c15c7106b8a47c4a049e00c0e7f715fb76d43a00cbd8595
-  languageName: node
-  linkType: hard
-
-"@sapphire/prettier-config@npm:^1.2.4":
-  version: 1.2.4
-  resolution: "@sapphire/prettier-config@npm:1.2.4"
-  dependencies:
-    prettier: ^2.4.1
-  checksum: d16f12d65646de8c686b2dd0293ba2b0857b6130bc0842af6f4b606cde56566648e6251764f3f0ccd66c00518d6bf9cf31c456ce077138f39b39947dcd906f0b
   languageName: node
   linkType: hard
 
@@ -6611,7 +6602,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": ^15.0.0
     "@commitlint/config-conventional": ^15.0.0
-    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": ^1.0.0
+    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": ^1.0.1
     "@sapphire/eslint-config": ^4.0.7
     "@sapphire/fetch": ^2.0.3
     "@sapphire/prettier-config": ^1.2.6
@@ -13104,15 +13095,6 @@ __metadata:
   dependencies:
     fast-diff: ^1.1.2
   checksum: 00ce8011cf6430158d27f9c92cfea0a7699405633f7f1d4a45f07e21bf78e99895911cbcdc3853db3a824201a7c745bd49bfea8abd5fb9883e765a90f74f8392
-  languageName: node
-  linkType: hard
-
-"prettier@npm:^2.4.1":
-  version: 2.4.1
-  resolution: "prettier@npm:2.4.1"
-  bin:
-    prettier: bin-prettier.js
-  checksum: cc6830588b401b0d742862fe9c46bc9118204fb307c3abe0e49e95b35ed23629573807ffdf9cdd65289c252a0bb51fc0171437f6626ee36378dea80f0ee80b91
   languageName: node
   linkType: hard
 
