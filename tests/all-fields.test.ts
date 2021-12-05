@@ -8,7 +8,7 @@ describe('All fields', () => {
   });
 
   test('GIVEN doc getters THEN returns proper result', () => {
-    expect(doc.classes?.length).toBe(139);
+    expect(doc.classes?.length).toBe(140);
     expect(doc.typedefs?.length).toBe(259);
     expect(doc.interfaces?.length).toBe(2);
     expect(doc.props?.length).toBe(undefined);
