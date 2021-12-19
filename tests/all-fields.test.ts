@@ -8,8 +8,8 @@ describe('All fields', () => {
   });
 
   test('GIVEN doc getters THEN returns proper result', () => {
-    expect(doc.classes?.length).toBe(140);
-    expect(doc.typedefs?.length).toBe(259);
+    expect(doc.classes?.length).toBeGreaterThanOrEqual(141);
+    expect(doc.typedefs?.length).toBeGreaterThanOrEqual(264);
     expect(doc.interfaces?.length).toBe(2);
     expect(doc.props?.length).toBe(undefined);
     expect(doc.methods?.length).toBe(undefined);
@@ -23,7 +23,7 @@ describe('All fields', () => {
     expect(client?.classes?.length).toBe(undefined);
     expect(client?.typedefs?.length).toBe(undefined);
     expect(client?.interfaces?.length).toBe(undefined);
-    expect(client?.props?.length).toBe(20);
+    expect(client?.props?.length).toBeGreaterThanOrEqual(21);
     expect(client?.methods?.length).toBe(18);
     expect(client?.events?.length).toBe(69);
     expect(client?.params?.length).toBe(undefined);
@@ -46,6 +46,7 @@ describe('All fields', () => {
           'users',
           'guilds',
           'channels',
+          'sweepers',
           'presence',
           'token',
           'user',
