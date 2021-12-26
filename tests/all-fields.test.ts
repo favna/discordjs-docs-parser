@@ -25,7 +25,7 @@ describe('All fields', () => {
     expect(client?.interfaces?.length).toBe(undefined);
     expect(client?.props?.length).toBeGreaterThanOrEqual(21);
     expect(client?.methods?.length).toBe(18);
-    expect(client?.events?.length).toBe(69);
+    expect(client?.events?.length).toBeGreaterThanOrEqual(74);
     expect(client?.params?.length).toBe(undefined);
 
     expect(client?.url).toBe('https://discord.js.org/#/docs/main/main/class/Client');
@@ -96,6 +96,11 @@ describe('All fields', () => {
           'roleCreate',
           'roleDelete',
           'roleUpdate',
+          'guildScheduledEventCreate',
+          'guildScheduledEventDelete',
+          'guildScheduledEventUpdate',
+          'guildScheduledEventUserAdd',
+          'guildScheduledEventUserRemove',
           'stickerCreate',
           'stickerDelete',
           'stickerUpdate',
