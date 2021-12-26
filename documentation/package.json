@@ -15,9 +15,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.13",
-    "@docusaurus/plugin-pwa": "2.0.0-beta.13",
-    "@docusaurus/preset-classic": "2.0.0-beta.13",
+    "@docusaurus/core": "2.0.0-beta.14",
+    "@docusaurus/plugin-pwa": "2.0.0-beta.14",
+    "@docusaurus/preset-classic": "2.0.0-beta.14",
     "@heroicons/react": "^1.0.5",
     "@mdx-js/react": "^1.6.22",
     "@svgr/webpack": "^6.1.2",
@@ -26,7 +26,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "^6.2.0",
     "prism-react-renderer": "^1.2.1",
@@ -35,8 +35,8 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.0.0-beta.13",
-    "@types/react": "^17.0.37",
+    "@docusaurus/module-type-aliases": "2.0.0-beta.14",
+    "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "docusaurus-plugin-typedoc": "^0.16.6",
     "typedoc": "^0.22.10",
