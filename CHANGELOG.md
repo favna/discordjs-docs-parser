@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/favna/discordjs-docs-parser/compare/v1.0.0...v1.1.0) (2022-01-01)
+
+### Features
+
+- **search:** make it possible to configure the jaro winkler minimum threshold ([75fd509](https://github.com/favna/discordjs-docs-parser/commit/75fd509f2db8ebf1f820ce3cbcaf1ad942e723dc))
+
+### Bug Fixes
+
+- ensure `formattedDescription` getter has escaped markdown links ([dd83fb7](https://github.com/favna/discordjs-docs-parser/commit/dd83fb7c743305be089eccc35f5f9e5abfe3d318))
+- update dependencies to remove docs dependency ([56d86fc](https://github.com/favna/discordjs-docs-parser/commit/56d86fc2fa0b45a4a7fa732befda26f77ae9cb60))
+
 ## 1.0.0 (2021-11-27)
 
 ### Features
