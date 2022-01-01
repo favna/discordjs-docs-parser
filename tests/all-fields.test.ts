@@ -279,7 +279,7 @@ describe('All fields', () => {
 
   test('GIVEN static properties and methods THEN returns proper results', () => {
     const staticProperty = doc.get('SnowflakeUtil', 'EPOCH');
-    const staticMethod = doc.get('SnowflakeUtil', 'deconstruct');
+    const staticMethod = doc.get('s-SnowflakeUtil', 'deconstruct');
 
     expect(staticProperty?.formattedName).toBe('SnowflakeUtil.EPOCH');
     expect(staticProperty?.url).toBe('https://discord.js.org/#/docs/main/main/class/SnowflakeUtil?scrollTo=s-EPOCH');
