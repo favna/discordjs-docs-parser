@@ -119,11 +119,17 @@ export class Doc extends DocBase {
    * doc.search('message.guild.members');
    * ```
    */
-  public search(query: string, searchOptions: SearchOptions = {}) {
+  public search(
+    query: string,
+    { excludePrivateElements = false, jaroWinklerMinimumThreshold = 0.8 }: SearchOptions = {
+      excludePrivateElements: false,
+      jaroWinklerMinimumThreshold: 0.8
+    }
+  ) {
     // Replace all dots with hashes
     query = query.replaceAll('.', '#');
 
-    const results = this.findWithJaroWinkler(query);
+    const results = this.findWithJaroWinkler(query, jaroWinklerMinimumThreshold);
     if (!results.length) return null;
 
     const filtered = [];
@@ -132,7 +138,7 @@ export class Doc extends DocBase {
       const element = this.get(filtered, ...(results.shift()?.id?.split('#') ?? []));
 
       if (isNullish(element)) continue;
-      if (searchOptions.excludePrivateElements && element.access === 'private') continue;
+      if (excludePrivateElements && element.access === 'private') continue;
 
       filtered.push(element);
     } while (results.length > 0);
@@ -153,7 +159,7 @@ export class Doc extends DocBase {
   }
 
   /** @internal */
-  private findWithJaroWinkler(query: string): FuzzySearchFormatWithScore[] {
+  private findWithJaroWinkler(query: string, jaroWinklerMinimumThreshold = 0.8): FuzzySearchFormatWithScore[] {
     const possibles: FuzzySearchFormatWithScore[] = [];
 
     for (const { id, name } of this.fuzzySearchFormat) {
@@ -161,7 +167,7 @@ export class Doc extends DocBase {
 
       const score = jaroWinkler(query.toLowerCase(), id.toLowerCase());
 
-      if (score > 0.8) {
+      if (score > jaroWinklerMinimumThreshold) {
         possibles.push({ id, name, score });
       }
     }

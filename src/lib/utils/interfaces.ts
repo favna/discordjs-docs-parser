@@ -28,7 +28,17 @@ export interface FetchOptions {
  * The options that can be provided to `doc.search`
  */
 export interface SearchOptions {
+  /**
+   * Whether to exclude private elements or not
+   * @default false
+   */
   excludePrivateElements?: boolean;
+  /**
+   * The Jaro Winkler minimum threshold distance.
+   * Decrease this to more often get matches.
+   * @default 0.8 (80%)
+   */
+  jaroWinklerMinimumThreshold?: number;
 }
 
 export interface ElementJSON {
