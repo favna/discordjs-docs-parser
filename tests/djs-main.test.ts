@@ -67,5 +67,33 @@ describe('DiscordJS Main Docs', () => {
     test('GIVEN baseDocsURL THEN returns djs main docs url', () => {
       expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/main/main');
     });
+
+    test('GIVEN description WITH url THEN returns markdown escaped URLs', () => {
+      const res = doc.search('TimestampStylesString');
+
+      const typedef = res?.at(0);
+
+      // Regular description is not formatted
+      expect(typedef?.description).toEqual(`A message formatting timestamp style, as defined in
+[here](https://discord.com/developers/docs/reference#message-formatting-timestamp-styles).
+* \`t\` Short time format, consisting of hours and minutes, e.g. 16:20.
+* \`T\` Long time format, consisting of hours, minutes, and seconds, e.g. 16:20:30.
+* \`d\` Short date format, consisting of day, month, and year, e.g. 20/04/2021.
+* \`D\` Long date format, consisting of day, month, and year, e.g. 20 April 2021.
+* \`f\` Short date-time format, consisting of short date and short time formats, e.g. 20 April 2021 16:20.
+* \`F\` Long date-time format, consisting of long date and short time formats, e.g. Tuesday, 20 April 2021 16:20.
+* \`R\` Relative time format, consisting of a relative duration format, e.g. 2 months ago.`);
+
+      // formattedDescription does have escaped markdown links
+      expect(typedef?.formattedDescription)
+        .toEqual(`A message formatting timestamp style, as defined in [here](<https://discord.com/developers/docs/reference#message-formatting-timestamp-styles>).
+* \`t\` Short time format, consisting of hours and minutes, e.g. 16:20.
+* \`T\` Long time format, consisting of hours, minutes, and seconds, e.g. 16:20:30.
+* \`d\` Short date format, consisting of day, month, and year, e.g. 20/04/2021.
+* \`D\` Long date format, consisting of day, month, and year, e.g. 20 April 2021.
+* \`f\` Short date-time format, consisting of short date and short time formats, e.g. 20 April 2021 16:20.
+* \`F\` Long date-time format, consisting of long date and short time formats, e.g. Tuesday, 20 April 2021 16:20.
+* \`R\` Relative time format, consisting of a relative duration format, e.g. 2 months ago.`);
+    });
   });
 });

@@ -193,6 +193,7 @@ export class DocElement extends DocBase {
       .replace(/<(info|warn)>([^]+?)<\/(?:\1)>/g, '\n**$2**\n')
       .replace(/<\/?p>/g, '') // remove paragraph tags
       .replace(/<\/?code>/g, '`') // format code tags
-      .replace(/<a href="(.+)">(.+)<\/a>/g, '[$2]($1)'); // format anchor tags
+      .replace(/<a href="(.+)">(.+)<\/a>/g, '[$2]($1)') // format anchor tags
+      .replace(/\[(.+?)\]\((.+?)\)/g, '[$1](<$2>)'); // escape markdown links
   }
 }
