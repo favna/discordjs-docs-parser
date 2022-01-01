@@ -9,6 +9,7 @@
     "tests",
     "scripts",
     "jest.config.ts",
+    "tsup.config.ts",
     "documentation/src",
     "documentation/docusaurus.config.js",
     "documentation/babel.config.js",
