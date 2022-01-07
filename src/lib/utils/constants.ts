@@ -7,12 +7,12 @@ export const docCache = new Map<SourcesStringUnion, Doc>();
  * The sources supported by this library
  */
 export const sources = new Map<SourcesStringUnion, string>([
-  ['stable', 'https://raw.githubusercontent.com/discordjs/discord.js/docs/stable.json'],
-  ['main', 'https://raw.githubusercontent.com/discordjs/discord.js/docs/main.json'],
+  ['stable', 'https://raw.githubusercontent.com/discordjs/docs/main/discord.js/stable.json'],
+  ['main', 'https://raw.githubusercontent.com/discordjs/docs/main/discord.js/main.json'],
   ['rpc', 'https://raw.githubusercontent.com/discordjs/rpc/docs/master.json'],
-  ['collection', 'https://raw.githubusercontent.com/discordjs/collection/docs/main.json'],
-  ['builders', 'https://raw.githubusercontent.com/discordjs/builders/docs/main.json'],
-  ['voice', 'https://raw.githubusercontent.com/discordjs/voice/docs/main.json']
+  ['collection', 'https://raw.githubusercontent.com/discordjs/docs/main/collection/main.json'],
+  ['builders', 'https://raw.githubusercontent.com/discordjs/docs/main/builders/main.json'],
+  ['voice', 'https://raw.githubusercontent.com/discordjs/docs/main/voice/main.json']
 ]);
 
 export enum DocTypes {

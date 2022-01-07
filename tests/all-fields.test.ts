@@ -25,10 +25,10 @@ describe('All fields', () => {
     expect(client?.interfaces?.length).toBe(undefined);
     expect(client?.props?.length).toBeGreaterThanOrEqual(21);
     expect(client?.methods?.length).toBe(18);
-    expect(client?.events?.length).toBeGreaterThanOrEqual(74);
+    expect(client?.events?.length).toBeGreaterThanOrEqual(71);
     expect(client?.params?.length).toBe(undefined);
 
-    expect(client?.url).toBe('https://discord.js.org/#/docs/main/main/class/Client');
+    expect(client?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/Client');
     expect(client?.formattedName).toBe('Client');
 
     expect(JSON.stringify(client)).toEqual(
@@ -131,9 +131,6 @@ describe('All fields', () => {
           'voiceStateUpdate',
           'webhookUpdate',
           'warn',
-          'applicationCommandCreate',
-          'applicationCommandDelete',
-          'applicationCommandUpdate',
           'channelPinsUpdate',
           'channelUpdate',
           'guildCreate',
@@ -231,9 +228,9 @@ describe('All fields', () => {
     expect(clientReady?.formattedName).toBe('Client#ready');
     expect(clientReady?.formattedDescription).toBe('Emitted when the client becomes ready to start working.');
 
-    expect(clientReady?.url).toBe('https://discord.js.org/#/docs/main/main/class/Client?scrollTo=e-ready');
+    expect(clientReady?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready');
     expect(clientReady?.sourceURL).toBe('https://github.com/discordjs/discord.js/tree/main/src/client/websocket/WebSocketManager.js#L379');
-    expect(clientReady?.link).toBe('[Client#ready](https://discord.js.org/#/docs/main/main/class/Client?scrollTo=e-ready)');
+    expect(clientReady?.link).toBe('[Client#ready](https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready)');
 
     // Force parent to null for formattedName
     const originalParent = clientReady!.parent;
@@ -282,10 +279,10 @@ describe('All fields', () => {
     const staticMethod = doc.get('s-SnowflakeUtil', 'deconstruct');
 
     expect(staticProperty?.formattedName).toBe('SnowflakeUtil.EPOCH');
-    expect(staticProperty?.url).toBe('https://discord.js.org/#/docs/main/main/class/SnowflakeUtil?scrollTo=s-EPOCH');
+    expect(staticProperty?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/SnowflakeUtil?scrollTo=s-EPOCH');
 
     expect(staticMethod?.formattedName).toBe('SnowflakeUtil.deconstruct()');
-    expect(staticMethod?.url).toBe('https://discord.js.org/#/docs/main/main/class/SnowflakeUtil?scrollTo=s-deconstruct');
+    expect(staticMethod?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/SnowflakeUtil?scrollTo=s-deconstruct');
   });
 
   test('GIVEN custom global options THEN returns different results', () => {
@@ -316,10 +313,10 @@ describe('All fields', () => {
     );
 
     expect(createMessageComponentCollector?.link).toBe(
-      '[Message#createMessageComponentCollector()](<https://discord.js.org/#/docs/main/main/class/Message?scrollTo=createMessageComponentCollector>)'
+      '[Message#createMessageComponentCollector()](<https://discord.js.org/#/docs/discord.js/main/class/Message?scrollTo=createMessageComponentCollector>)'
     );
     expect(createMessageComponentCollector?.formattedDescription).toBe(
-      'Creates a...\nDescription truncated. View full description [here](https://discord.js.org/#/docs/main/main/class/Message?scrollTo=createMessageComponentCollector).'
+      'Creates a...\nDescription truncated. View full description [here](https://discord.js.org/#/docs/discord.js/main/class/Message?scrollTo=createMessageComponentCollector).'
     );
 
     Doc.globalOptions.escapeMarkdownLinks = false;

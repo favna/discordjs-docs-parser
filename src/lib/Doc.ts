@@ -60,8 +60,7 @@ export class Doc extends DocBase {
   }
 
   public get baseDocsURL() {
-    const repo = this.repo === 'discord.js' ? 'main' : this.repo;
-    return `${this.baseURL}/#/docs/${repo}/${this.branch}`;
+    return `${this.baseURL}/#/docs/${this.repo}/${this.branch}`;
   }
 
   /**
@@ -237,8 +236,12 @@ export class Doc extends DocBase {
   }
 }
 
-function dissectURL(url: string) {
+function dissectURL(url: string): [project: string, repo: string, branch: string] {
   const parts = url.slice(34).split('/');
 
-  return [parts[0], parts[1], parts[3].slice(0, -5)];
+  if (url === sources.get('rpc')) {
+    return [parts[0], parts[1], parts[3].slice(0, -5)];
+  }
+
+  return [parts[0], parts[3], parts[4].slice(0, -5)];
 }

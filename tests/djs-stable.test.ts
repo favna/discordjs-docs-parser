@@ -65,7 +65,7 @@ describe('DiscordJS Stable Docs', () => {
     });
 
     test('GIVEN baseDocsURL THEN returns djs stable docs url', () => {
-      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/main/stable');
+      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/discord.js/stable');
     });
   });
 });

@@ -65,7 +65,7 @@ describe('DiscordJS Main Docs', () => {
     });
 
     test('GIVEN baseDocsURL THEN returns djs main docs url', () => {
-      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/main/main');
+      expect(doc.baseDocsURL).toEqual('https://discord.js.org/#/docs/discord.js/main');
     });
 
     test('GIVEN description WITH url THEN returns markdown escaped URLs', () => {
