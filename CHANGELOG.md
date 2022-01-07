@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/favna/discordjs-docs-parser/compare/v1.1.0...v1.1.1) (2022-01-07)
+
+### Bug Fixes
+
+- fixed the docs parsing for new DJS monorepo setup ([fac3229](https://github.com/favna/discordjs-docs-parser/commit/fac3229d0804f4df1fc6f4f632841ad24e4c14f8))
+
 ## [1.1.0](https://github.com/favna/discordjs-docs-parser/compare/v1.0.0...v1.1.0) (2022-01-01)
 
 ### Features
