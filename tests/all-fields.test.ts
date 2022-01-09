@@ -23,9 +23,9 @@ describe('All fields', () => {
     expect(client?.classes?.length).toBe(undefined);
     expect(client?.typedefs?.length).toBe(undefined);
     expect(client?.interfaces?.length).toBe(undefined);
-    expect(client?.props?.length).toBeGreaterThanOrEqual(21);
-    expect(client?.methods?.length).toBe(18);
-    expect(client?.events?.length).toBeGreaterThanOrEqual(71);
+    expect(client?.props?.length).toBeGreaterThanOrEqual(19);
+    expect(client?.methods?.length).toBe(16);
+    expect(client?.events?.length).toBeGreaterThanOrEqual(69);
     expect(client?.params?.length).toBe(undefined);
 
     expect(client?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/Client');
@@ -37,8 +37,6 @@ describe('All fields', () => {
         description: 'The main hub for interacting with the Discord API, and the starting point for any bot.',
         internal_type: 'class',
         props: [
-          '_cleanups',
-          '_finalizers',
           'ws',
           'actions',
           'voice',
@@ -51,9 +49,9 @@ describe('All fields', () => {
           'token',
           'user',
           'application',
-          'readyAt',
-          'emojis',
           'readyTimestamp',
+          'emojis',
+          'readyAt',
           'uptime',
           'options',
           'rest',
@@ -69,8 +67,6 @@ describe('All fields', () => {
           'fetchVoiceRegions',
           'fetchSticker',
           'fetchPremiumStickerPacks',
-          '_finalize',
-          'sweepMessages',
           'fetchGuildPreview',
           'fetchGuildWidget',
           'generateInvite',
@@ -106,11 +102,9 @@ describe('All fields', () => {
           'stickerUpdate',
           'guildUpdate',
           'interactionCreate',
-          'interaction',
           'inviteCreate',
           'inviteDelete',
           'messageCreate',
-          'message',
           'messageDelete',
           'messageDeleteBulk',
           'messageReactionAdd',
@@ -275,14 +269,14 @@ describe('All fields', () => {
   });
 
   test('GIVEN static properties and methods THEN returns proper results', () => {
-    const staticProperty = doc.get('SnowflakeUtil', 'EPOCH');
-    const staticMethod = doc.get('s-SnowflakeUtil', 'deconstruct');
+    const staticProperty = doc.get('ActivityFlags', 'FLAGS');
+    const staticMethod = doc.get('s-ApplicationCommand', 's-optionsEqual');
 
-    expect(staticProperty?.formattedName).toBe('SnowflakeUtil.EPOCH');
-    expect(staticProperty?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/SnowflakeUtil?scrollTo=s-EPOCH');
+    expect(staticProperty?.formattedName).toBe('ActivityFlags.FLAGS');
+    expect(staticProperty?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/ActivityFlags?scrollTo=s-FLAGS');
 
-    expect(staticMethod?.formattedName).toBe('SnowflakeUtil.deconstruct()');
-    expect(staticMethod?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/SnowflakeUtil?scrollTo=s-deconstruct');
+    expect(staticMethod?.formattedName).toBe('ApplicationCommand.optionsEqual()');
+    expect(staticMethod?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/ApplicationCommand?scrollTo=s-optionsEqual');
   });
 
   test('GIVEN custom global options THEN returns different results', () => {
