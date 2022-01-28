@@ -23,9 +23,9 @@ describe('All fields', () => {
     expect(client?.classes?.length).toBe(undefined);
     expect(client?.typedefs?.length).toBe(undefined);
     expect(client?.interfaces?.length).toBe(undefined);
-    expect(client?.props?.length).toBeGreaterThanOrEqual(19);
+    expect(client?.props?.length).toBeGreaterThanOrEqual(10);
     expect(client?.methods?.length).toBe(16);
-    expect(client?.events?.length).toBeGreaterThanOrEqual(69);
+    expect(client?.events?.length).toBeGreaterThanOrEqual(60);
     expect(client?.params?.length).toBe(undefined);
 
     expect(client?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/Client');
@@ -54,8 +54,7 @@ describe('All fields', () => {
           'readyAt',
           'uptime',
           'options',
-          'rest',
-          'api'
+          'rest'
         ],
         methods: [
           'login',
@@ -124,6 +123,7 @@ describe('All fields', () => {
           'userUpdate',
           'voiceStateUpdate',
           'webhookUpdate',
+          'debug',
           'warn',
           'channelPinsUpdate',
           'channelUpdate',
@@ -139,12 +139,7 @@ describe('All fields', () => {
           'invalidated',
           'ready',
           'shardError',
-          'error',
-          'debug',
-          'rateLimit',
-          'apiRequest',
-          'apiResponse',
-          'invalidRequestWarning'
+          'error'
         ]
       })
     );
@@ -269,11 +264,11 @@ describe('All fields', () => {
   });
 
   test('GIVEN static properties and methods THEN returns proper results', () => {
-    const staticProperty = doc.get('ActivityFlags', 'FLAGS');
+    const staticProperty = doc.get('ActivityFlagsBitField', 'Flags');
     const staticMethod = doc.get('s-ApplicationCommand', 's-optionsEqual');
 
-    expect(staticProperty?.formattedName).toBe('ActivityFlags.FLAGS');
-    expect(staticProperty?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/ActivityFlags?scrollTo=s-FLAGS');
+    expect(staticProperty?.formattedName).toBe('ActivityFlagsBitField.Flags');
+    expect(staticProperty?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/ActivityFlagsBitField?scrollTo=s-Flags');
 
     expect(staticMethod?.formattedName).toBe('ApplicationCommand.optionsEqual()');
     expect(staticMethod?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/ApplicationCommand?scrollTo=s-optionsEqual');
