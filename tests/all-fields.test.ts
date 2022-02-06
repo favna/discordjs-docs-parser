@@ -218,7 +218,9 @@ describe('All fields', () => {
     expect(clientReady?.formattedDescription).toBe('Emitted when the client becomes ready to start working.');
 
     expect(clientReady?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready');
-    expect(clientReady?.sourceURL).toBe('https://github.com/discordjs/discord.js/tree/main/src/client/websocket/WebSocketManager.js#L379');
+    expect(clientReady?.sourceURL).toBe(
+      'https://github.com/discordjs/discord.js/tree/main/packages/discord.js/src/client/websocket/WebSocketManager.js#L382'
+    );
     expect(clientReady?.link).toBe('[Client#ready](https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready)');
 
     // Force parent to null for formattedName
