@@ -38,9 +38,9 @@
     "@docusaurus/module-type-aliases": "2.0.0-beta.15",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "docusaurus-plugin-typedoc": "^0.16.9",
-    "typedoc": "^0.22.11",
-    "typedoc-plugin-markdown": "^3.11.13"
+    "docusaurus-plugin-typedoc": "^0.17.0",
+    "typedoc": "^0.22.12",
+    "typedoc-plugin-markdown": "^3.11.14"
   },
   "browserslist": {
     "production": [
