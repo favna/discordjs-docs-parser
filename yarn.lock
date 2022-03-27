@@ -2859,7 +2859,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/eslint-config@npm:^4.3.1":
+"@sapphire/eslint-config@npm:^4.3.2":
   version: 4.3.2
   resolution: "@sapphire/eslint-config@npm:4.3.2"
   dependencies:
@@ -2883,7 +2883,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/prettier-config@npm:^1.4.0":
+"@sapphire/prettier-config@npm:^1.4.1":
   version: 1.4.1
   resolution: "@sapphire/prettier-config@npm:1.4.1"
   dependencies:
@@ -2892,7 +2892,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/ts-config@npm:^3.3.2":
+"@sapphire/ts-config@npm:^3.3.3":
   version: 3.3.3
   resolution: "@sapphire/ts-config@npm:3.3.3"
   dependencies:
@@ -2902,7 +2902,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/utilities@npm:^3.6.0":
+"@sapphire/utilities@npm:^3.6.1":
   version: 3.6.1
   resolution: "@sapphire/utilities@npm:3.6.1"
   checksum: 0a1479c7cb3f10455906d91a43e9457aec97155f5821d00d572920c0ee25e7842310e8af3ed0e2c967b8adc256016f38b4c3bf8f17843613bcb6754dbe5d9599
@@ -6645,11 +6645,11 @@ __metadata:
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
     "@sapphire/docusaurus-plugin-npm2yarn2pnpm": ^1.0.3
-    "@sapphire/eslint-config": ^4.3.1
+    "@sapphire/eslint-config": ^4.3.2
     "@sapphire/fetch": ^2.3.0
-    "@sapphire/prettier-config": ^1.4.0
-    "@sapphire/ts-config": ^3.3.2
-    "@sapphire/utilities": ^3.6.0
+    "@sapphire/prettier-config": ^1.4.1
+    "@sapphire/ts-config": ^3.3.3
+    "@sapphire/utilities": ^3.6.1
     "@skyra/jaro-winkler": ^1.0.0
     "@types/jest": ^27.4.1
     "@types/node": ^17.0.18
