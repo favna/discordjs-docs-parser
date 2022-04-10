@@ -62,6 +62,8 @@
     "typescript": "^4.6.3"
   },
   "resolutions": {
+    "ansi-regex": "^5.0.1",
+    "minimist": "^1.2.6",
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.15"
   },
