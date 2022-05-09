@@ -8,7 +8,7 @@
     "src",
     "tests",
     "scripts",
-    "jest.config.ts",
+    "jest.config.mjs",
     "tsup.config.ts",
     "documentation/src",
     "documentation/docusaurus.config.js",
