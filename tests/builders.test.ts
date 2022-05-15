@@ -51,7 +51,7 @@ describe('Builders Docs', () => {
 
       const defaultPermission = res?.at(0);
 
-      expect(defaultPermission?.name).toEqual('defaultPermission');
+      expect(defaultPermission?.name).toEqual('default_permission');
       expect(defaultPermission?.docType).toEqual(DocTypes.Prop);
       expect(defaultPermission?.description).toEqual('Whether the command is enabled by default when the app is added to a guild');
     });
