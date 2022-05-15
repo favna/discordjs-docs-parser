@@ -1,0 +1,3 @@
+name: discordjs-docs-parser
+packagePath: .
+commitMessageTemplate: 'chore(release): release {{new-version}}'
