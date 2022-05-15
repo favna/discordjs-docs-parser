@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.2.0](https://github.com/favna/discordjs-docs-parser/compare/v1.1.1...v1.2.0) - (2022-05-15)
+
+## 🐛 Bug Fixes
+
+- **deps:** Update all non-major dependencies ([e822df9](https://github.com/favna/discordjs-docs-parser/commit/e822df9605f6bd049b3adbcdfdaef9233a0adc44))
+- **deps:** Update react monorepo to v18 (#52) ([51362e2](https://github.com/favna/discordjs-docs-parser/commit/51362e28abfab93a1041dc1c40395dda16ede4fd))
+- **deps:** Update all non-major dependencies ([00b8bc7](https://github.com/favna/discordjs-docs-parser/commit/00b8bc7a8856b3936dbfd84a944df0bbba0433c4))
+
+## 🚀 Features
+
+- Add `@discordjs/rest` doc search ([4c48fe0](https://github.com/favna/discordjs-docs-parser/commit/4c48fe04241a9b68839caf163ea7021cf5cdf90a))
+
+## 🧪 Testing
+
+- Add global options test ([9ec167a](https://github.com/favna/discordjs-docs-parser/commit/9ec167a5974614bf9a8008540d7b40d3754b213f))
+- Fix builders test ([741307f](https://github.com/favna/discordjs-docs-parser/commit/741307f84d6bbdb53fd0911370bd6a7cfd52bae8))
+- Update sourceUrl property ([8976ac6](https://github.com/favna/discordjs-docs-parser/commit/8976ac680eef39b80c0d53626e954872a7850b14))
+- Update data points ([1221f98](https://github.com/favna/discordjs-docs-parser/commit/1221f983b8f6cd986080be7dfed0ee146c041309))
+
 ### [1.1.1](https://github.com/favna/discordjs-docs-parser/compare/v1.1.0...v1.1.1) (2022-01-07)
 
 ### Bug Fixes
