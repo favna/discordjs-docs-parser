@@ -80,4 +80,4 @@ export interface FuzzySearchFormatWithScore extends FuzzySearchFormat {
   score: number;
 }
 
-export type SourcesStringUnion = 'stable' | 'main' | 'rpc' | 'collection' | 'builders' | 'voice';
+export type SourcesStringUnion = 'stable' | 'main' | 'rpc' | 'collection' | 'builders' | 'voice' | 'rest';

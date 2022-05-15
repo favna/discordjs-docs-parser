@@ -12,7 +12,8 @@ export const sources = new Map<SourcesStringUnion, string>([
   ['rpc', 'https://raw.githubusercontent.com/discordjs/rpc/docs/master.json'],
   ['collection', 'https://raw.githubusercontent.com/discordjs/docs/main/collection/main.json'],
   ['builders', 'https://raw.githubusercontent.com/discordjs/docs/main/builders/main.json'],
-  ['voice', 'https://raw.githubusercontent.com/discordjs/docs/main/voice/main.json']
+  ['voice', 'https://raw.githubusercontent.com/discordjs/docs/main/voice/main.json'],
+  ['rest', 'https://raw.githubusercontent.com/discordjs/docs/main/rest/main.json']
 ]);
 
 export enum DocTypes {
