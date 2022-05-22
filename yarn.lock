@@ -2952,12 +2952,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:1.0.3"
+"@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@sapphire/docusaurus-plugin-npm2yarn2pnpm@npm:1.1.0"
   dependencies:
     npm-to-yarn: ^1.0.1
-  checksum: f4806dd1df7b09821fd872c7156f04123ad7d76fc0df64ec00136f46c5e55a6aee3f636b0cbb963af4442f4e54808c2ba5acf2e320b549f5cf5a4c317c2f76b1
+    unist-util-visit: ^2.0.3
+  checksum: 1b8d2962c0955ff445f934b617e505fb6642e9bcb9fe5316c334c5b1f52d5bf69e051345ba57fccd2e300fbc29c0f65c276a48050f803813239150816356becc
   languageName: node
   linkType: hard
 
@@ -6580,7 +6581,7 @@ __metadata:
     "@commitlint/cli": ^16.3.0
     "@commitlint/config-conventional": ^16.2.4
     "@favware/cliff-jumper": ^1.8.0
-    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": ^1.0.3
+    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": ^1.1.0
     "@sapphire/eslint-config": ^4.3.5
     "@sapphire/fetch": ^2.3.1
     "@sapphire/prettier-config": ^1.4.3
