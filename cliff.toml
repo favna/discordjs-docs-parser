@@ -10,7 +10,7 @@ body = """
     {% if previous %}\
         {% if previous.version %}\
             (https://github.com/favna/discordjs-docs-parser/compare/{{ previous.version }}...{{ version }})\
-        {% else %}
+        {% else %}\
             (https://github.com/favna/discordjs-docs-parser/tree/{{ version }})\
         {% endif %}\
     {% endif %} \
