@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.3.0](https://github.com/favna/discordjs-docs-parser/compare/v1.2.0...v1.3.0) - (2022-06-19)
+
+## 🐛 Bug Fixes
+
+- **deps:** Update all non-major dependencies (#80) ([4017bba](https://github.com/favna/discordjs-docs-parser/commit/4017bbad0c316942c932145bd694ca0222edd8ce))
+
+## 📝 Documentation
+
+- Fixed logo size ([cc7baf3](https://github.com/favna/discordjs-docs-parser/commit/cc7baf3cf7552da0273af6c97d60b9367b1df36d))
+- Add @renovate-bot as a contributor ([39d2e7a](https://github.com/favna/discordjs-docs-parser/commit/39d2e7a9fbfc9ddcae379037fd0bffc88e3c26b2))
+- Add @renovate[bot] as a contributor ([1298f53](https://github.com/favna/discordjs-docs-parser/commit/1298f5320cfdf50e80e3fe1439b5b4977fdbdd44))
+
+## 🚀 Features
+
+- Add top-level functions are per updated docgen ([c3a1567](https://github.com/favna/discordjs-docs-parser/commit/c3a1567595ef9321a158843889fe0d1dd6ca4952))
+
+## 🧪 Testing
+
+- Migrate to vitest ([565c2a4](https://github.com/favna/discordjs-docs-parser/commit/565c2a48a5f1999745ad11815fe3ce8287f8641f))
+- Fix tests ([a58e65d](https://github.com/favna/discordjs-docs-parser/commit/a58e65d1d29176f4c9c29d2ecdf3966011dd28d0))
+
 # [1.2.0](https://github.com/favna/discordjs-docs-parser/compare/v1.1.1...v1.2.0) - (2022-05-15)
 
 ## 🐛 Bug Fixes
