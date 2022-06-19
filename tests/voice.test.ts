@@ -21,7 +21,12 @@ describe('Voice Docs', () => {
 
       expect(user?.name).toEqual('getMaxListeners');
       expect(user?.docType).toEqual(DocTypes.Method);
-      expect(user?.description).toEqual(null);
+      expect(user?.description).toEqual(
+        [
+          'Returns the current max listener value for the `EventEmitter` which is either',
+          'set by `emitter.setMaxListeners(n)` or defaults to defaultMaxListeners.'
+        ].join('\n')
+      );
     });
   });
 
@@ -43,17 +48,22 @@ describe('Voice Docs', () => {
 
       expect(getMaxListeners?.name).toEqual('getMaxListeners');
       expect(getMaxListeners?.docType).toEqual(DocTypes.Method);
-      expect(getMaxListeners?.description).toEqual(null);
+      expect(getMaxListeners?.description).toEqual(
+        [
+          'Returns the current max listener value for the `EventEmitter` which is either',
+          'set by `emitter.setMaxListeners(n)` or defaults to defaultMaxListeners.'
+        ].join('\n')
+      );
     });
 
-    test('GIVEN partial search for "AudioPlayer#playab" THEN returns playable method', () => {
-      const res = doc.search('AudioPlayer#playab');
+    test('GIVEN partial search for "AudioPlayer#checkPlay" THEN returns checkPlayable method', () => {
+      const res = doc.search('AudioPlayer#checkPlay');
 
       const playable = res?.at(0);
 
-      expect(playable?.name).toEqual('playable');
-      expect(playable?.docType).toEqual(DocTypes.Prop);
-      expect(playable?.description).toEqual('A list of subscribed voice connections that can currently receive audio to play.');
+      expect(playable?.name).toEqual('checkPlayable');
+      expect(playable?.docType).toEqual(DocTypes.Method);
+      expect(playable?.description).toEqual('Checks whether the underlying resource (if any) is playable (readable)');
     });
   });
 

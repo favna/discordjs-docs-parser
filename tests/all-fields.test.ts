@@ -75,6 +75,7 @@ describe('All fields', () => {
           'decrementMaxListeners'
         ],
         events: [
+          'applicationCommandPermissionsUpdate',
           'channelCreate',
           'channelDelete',
           'guildBanAdd',
@@ -173,6 +174,7 @@ describe('All fields', () => {
     expect(clientLogin?.params?.length).toBe(1);
 
     expect(clientLogin?.formattedName).toBe('Client#login()');
+
     expect(JSON.stringify(clientLogin)).toEqual(
       JSON.stringify({
         name: 'login',
@@ -181,10 +183,7 @@ describe('All fields', () => {
         parent: 'Client',
         params: ['{"name":"token","description":"Token of the account to log in with","internal_type":"param","parent":"login","type":"string"}'],
         examples: ["client.login('my token');"],
-        returns: {
-          type: 'Promise<string>',
-          description: 'Token of the account used'
-        }
+        returns: { type: '[object Object]' }
       })
     );
   });
@@ -219,7 +218,7 @@ describe('All fields', () => {
 
     expect(clientReady?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready');
     expect(clientReady?.sourceURL).toBe(
-      'https://github.com/discordjs/discord.js/tree/main/packages/discord.js/src/client/websocket/WebSocketManager.js#L383'
+      'https://github.com/discordjs/discord.js/tree/main/packages/discord.js/src/client/websocket/WebSocketManager.js#L378'
     );
     expect(clientReady?.link).toBe('[Client#ready](https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready)');
 
