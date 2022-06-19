@@ -146,7 +146,7 @@ describe('All fields', () => {
     );
 
     // Add mocked return values for "else" cases
-    jest.spyOn(client!, 'url', 'get').mockReturnValue(null);
+    vi.spyOn(client!, 'url', 'get').mockReturnValue(null);
     const originalName = client!.name;
     const originalMeta = client!.meta;
 
@@ -159,7 +159,7 @@ describe('All fields', () => {
 
     client!.name ??= originalName;
     client!.meta ??= originalMeta;
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   test('GIVEN Client.login getters THEN returns proper results', () => {

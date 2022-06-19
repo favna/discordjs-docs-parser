@@ -2,9 +2,9 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
-    "incremental": false,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": ["vitest/globals"]
   },
-  "include": [".", "../src/**/*"],
+  "include": ["."],
   "exclude": ["../dist/**/*"]
 }

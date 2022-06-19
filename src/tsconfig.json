@@ -2,12 +2,7 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "./",
-    "outDir": "../dist",
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "exactOptionalPropertyTypes": false,
-    "noImplicitOverride": true,
-    "incremental": false
+    "outDir": "../dist"
   },
   "include": ["."]
 }
