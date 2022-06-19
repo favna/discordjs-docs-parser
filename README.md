@@ -3,6 +3,7 @@
 <img
   src="documentation/static/img/logo.png"
   alt="DiscordJS Docs Parser Logo"
+  width="200"
   height="200"
 />
 
