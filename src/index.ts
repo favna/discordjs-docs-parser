@@ -3,6 +3,7 @@ export * from './lib/elements/Base';
 export * from './lib/elements/Class';
 export * from './lib/elements/Element';
 export * from './lib/elements/Event';
+export * from './lib/elements/Function';
 export * from './lib/elements/Interface';
 export * from './lib/elements/Method';
 export * from './lib/elements/Param';

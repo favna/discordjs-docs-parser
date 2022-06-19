@@ -98,6 +98,8 @@ export interface DocumentationClassMethod {
   meta: DocumentationClassMethodMeta;
 }
 
+export type DocumentationFunction = DocumentationClassMethod;
+
 export interface DocumentationClassEvent {
   name: string;
   description: string;
@@ -175,10 +177,8 @@ export interface DocumentationTypeDefinition {
 
 export type DocIterateeUnion =
   | DocumentationClass
-  // | DocumentationCustom
   | DocumentationExternal
   | DocumentationInterface
-  // | DocumentationLink
   | DocumentationTypeDefinition
   | DocumentationClassEventParameter
   | DocumentationClassProperty
@@ -188,14 +188,11 @@ export type DocIterateeUnion =
 
 export interface Documentation {
   classes: DocumentationClass[];
+  functions: DocumentationFunction[];
   custom: DocumentationCustom[];
   externals: DocumentationExternal[];
-  //   global?: string;
   interfaces: DocumentationInterface[];
   links: DocumentationLink[];
   meta: DocumentationMeta;
-  //   id?: string;
-  //   source?: string;
-  //   tag?: string;
   typedefs: DocumentationTypeDefinition[];
 }

@@ -15,7 +15,7 @@ export class DocElement extends DocBase {
   public description: string | null;
   public meta: DocumentationClassMeta | null;
 
-  public returns: DocumentationReturns | string[][][] | null;
+  public returns: DocumentationReturns | DocumentationReturns[] | string[][][] | null;
   public examples: string[] | null;
   public type: string[] | null;
   public nullable: boolean;

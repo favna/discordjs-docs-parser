@@ -80,6 +80,13 @@ export class DocBase {
   }
 
   /**
+   * The stored Functions for this current documentation source
+   */
+  public get functions() {
+    return this.childrenOfType(DocTypes.Function);
+  }
+
+  /**
    * The stored Typedefs for this current documentation source
    */
 

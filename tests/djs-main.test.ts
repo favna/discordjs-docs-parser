@@ -1,4 +1,5 @@
 import { Doc, DocTypes } from '../src';
+import type { DocumentationReturns } from '../src/lib/types/DocgenOutput';
 
 describe('DiscordJS Main Docs', () => {
   let doc: Doc;
@@ -22,6 +23,17 @@ describe('DiscordJS Main Docs', () => {
       expect(clientUser?.name).toEqual('user');
       expect(clientUser?.docType).toEqual(DocTypes.Prop);
       expect(clientUser?.description).toEqual('User that the client is logged in as');
+    });
+
+    test('GIVEN getter for "fetchRecommendedShards" THEN returns "fetchRecommendedShards" function', () => {
+      const fetchShardsFunc = doc.get('fetchRecommendedShards');
+
+      expect(fetchShardsFunc?.name).toEqual('fetchRecommendedShards');
+      expect(fetchShardsFunc?.docType).toEqual(DocTypes.Function);
+      expect(fetchShardsFunc?.description).toEqual('Gets the recommended shard count from Discord.');
+      expect(fetchShardsFunc?.returns).toEqual(expect.any(Array));
+      expect((fetchShardsFunc?.returns as DocumentationReturns[])[0].description).toEqual('The recommended number of shards');
+      expect((fetchShardsFunc?.returns as DocumentationReturns[])[0].types.flat(Infinity).join('')).toEqual('Promise<number>');
     });
   });
 

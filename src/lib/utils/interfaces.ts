@@ -1,5 +1,6 @@
 import type { DocClass } from '../elements/Class';
 import type { DocEvent } from '../elements/Event';
+import type { DocFunction } from '../elements/Function';
 import type { DocInterface } from '../elements/Interface';
 import type { DocMethod } from '../elements/Method';
 import type { DocParam } from '../elements/Param';
@@ -10,6 +11,7 @@ import { DocTypes } from './constants';
 export interface DocTypesToClassType {
   [DocTypes.Class]: DocClass;
   [DocTypes.Event]: DocEvent;
+  [DocTypes.Function]: DocFunction;
   [DocTypes.Interface]: DocInterface;
   [DocTypes.Method]: DocMethod;
   [DocTypes.Param]: DocParam;

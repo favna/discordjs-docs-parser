@@ -4,6 +4,7 @@ import { jaroWinkler } from '@skyra/jaro-winkler';
 import type { DocElement } from '../lib/elements/Element';
 import { DocBase } from './elements/Base';
 import { DocClass } from './elements/Class';
+import { DocFunction } from './elements/Function';
 import { DocInterface } from './elements/Interface';
 import { DocTypedef } from './elements/Typedef';
 import type { Documentation } from './types/DocgenOutput';
@@ -51,6 +52,7 @@ export class Doc extends DocBase {
     this.adoptAll(docs.classes, DocClass);
     this.adoptAll(docs.typedefs, DocTypedef);
     this.adoptAll(docs.interfaces, DocInterface);
+    this.adoptAll(docs.functions, DocFunction);
 
     this.fuzzySearchFormat = this.toFuzzySearchFormat();
   }

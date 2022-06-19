@@ -19,6 +19,7 @@ export const sources = new Map<SourcesStringUnion, string>([
 export enum DocTypes {
   Class = 'class',
   Event = 'event',
+  Function = 'function',
   Interface = 'interface',
   Method = 'method',
   Param = 'param',
