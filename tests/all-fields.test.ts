@@ -219,7 +219,7 @@ describe('All fields', () => {
 
     expect(clientReady?.url).toBe('https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready');
     expect(clientReady?.sourceURL).toBe(
-      'https://github.com/discordjs/discord.js/tree/main/packages/discord.js/src/client/websocket/WebSocketManager.js#L378'
+      'https://github.com/discordjs/discord.js/tree/main/packages/discord.js/src/client/websocket/WebSocketManager.js#L380'
     );
     expect(clientReady?.link).toBe('[Client#ready](https://discord.js.org/#/docs/discord.js/main/class/Client?scrollTo=e-ready)');
 
