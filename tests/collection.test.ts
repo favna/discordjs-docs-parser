@@ -64,7 +64,7 @@ describe('Collection Docs', () => {
       expect(findKey?.name).toEqual('findKey');
       expect(findKey?.docType).toEqual(DocTypes.Method);
       expect(findKey?.description).toEqual(
-        'Searches for the key of a single item where the given function returns a truthy value. This behaves like\n[Array.findIndex()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex),\nbut returns the key rather than the positional index.'
+        'Searches for the key of a single item where the given function returns a truthy value. This behaves like\nArray.findIndex(),\nbut returns the key rather than the positional index.'
       );
     });
   });
