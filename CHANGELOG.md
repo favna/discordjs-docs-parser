@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.3.1](https://github.com/favna/discordjs-docs-parser/compare/v1.3.0...v1.3.1) - (2022-07-31)
+
+## 🐛 Bug Fixes
+
+- Build in extra safety checks for finding children ([6a1412d](https://github.com/favna/discordjs-docs-parser/commit/6a1412d25eaabf0ac323e0171e227e4e2442804c))
+- **deps:** Update dependency @sapphire/utilities to ^3.8.0 (#98) ([021045e](https://github.com/favna/discordjs-docs-parser/commit/021045e06591719b5d5d3b34c0c31794b9db36ad))
+- **deps:** Update dependency @sapphire/utilities to ^3.7.0 ([306b94e](https://github.com/favna/discordjs-docs-parser/commit/306b94ea8b1cf01e2ce04be40041e99a30fd1dd2))
+
 # [1.3.0](https://github.com/favna/discordjs-docs-parser/compare/v1.2.0...v1.3.0) - (2022-06-19)
 
 ## 🐛 Bug Fixes
