@@ -40,6 +40,10 @@ export class DocBase {
 
   /** @internal */
   public findChild(query: string, exclude: (DocElement | null)[] = []): DocElement | undefined {
+    if (!query) {
+      return undefined;
+    }
+
     query = query.toLowerCase();
 
     let docType: DocTypes | null = null;

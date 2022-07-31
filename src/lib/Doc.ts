@@ -94,9 +94,17 @@ export class Doc extends DocBase {
 
     while (terms.length) {
       const term = terms.shift();
-      const child: DocElement | undefined = elem!.findChild(term as string, exclude);
 
-      if (!child) return null;
+      if (!term || typeof term !== 'string') {
+        return null;
+      }
+
+      const child: DocElement | undefined = elem!.findChild(term, exclude);
+
+      if (!child) {
+        return null;
+      }
+
       elem = terms.length && child.typeElement ? child.typeElement : child;
     }
 
