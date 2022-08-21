@@ -6,7 +6,7 @@ export default defineConfig({
     coverage: {
       enabled: true,
       reporter: ['text', 'lcov', 'clover'],
-      exclude: ['src/index.ts']
+      exclude: ['src/index.ts', 'tests/**/*.test.ts']
     }
   }
 });

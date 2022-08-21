@@ -1,6 +1,8 @@
 import { Doc, DocTypes } from '../src';
 
-describe('Rest Docs', () => {
+// TODO: Crawl broke something with rest docs in https://github.com/discordjs/discord.js/commit/c052f56f3ed3f624410c1f117051c5545d505bee
+// Once that is fixed this can be unskipped
+describe.skip('Rest Docs', () => {
   let doc: Doc;
 
   beforeAll(async () => {
