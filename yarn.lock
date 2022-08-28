@@ -2553,12 +2553,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@heroicons/react@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "@heroicons/react@npm:1.0.6"
+"@heroicons/react@npm:^2.0.8":
+  version: 2.0.8
+  resolution: "@heroicons/react@npm:2.0.8"
   peerDependencies:
     react: ">= 16"
-  checksum: 372b1eda3ce735ef069777bc96304f70de585ebb71a6d1cedc121bb695f9bca235619112e3ee14e8779e95a03096813cbbe3b755927a54b7580d1ce084fa4096
+  checksum: 178d850a80a30aa3da371de0e3e090b7de1c16c82ce2c678f0ae21b27bc66b7ac0a9e9a5bd7817debf5121b9f8550921f51f9f771293348ea14cc0a524c493c1
   languageName: node
   linkType: hard
 
@@ -6317,7 +6317,7 @@ __metadata:
     "@docusaurus/module-type-aliases": 2.0.1
     "@docusaurus/plugin-pwa": 2.0.1
     "@docusaurus/preset-classic": 2.0.1
-    "@heroicons/react": ^1.0.6
+    "@heroicons/react": ^2.0.8
     "@mdx-js/react": ^1.6.22
     "@svgr/webpack": ^6.3.1
     "@tippyjs/react": ^4.2.6
