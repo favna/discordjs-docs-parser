@@ -3805,13 +3805,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:^0.22.1":
-  version: 0.22.1
-  resolution: "@vitest/coverage-c8@npm:0.22.1"
+"@vitest/coverage-c8@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "@vitest/coverage-c8@npm:0.23.0"
   dependencies:
     c8: ^7.12.0
-    vitest: 0.22.1
-  checksum: 141c10127a556ff32e43c6d92a468d800d7c62c767feef1a4123e204a07b58456b410efdba720fa3035639903098dc12767602aa7dabadd40e2d60abc0b008f1
+    vitest: 0.23.0
+  checksum: dfe9c55876c6570ef3da2e4764c3c5168f0551f7399f3c1973c214210fc6ab4c4efadc29cd688abd6ffb2154870bf5abf5c7adbe52ce49d4388bdafedb31602e
   languageName: node
   linkType: hard
 
@@ -6225,7 +6225,7 @@ __metadata:
     "@types/node": ^18.7.8
     "@typescript-eslint/eslint-plugin": ^5.36.1
     "@typescript-eslint/parser": ^5.36.1
-    "@vitest/coverage-c8": ^0.22.1
+    "@vitest/coverage-c8": ^0.23.0
     cz-conventional-changelog: ^3.3.0
     eslint: ^8.23.0
     eslint-config-prettier: ^8.5.0
@@ -6237,7 +6237,7 @@ __metadata:
     pretty-quick: ^3.1.3
     tsup: ^6.2.3
     typescript: ^4.8.2
-    vitest: ^0.22.1
+    vitest: ^0.23.0
   languageName: unknown
   linkType: soft
 
@@ -6294,7 +6294,7 @@ __metadata:
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jsx-a11y: ^6.6.1
     eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-react: ^7.31.4
+    eslint-plugin-react: ^7.31.5
     eslint-plugin-react-hooks: ^4.6.0
     file-loader: ^6.2.0
     prism-react-renderer: ^1.3.5
@@ -7183,9 +7183,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:^7.31.4":
-  version: 7.31.4
-  resolution: "eslint-plugin-react@npm:7.31.4"
+"eslint-plugin-react@npm:^7.31.5":
+  version: 7.31.5
+  resolution: "eslint-plugin-react@npm:7.31.5"
   dependencies:
     array-includes: ^3.1.5
     array.prototype.flatmap: ^1.3.0
@@ -7203,7 +7203,7 @@ __metadata:
     string.prototype.matchall: ^4.0.7
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
-  checksum: 5fa5293f922c9fc24c300a60b9d3f33a2406116b88df46a134cbcdb514b91b526251ce604716ab1cde94c7c95f25963a56c1509faf867601b3b0f94d9f68d61b
+  checksum: 9ec72d5ab2da9a2dd6374f91ec0aefca297cc93f84dddfa16fe9a10acd31e78962a702f524b6855d41669c3ae5133d10e3ce8d596a4f1e61c4da47f4a6d3841b
   languageName: node
   linkType: hard
 
@@ -13650,6 +13650,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"strip-literal@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "strip-literal@npm:0.4.0"
+  dependencies:
+    acorn: ^8.7.1
+  checksum: f764939203f24bc948dd22319de780e50b6ffa1a20915207090ddc851475a8ed7d99c94c446b75686e2f9f7fcb343dc99bc721a43ae2857f7848e79fc73b8200
+  languageName: node
+  linkType: hard
+
 "style-to-object@npm:0.3.0, style-to-object@npm:^0.3.0":
   version: 0.3.0
   resolution: "style-to-object@npm:0.3.0"
@@ -13906,6 +13915,13 @@ __metadata:
   version: 1.0.3
   resolution: "tiny-warning@npm:1.0.3"
   checksum: da62c4acac565902f0624b123eed6dd3509bc9a8d30c06e017104bedcf5d35810da8ff72864400ad19c5c7806fc0a8323c68baf3e326af7cb7d969f846100d71
+  languageName: node
+  linkType: hard
+
+"tinybench@npm:^2.1.3":
+  version: 2.1.4
+  resolution: "tinybench@npm:2.1.4"
+  checksum: 36b32b494afb379e4cd3fa1c040ca429ac8c1c064770801c9c4c6313053a1314946eb02028d62ab7d2c8f5dd743f9447c739b56516cdb9914d12c5f1021e8d41
   languageName: node
   linkType: hard
 
@@ -14755,9 +14771,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:0.22.1, vitest@npm:^0.22.1":
-  version: 0.22.1
-  resolution: "vitest@npm:0.22.1"
+"vitest@npm:0.23.0, vitest@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "vitest@npm:0.23.0"
   dependencies:
     "@types/chai": ^4.3.3
     "@types/chai-subset": ^1.3.3
@@ -14765,6 +14781,8 @@ __metadata:
     chai: ^4.3.6
     debug: ^4.3.4
     local-pkg: ^0.4.2
+    strip-literal: ^0.4.0
+    tinybench: ^2.1.3
     tinypool: ^0.2.4
     tinyspy: ^1.0.2
     vite: ^2.9.12 || ^3.0.0-0
@@ -14787,7 +14805,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: 7abe50ceb51181e77cd62eb3a07c2da17f13078f09be34cc2e98f1f94a77eba33a56c644d48ae16bb474945ffc1cfc8664b1f4976c3de495c5e474057420c4ca
+  checksum: e35db8a2618b95cda9c98a8e1b5a6c83e7c84c7500296614829adef21ca7ac3e9580b19062f379e57df8d847a53eb6bfd8d66c501b5fb666e504c35ca5b18107
   languageName: node
   linkType: hard
 
