@@ -18,7 +18,7 @@
     "@docusaurus/core": "2.1.0",
     "@docusaurus/plugin-pwa": "2.1.0",
     "@docusaurus/preset-classic": "2.1.0",
-    "@heroicons/react": "^2.0.11",
+    "@heroicons/react": "^2.0.12",
     "@mdx-js/react": "^1.6.22",
     "@svgr/webpack": "^6.4.0",
     "@tippyjs/react": "^4.2.6",
