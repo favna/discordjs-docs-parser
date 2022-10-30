@@ -54,6 +54,7 @@ describe('All fields', () => {
           'emojis',
           'readyAt',
           'uptime',
+          '_censoredToken',
           'options',
           'rest'
         ],
