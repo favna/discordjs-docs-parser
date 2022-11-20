@@ -78,6 +78,10 @@ describe('All fields', () => {
         ],
         events: [
           'applicationCommandPermissionsUpdate',
+          'autoModerationActionExecution',
+          'autoModerationRuleCreate',
+          'autoModerationRuleDelete',
+          'autoModerationRuleUpdate',
           'channelCreate',
           'channelDelete',
           'guildBanAdd',
