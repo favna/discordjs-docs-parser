@@ -84,6 +84,7 @@ describe('All fields', () => {
           'autoModerationRuleUpdate',
           'channelCreate',
           'channelDelete',
+          'guildAuditLogEntryCreate',
           'guildBanAdd',
           'guildBanRemove',
           'guildUnavailable',
