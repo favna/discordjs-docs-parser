@@ -5,7 +5,7 @@
   "npm": {
     "packageRules": [
       {
-        "matchPackagePatterns": ["typedoc"],
+        "matchPackagePatterns": ["typedoc", "react", "react-dom", "@types/react", "@types/react-dom"],
         "enabled": false
       }
     ]
