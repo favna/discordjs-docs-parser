@@ -15,9 +15,9 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "2.3.1",
-    "@docusaurus/plugin-pwa": "2.3.1",
-    "@docusaurus/preset-classic": "2.3.1",
+    "@docusaurus/core": "2.4.0",
+    "@docusaurus/plugin-pwa": "2.4.0",
+    "@docusaurus/preset-classic": "2.4.0",
     "@heroicons/react": "^2.0.16",
     "@mdx-js/react": "^1.6.22",
     "@svgr/webpack": "^6.5.1",
@@ -35,7 +35,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "2.3.1",
+    "@docusaurus/module-type-aliases": "2.4.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "docusaurus-plugin-typedoc": "^0.18.0",
