@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.3.2](https://github.com/favna/discordjs-docs-parser/compare/v1.3.1...v1.3.2) - (2023-04-16)
+
+## 🐛 Bug Fixes
+
+- Add missing exports.types for TS ESM ([6a16400](https://github.com/favna/discordjs-docs-parser/commit/6a1640041c31c12aadffbb415924d9fff48c2323))
+- **deps:** Update dependency @svgr/webpack to v7 (#161) ([3003cca](https://github.com/favna/discordjs-docs-parser/commit/3003cca6a9b4dbbc67cbd8746e7bc4e88e8c306e))
+- **deps:** Update all non-major dependencies ([64a116b](https://github.com/favna/discordjs-docs-parser/commit/64a116b6c494e0ac648a6de46ca6bc3233494172))
+- **deps:** Update all non-major dependencies (#149) ([0aa43c3](https://github.com/favna/discordjs-docs-parser/commit/0aa43c3f0754bb877f26eaf36cc036918203bfe7))
+- **deps:** Update all non-major dependencies (#148) ([e2c1963](https://github.com/favna/discordjs-docs-parser/commit/e2c196328709a7c3e27fa11914bafb1575619efe))
+- **deps:** Update all non-major dependencies (#132) ([faa6a82](https://github.com/favna/discordjs-docs-parser/commit/faa6a8253d793e32d1b39a41c75fc829a521db2f))
+- **deps:** Update all non-major dependencies (#126) ([550553c](https://github.com/favna/discordjs-docs-parser/commit/550553c5ef4a78654215fc7a2cb735ca5e1e9fc2))
+- **deps:** Update all non-major dependencies ([5e1d574](https://github.com/favna/discordjs-docs-parser/commit/5e1d57497b8d31b73d35b0768552be29b9a3aad6))
+- **deps:** Update all non-major dependencies (#115) ([bef8a81](https://github.com/favna/discordjs-docs-parser/commit/bef8a81430ce46c39cbd2546404560b9ab1a891c))
+- **deps:** Update dependency @sapphire/utilities to ^3.9.3 ([4a7268f](https://github.com/favna/discordjs-docs-parser/commit/4a7268fde56834e1ae0ab60d3c6b8e406228c126))
+- **deps:** Update dependency @heroicons/react to v2 (#108) ([ebab406](https://github.com/favna/discordjs-docs-parser/commit/ebab406ce10733b779eded37b2de5492ba2f833b))
+- **deps:** Update dependency @sapphire/utilities to ^3.9.0 ([e9bee93](https://github.com/favna/discordjs-docs-parser/commit/e9bee93c70241105c087c86cf52c4f4cbea8c12b))
+- **deps:** Update all non-major dependencies ([594ea8c](https://github.com/favna/discordjs-docs-parser/commit/594ea8c74cf6bd1a3a1b22cbbb7c21e4cf4d9161))
+
+## 📝 Documentation
+
+- **readme:** Update contributors ([861b075](https://github.com/favna/discordjs-docs-parser/commit/861b075c11c511d233a0258ee12d6c7009d00e03))
+
 # [1.3.1](https://github.com/favna/discordjs-docs-parser/compare/v1.3.0...v1.3.1) - (2022-07-31)
 
 ## 🐛 Bug Fixes
