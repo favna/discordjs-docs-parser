@@ -246,7 +246,7 @@ describe('All fields', () => {
         internal_type: 'method',
         parent: 'Client',
         returns: {
-          type: 'void'
+          type: 'Promise<void>'
         }
       })
     );
