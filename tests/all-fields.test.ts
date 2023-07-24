@@ -135,6 +135,7 @@ describe('All fields', () => {
           'warn',
           'channelPinsUpdate',
           'channelUpdate',
+          'guildAvailable',
           'guildCreate',
           'guildMemberAdd',
           'guildMembersChunk',
