@@ -130,6 +130,7 @@ describe('All fields', () => {
           'typingStart',
           'userUpdate',
           'voiceStateUpdate',
+          'webhooksUpdate',
           'webhookUpdate',
           'debug',
           'warn',
