@@ -6784,7 +6784,7 @@ __metadata:
     "@mdx-js/react": ^1.6.22
     "@svgr/webpack": ^8.0.1
     "@tippyjs/react": ^4.2.6
-    "@types/react": ^18.2.18
+    "@types/react": ^18.2.20
     "@types/react-dom": ^18.2.7
     clsx: ^2.0.0
     docusaurus-plugin-typedoc: ^0.19.2
