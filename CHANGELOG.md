@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+# [1.3.3](https://github.com/favna/discordjs-docs-parser/compare/v1.3.2...v1.3.3) - (2023-08-29)
+
+## 🐛 Bug Fixes
+
+- Ensure proper ESM/CJS export mapping ([0dc7e52](https://github.com/favna/discordjs-docs-parser/commit/0dc7e52a50a670085ca0f8a326c4d33841955e06))
+- **deps:** Update all non-major dependencies ([e7fc0ec](https://github.com/favna/discordjs-docs-parser/commit/e7fc0ec8238addac3bdad9443165d5368a297778))
+- **deps:** Update dependency clsx to v2 (#186) ([3e46358](https://github.com/favna/discordjs-docs-parser/commit/3e4635858570de6336c917b56330ec7ca5517b68))
+- **deps:** Update all non-major dependencies ([5940282](https://github.com/favna/discordjs-docs-parser/commit/594028245e0601f7e7bd2ddc7e0d961fc6cf9ac7))
+- **deps:** Update dependency @svgr/webpack to v8 (#172) ([534bb9e](https://github.com/favna/discordjs-docs-parser/commit/534bb9e71b8dfca7b1c9b6afee0350e266aefae8))
+
+## 🧪 Testing
+
+- Update unit test ([c6fe1e3](https://github.com/favna/discordjs-docs-parser/commit/c6fe1e3387515eed09c7783e0e819bee7ff324ba))
+
 # [1.3.2](https://github.com/favna/discordjs-docs-parser/compare/v1.3.1...v1.3.2) - (2023-04-16)
 
 ## 🐛 Bug Fixes
