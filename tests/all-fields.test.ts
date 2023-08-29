@@ -25,7 +25,7 @@ describe('All fields', () => {
     expect(client?.typedefs?.length).toBe(undefined);
     expect(client?.interfaces?.length).toBe(undefined);
     expect(client?.props?.length).toBeGreaterThanOrEqual(10);
-    expect(client?.methods?.length).toBe(16);
+    expect(client?.methods?.length).toBe(17);
     expect(client?.events?.length).toBeGreaterThanOrEqual(60);
     expect(client?.params?.length).toBe(undefined);
 
@@ -62,6 +62,7 @@ describe('All fields', () => {
           'login',
           'isReady',
           'destroy',
+          'deleteWebhook',
           'fetchInvite',
           'fetchGuildTemplate',
           'fetchWebhook',
