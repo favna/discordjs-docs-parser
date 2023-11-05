@@ -11,8 +11,8 @@
     "vitest.config.ts",
     "tsup.config.ts",
     "documentation/src",
-    "documentation/docusaurus.config.js",
+    "documentation/docusaurus.config.ts",
     "documentation/babel.config.js",
-    "documentation/sidebars.js"
+    "documentation/sidebars.ts"
   ]
 }
