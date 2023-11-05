@@ -79,8 +79,7 @@
     "dist/**/*.d*"
   ],
   "engines": {
-    "node": ">=v16",
-    "npm": ">=7"
+    "node": ">=18.0"
   },
   "keywords": [
     "discordjs",

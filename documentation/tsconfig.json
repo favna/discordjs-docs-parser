@@ -1,16 +1,11 @@
 {
-  "extends": "@sapphire/ts-config",
+  "extends": ["@sapphire/ts-config", "@docusaurus/tsconfig"],
   "compilerOptions": {
-    "allowJs": true,
     "baseUrl": ".",
     "importsNotUsedAsValues": "remove",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "lib": ["ESNext", "DOM"],
-    "noEmit": true,
-    "noImplicitAny": false,
-    "paths": { "@site/*": ["./*"] },
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true
+    "noImplicitAny": false
   },
   "include": ["src"]
 }
