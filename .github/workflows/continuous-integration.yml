@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [16, 18]
+        node: [18, 20]
     steps:
       - name: Checkout Project
         uses: actions/checkout@v3
@@ -45,7 +45,7 @@ jobs:
         run: yarn test --coverage
       - name: Store code coverage report
         uses: actions/upload-artifact@v3
-        if: matrix.node == 18
+        if: matrix.node == 20
         with:
           name: coverage
           path: coverage/
