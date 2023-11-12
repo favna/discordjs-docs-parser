@@ -44,7 +44,7 @@
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
     "@favware/cliff-jumper": "^2.2.0",
-    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": "^1.2.0",
+    "@sapphire/docusaurus-plugin-npm2yarn2pnpm": "^2.0.1",
     "@sapphire/eslint-config": "^5.0.2",
     "@sapphire/prettier-config": "^2.0.0",
     "@sapphire/ts-config": "^5.0.0",
