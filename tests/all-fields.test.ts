@@ -55,14 +55,12 @@ describe('All fields', () => {
           'readyAt',
           'uptime',
           '_censoredToken',
-          'options',
           'rest'
         ],
         methods: [
           'login',
           'isReady',
           'destroy',
-          'deleteWebhook',
           'fetchInvite',
           'fetchGuildTemplate',
           'fetchWebhook',
@@ -75,6 +73,7 @@ describe('All fields', () => {
           'generateInvite',
           '_eval',
           '_validateOptions',
+          'deleteWebhook',
           'incrementMaxListeners',
           'decrementMaxListeners'
         ],
