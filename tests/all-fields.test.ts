@@ -55,6 +55,7 @@ describe('All fields', () => {
           'readyAt',
           'uptime',
           '_censoredToken',
+          'options',
           'rest'
         ],
         methods: [
