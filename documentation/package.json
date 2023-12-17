@@ -24,7 +24,7 @@
     "@svgr/webpack": "^8.1.0",
     "@tippyjs/react": "^4.2.6",
     "clsx": "^2.0.0",
-    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
