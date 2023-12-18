@@ -63,8 +63,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install Dependencies
         run: yarn --immutable
-      - name: Typecheck And Build Code
-        run: yarn typecheck && yarn build
+      - name: Build Code
+        run: yarn build
       - name: Run tests
         run: yarn test
       - name: Codecov Upload ${{ matrix.node }}
