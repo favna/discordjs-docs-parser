@@ -26,23 +26,6 @@ jobs:
       - name: Run ESLint
         run: yarn lint --fix=false
 
-  docs:
-    name: Generate Documentation
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-          registry-url: https://registry.npmjs.org/
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Generate Documentation
-        run: yarn docs
-
   BuildingAndTesting:
     name: Building and Testing with node v${{ matrix.node }}
     runs-on: ubuntu-latest
