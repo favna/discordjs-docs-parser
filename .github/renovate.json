@@ -1,12 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>sapphiredev/readme:sapphire-renovate"],
-  "npm": {
-    "packageRules": [
-      {
-        "matchPackagePatterns": ["typedoc", "react", "react-dom", "@types/react", "@types/react-dom"],
-        "enabled": false
-      }
-    ]
-  }
+  "extends": ["github>sapphiredev/.github:sapphire-renovate"]
 }
