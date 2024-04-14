@@ -38,10 +38,10 @@
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.2.1",
     "@docusaurus/tsconfig": "^3.2.1",
-    "@types/react": "^18.2.74",
-    "@types/react-dom": "^18.2.24",
+    "@types/react": "^18.2.78",
+    "@types/react-dom": "^18.2.25",
     "docusaurus-plugin-typedoc": "^0.22.0",
-    "typedoc": "^0.25.12",
+    "typedoc": "^0.25.13",
     "typedoc-plugin-markdown": "^3.17.1"
   },
   "browserslist": {
