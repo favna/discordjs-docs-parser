@@ -9,6 +9,8 @@
 
 # discordjs-docs-parser
 
+### **_This package is no longer maintained and does not provide the latest documentation for DiscordJS as they have switched to a new documentation system. For Discord bot creators please invite the d.js docs app https://discord.com/oauth2/authorize?client_id=348607796335607817 instead of making your own system._**
+
 **Documentation parser for DiscordJS projects. Read documentation JSON from GitHub and outputs easily readable format
 for displaying in your environment of choice**
 
